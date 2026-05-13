@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حصادي — السوق الزراعي الرقمي | Hasaadi — Digital Agricultural Marketplace</title>
+<meta name="description" content="حصادي منصة رقمية تربط المزارعين والتجار في ٢٢ دولة عربية | Hasaadi connects farmers and traders across 22 Arab countries">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #0A1F13;
+  --green-800: #1B4332;
+  --green-600: #2D6A4F;
+  --green-400: #52B788;
+  --green-200: #B7E4C7;
+  --green-100: #D8F3DC;
+  --gold: #E9C46A;
+  --gold-dark: #C9A227;
+  --cream: #FEFDF8;
+  --text-dark: #0A1F13;
+  --text-muted: #4A7C59;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* LANGUAGE TOGGLE */
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 30px;
+  overflow: hidden;
+}
+.lang-btn {
+  padding: 8px 18px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  transition: all 0.3s;
+}
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--green-dark);
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  padding: 16px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 31, 19, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(233, 196, 106, 0.15);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--green-400), var(--green-600));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.nav-logo-text {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.nav-logo-text span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--green-dark) !important;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 800 !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(233,196,106,0.4);
+  color: var(--green-dark) !important;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-800) 50%, #1a3a28 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 5% 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(82,183,136,0.15) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(233,196,106,0.08) 0%, transparent 70%);
+  bottom: -50px; left: -50px;
+  border-radius: 50%;
+}
+
+/* Floating wheat elements */
+.wheat-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.wheat-el {
+  position: absolute;
+  font-size: 40px;
+  opacity: 0.06;
+  animation: float 8s ease-in-out infinite;
+}
+.wheat-el:nth-child(1) { top: 15%; right: 8%; animation-delay: 0s; }
+.wheat-el:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; font-size: 28px; }
+.wheat-el:nth-child(3) { top: 30%; left: 5%; animation-delay: 4s; font-size: 50px; }
+.wheat-el:nth-child(4) { bottom: 20%; left: 12%; animation-delay: 1s; font-size: 32px; }
+.wheat-el:nth-child(5) { top: 75%; right: 5%; animation-delay: 3s; font-size: 24px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(233,196,106,0.15);
+  border: 1px solid rgba(233,196,106,0.3);
+  color: var(--gold);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  animation: fadeInDown 0.8s ease;
+}
+
+.hero-title {
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  animation: fadeInDown 0.8s ease 0.1s both;
+}
+.hero-title span { color: var(--gold); }
+
+.hero-subtitle-ar {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+  font-weight: 400;
+  animation: fadeInDown 0.8s ease 0.2s both;
+}
+.hero-subtitle-en {
+  font-size: clamp(13px, 1.8vw, 16px);
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 48px;
+  font-style: italic;
+  animation: fadeInDown 0.8s ease 0.25s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--green-dark);
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 8px 32px rgba(233,196,106,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(233,196,106,0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-top: 64px;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--gold);
+  display: block;
+}
+.hero-stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+/* SECTIONS */
+section { padding: 100px 5%; }
+
+.section-tag {
+  display: inline-block;
+  background: var(--green-100);
+  color: var(--green-600);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.section-title span { color: var(--green-600); }
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* FEATURES */
+.features {
+  background: var(--white);
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+.feature-card {
+  background: var(--cream);
+  border: 1px solid rgba(45,106,79,0.1);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle at top right, rgba(82,183,136,0.1), transparent);
+  border-radius: 0 24px 0 80px;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(45,106,79,0.12);
+  border-color: rgba(45,106,79,0.2);
+}
+.feature-icon {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, var(--green-100), var(--green-200));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.feature-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+.feature-title-en {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.feature-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* HOW IT WORKS */
+.how-it-works {
+  background: linear-gradient(160deg, var(--green-dark), var(--green-800));
+  position: relative;
+  overflow: hidden;
+}
+.how-it-works .section-tag {
+  background: rgba(233,196,106,0.15);
+  color: var(--gold);
+}
+.how-it-works .section-title { color: var(--white); }
+.how-it-works .section-subtitle { color: rgba(255,255,255,0.6); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  margin-top: 56px;
+}
+.step-card {
+  text-align: center;
+  position: relative;
+}
+.step-number {
+  width: 56px; height: 56px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--green-dark);
+  margin: 0 auto 20px;
+}
+.step-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+.step-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.step-title-en {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 10px;
+}
+.step-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* COUNTRIES */
+.countries {
+  background: var(--cream);
+  text-align: center;
+}
+.countries-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 48px;
+}
+.country-chip {
+  background: var(--white);
+  border: 1px solid rgba(45,106,79,0.15);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.country-chip:hover {
+  background: var(--green-100);
+  border-color: var(--green-400);
+  color: var(--green-600);
+  transform: translateY(-2px);
+}
+
+/* DOWNLOAD */
+.download {
+  background: var(--white);
+  text-align: center;
+}
+.download-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--green-dark);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.store-btn:hover {
+  background: var(--green-600);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(10,31,19,0.2);
+}
+.store-btn-icon { font-size: 28px; }
+.store-btn-text { text-align: right; }
+.store-btn-sub { font-size: 11px; opacity: 0.7; display: block; }
+.store-btn-name { font-size: 17px; font-weight: 800; display: block; }
+
+/* PRIVACY */
+.privacy {
+  background: var(--cream);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.privacy-content {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px;
+  border: 1px solid rgba(45,106,79,0.1);
+}
+.privacy-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 28px 0 12px;
+}
+.privacy-content h3:first-child { margin-top: 0; }
+.privacy-content p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+/* CONTACT */
+.contact {
+  background: linear-gradient(160deg, var(--green-dark), var(--green-800));
+  text-align: center;
+}
+.contact .section-title { color: var(--white); }
+.contact .section-subtitle { color: rgba(255,255,255,0.6); margin: 0 auto; }
+.contact-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+.contact-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 28px 36px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  text-decoration: none;
+  color: var(--white);
+  min-width: 180px;
+}
+.contact-card:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-4px);
+  border-color: rgba(233,196,106,0.3);
+}
+.contact-card-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+.contact-card-label { font-size: 12px; opacity: 0.6; margin-bottom: 4px; }
+.contact-card-value { font-size: 15px; font-weight: 700; }
+
+/* FOOTER */
+footer {
+  background: var(--green-dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-logo-text {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+}
+.footer-logo-text span { color: var(--gold); }
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 14px 5%; }
+  .nav-links { display: none; }
+  .hero-stats { gap: 28px; }
+  .hero-stat-number { font-size: 24px; }
+  .privacy-content { padding: 28px 20px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+/* ENGLISH MODE */
+body.en { direction: ltr; text-align: left; }
+body.en .section-subtitle { margin-right: 0; }
+body.en .hero-content { text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('ar')">عربي</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🌾</div>
+    <span class="nav-logo-text">حصا<span>دي</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
+    <li><a href="#how" data-ar="كيف يعمل" data-en="How it works">كيف يعمل</a></li>
+    <li><a href="#countries" data-ar="الدول" data-en="Countries">الدول</a></li>
+    <li><a href="#privacy" data-ar="الخصوصية" data-en="Privacy">الخصوصية</a></li>
+    <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+    <li><a href="#download" class="nav-cta" data-ar="حمّل التطبيق" data-en="Download App">حمّل التطبيق</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wheat-bg">
+    <div class="wheat-el">🌾</div>
+    <div class="wheat-el">🌿</div>
+    <div class="wheat-el">🌱</div>
+    <div class="wheat-el">🍃</div>
+    <div class="wheat-el">🌾</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>🌾</span>
+      <span data-ar="السوق الزراعي الرقمي العربي" data-en="The Arab Digital Agricultural Marketplace">السوق الزراعي الرقمي العربي</span>
+    </div>
+    <h1 class="hero-title">حصا<span>دي</span></h1>
+    <p class="hero-subtitle-ar" data-ar="ربط المزارعين والتجار في ٢٢ دولة عربية" data-en="Connecting farmers and traders across 22 Arab countries">ربط المزارعين والتجار في ٢٢ دولة عربية</p>
+    <p class="hero-subtitle-en" data-ar="Connecting farmers and traders across 22 Arab countries" data-en="منصة رقمية متكاملة للسوق الزراعي">Connecting farmers and traders across 22 Arab countries</p>
+    <div class="hero-buttons">
+      <a href="#download" class="btn-primary">
+        <span>📱</span>
+        <span data-ar="حمّل التطبيق مجاناً" data-en="Download for Free">حمّل التطبيق مجاناً</span>
+      </a>
+      <a href="#how" class="btn-secondary">
+        <span data-ar="كيف يعمل؟" data-en="How it works?">كيف يعمل؟</span>
+        <span>←</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-number">٢٢</span>
+        <span class="hero-stat-label" data-ar="دولة عربية" data-en="Arab Countries">دولة عربية</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">٥٠٠٠+</span>
+        <span class="hero-stat-label" data-ar="مزارع ومنتج" data-en="Farmers & Producers">مزارع ومنتج</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">٢٧</span>
+        <span class="hero-stat-label" data-ar="سلعة زراعية" data-en="Agricultural Commodities">سلعة زراعية</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="section-tag" data-ar="المميزات" data-en="FEATURES">المميزات</div>
+  <h2 class="section-title reveal" data-ar="كل ما تحتاجه في <span>منصة واحدة</span>" data-en="Everything you need in <span>one platform</span>">كل ما تحتاجه في <span>منصة واحدة</span></h2>
+  <p class="section-subtitle reveal" data-ar="حصادي يوفر أدوات متكاملة للمزارعين والتجار لإدارة أعمالهم الزراعية بكفاءة عالية" data-en="Hasaadi provides integrated tools for farmers and traders to manage their agricultural business efficiently">حصادي يوفر أدوات متكاملة للمزارعين والتجار لإدارة أعمالهم الزراعية بكفاءة عالية</p>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🛒</div>
+      <div class="feature-title" data-ar="سوق زراعي متكامل" data-en="Integrated Agricultural Market">سوق زراعي متكامل</div>
+      <div class="feature-title-en" data-ar="Integrated Agricultural Market" data-en="سوق زراعي متكامل">Integrated Agricultural Market</div>
+      <p class="feature-desc" data-ar="عرض وبيع منتجاتك الزراعية مباشرة للمشترين في ٢٢ دولة عربية بأسعار تنافسية وشفافة" data-en="List and sell your agricultural products directly to buyers across 22 Arab countries at competitive and transparent prices">عرض وبيع منتجاتك الزراعية مباشرة للمشترين في ٢٢ دولة عربية بأسعار تنافسية وشفافة</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title" data-ar="ذكاء اصطناعي للأسعار" data-en="AI Price Intelligence">ذكاء اصطناعي للأسعار</div>
+      <div class="feature-title-en" data-ar="AI Price Intelligence" data-en="ذكاء اصطناعي للأسعار">AI Price Intelligence</div>
+      <p class="feature-desc" data-ar="تحليل أسعار السوق لحظة بلحظة باستخدام الذكاء الاصطناعي للحصول على أفضل قرارات البيع والشراء" data-en="Real-time market price analysis using AI to make the best buying and selling decisions">تحليل أسعار السوق لحظة بلحظة باستخدام الذكاء الاصطناعي للحصول على أفضل قرارات البيع والشراء</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">💬</div>
+      <div class="feature-title" data-ar="تواصل مباشر" data-en="Direct Communication">تواصل مباشر</div>
+      <div class="feature-title-en" data-ar="Direct Communication" data-en="تواصل مباشر">Direct Communication</div>
+      <p class="feature-desc" data-ar="نظام مراسلة مباشر بين المزارعين والمشترين لتسهيل التفاوض وإتمام الصفقات بسرعة" data-en="Direct messaging system between farmers and buyers to facilitate negotiations and close deals quickly">نظام مراسلة مباشر بين المزارعين والمشترين لتسهيل التفاوض وإتمام الصفقات بسرعة</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title" data-ar="تقارير وإحصاءات" data-en="Reports & Analytics">تقارير وإحصاءات</div>
+      <div class="feature-title-en" data-ar="Reports & Analytics" data-en="تقارير وإحصاءات">Reports & Analytics</div>
+      <p class="feature-desc" data-ar="لوحة تحكم شاملة تعرض أداء مبيعاتك وتحليلات السوق لمساعدتك على اتخاذ قرارات مبنية على البيانات" data-en="Comprehensive dashboard showing your sales performance and market analytics to help you make data-driven decisions">لوحة تحكم شاملة تعرض أداء مبيعاتك وتحليلات السوق</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🎥</div>
+      <div class="feature-title" data-ar="ريلز زراعية" data-en="Agricultural Reels">ريلز زراعية</div>
+      <div class="feature-title-en" data-ar="Agricultural Reels" data-en="ريلز زراعية">Agricultural Reels</div>
+      <p class="feature-desc" data-ar="شارك مقاطع فيديو قصيرة لمزرعتك ومنتجاتك لجذب المزيد من المشترين وبناء ثقة أكبر" data-en="Share short videos of your farm and products to attract more buyers and build greater trust">شارك مقاطع فيديو قصيرة لمزرعتك ومنتجاتك لجذب المزيد من المشترين</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🌍</div>
+      <div class="feature-title" data-ar="دعم عربي كامل" data-en="Full Arabic Support">دعم عربي كامل</div>
+      <div class="feature-title-en" data-ar="Full Arabic Support" data-en="دعم عربي كامل">Full Arabic Support</div>
+      <p class="feature-desc" data-ar="واجهة عربية كاملة مع دعم RTL وإمكانية التبديل للإنجليزية لتلبية احتياجات جميع المستخدمين" data-en="Complete Arabic interface with RTL support and the ability to switch to English to meet all users' needs">واجهة عربية كاملة مع دعم RTL وإمكانية التبديل للإنجليزية</p>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how-it-works" id="how">
+  <div class="section-tag" data-ar="كيف يعمل" data-en="HOW IT WORKS">كيف يعمل</div>
+  <h2 class="section-title reveal" data-ar="ابدأ في <span style='color:var(--gold)'>٣ خطوات</span> بسيطة" data-en="Get started in <span style='color:var(--gold)'>3 simple steps</span>">ابدأ في <span style="color:var(--gold)">٣ خطوات</span> بسيطة</h2>
+  <p class="section-subtitle reveal" data-ar="سواء كنت مزارعاً أو تاجراً، البدء مع حصادي سهل وسريع" data-en="Whether you're a farmer or trader, getting started with Hasaadi is easy and fast">سواء كنت مزارعاً أو تاجراً، البدء مع حصادي سهل وسريع</p>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-number">١</div>
+      <span class="step-icon">📱</span>
+      <div class="step-title" data-ar="حمّل التطبيق" data-en="Download the App">حمّل التطبيق</div>
+      <div class="step-title-en" data-ar="Download the App" data-en="حمّل التطبيق">Download the App</div>
+      <p class="step-desc" data-ar="متاح على App Store وGoogle Play مجاناً" data-en="Available on App Store and Google Play for free">متاح على App Store وGoogle Play مجاناً</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">٢</div>
+      <span class="step-icon">✅</span>
+      <div class="step-title" data-ar="سجّل حسابك" data-en="Create Your Account">سجّل حسابك</div>
+      <div class="step-title-en" data-ar="Create Your Account" data-en="سجّل حسابك">Create Your Account</div>
+      <p class="step-desc" data-ar="تسجيل سريع برقم هاتفك وبياناتك الأساسية" data-en="Quick registration with your phone number and basic details">تسجيل سريع برقم هاتفك وبياناتك الأساسية</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">٣</div>
+      <span class="step-icon">🌾</span>
+      <div class="step-title" data-ar="ابدأ البيع والشراء" data-en="Start Trading">ابدأ البيع والشراء</div>
+      <div class="step-title-en" data-ar="Start Trading" data-en="ابدأ البيع والشراء">Start Trading</div>
+      <p class="step-desc" data-ar="أضف منتجاتك أو تصفح السوق وابدأ التداول فوراً" data-en="Add your products or browse the market and start trading immediately">أضف منتجاتك أو تصفح السوق وابدأ التداول فوراً</p>
+    </div>
+  </div>
+</section>
+
+<!-- Countries -->
+<section class="countries" id="countries">
+  <div class="section-tag" data-ar="التغطية الجغرافية" data-en="COVERAGE">التغطية الجغرافية</div>
+  <h2 class="section-title reveal" data-ar="نغطي <span>٢٢ دولة عربية</span>" data-en="We cover <span>22 Arab countries</span>">نغطي <span>٢٢ دولة عربية</span></h2>
+  <p class="section-subtitle reveal" style="margin: 0 auto" data-ar="حصادي متاح لجميع الدول العربية لتوحيد السوق الزراعي العربي" data-en="Hasaadi is available across all Arab countries to unify the Arab agricultural market">حصادي متاح لجميع الدول العربية لتوحيد السوق الزراعي العربي</p>
+  <div class="countries-grid reveal">
+    <div class="country-chip">🇴🇲 عُمان</div>
+    <div class="country-chip">🇸🇦 السعودية</div>
+    <div class="country-chip">🇦🇪 الإمارات</div>
+    <div class="country-chip">🇰🇼 الكويت</div>
+    <div class="country-chip">🇶🇦 قطر</div>
+    <div class="country-chip">🇧🇭 البحرين</div>
+    <div class="country-chip">🇾🇪 اليمن</div>
+    <div class="country-chip">🇯🇴 الأردن</div>
+    <div class="country-chip">🇱🇧 لبنان</div>
+    <div class="country-chip">🇸🇾 سوريا</div>
+    <div class="country-chip">🇮🇶 العراق</div>
+    <div class="country-chip">🇪🇬 مصر</div>
+    <div class="country-chip">🇱🇾 ليبيا</div>
+    <div class="country-chip">🇹🇳 تونس</div>
+    <div class="country-chip">🇩🇿 الجزائر</div>
+    <div class="country-chip">🇲🇦 المغرب</div>
+    <div class="country-chip">🇸🇩 السودان</div>
+    <div class="country-chip">🇸🇴 الصومال</div>
+    <div class="country-chip">🇩🇯 جيبوتي</div>
+    <div class="country-chip">🇰🇲 جزر القمر</div>
+    <div class="country-chip">🇲🇷 موريتانيا</div>
+    <div class="country-chip">🇵🇸 فلسطين</div>
+  </div>
+</section>
+
+<!-- Download -->
+<section class="download" id="download">
+  <div class="section-tag" data-ar="التحميل" data-en="DOWNLOAD">التحميل</div>
+  <h2 class="section-title reveal" data-ar="حمّل <span>حصادي</span> الآن" data-en="Download <span>Hasaadi</span> Now">حمّل <span>حصادي</span> الآن</h2>
+  <p class="section-subtitle reveal" style="margin: 0 auto" data-ar="متاح مجاناً على iOS وAndroid" data-en="Available for free on iOS and Android">متاح مجاناً على iOS وAndroid</p>
+  <div class="download-buttons reveal">
+    <a href="#" class="store-btn">
+      <span class="store-btn-icon">🍎</span>
+      <span class="store-btn-text">
+        <span class="store-btn-sub" data-ar="حمّل من" data-en="Download on the">حمّل من</span>
+        <span class="store-btn-name">App Store</span>
+      </span>
+    </a>
+    <a href="#" class="store-btn">
+      <span class="store-btn-icon">▶️</span>
+      <span class="store-btn-text">
+        <span class="store-btn-sub" data-ar="متاح على" data-en="Get it on">متاح على</span>
+        <span class="store-btn-name">Google Play</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- Privacy -->
+<section id="privacy" style="padding: 100px 5%;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <div class="section-tag" data-ar="سياسة الخصوصية" data-en="PRIVACY POLICY">سياسة الخصوصية</div>
+    <h2 class="section-title reveal" data-ar="خصوصيتك <span>أولويتنا</span>" data-en="Your Privacy is <span>Our Priority</span>">خصوصيتك <span>أولويتنا</span></h2>
+    <div class="privacy-content reveal">
+      <h3 data-ar="١. المعلومات التي نجمعها" data-en="1. Information We Collect">١. المعلومات التي نجمعها</h3>
+      <p data-ar="نجمع المعلومات التي تقدمها عند التسجيل مثل الاسم ورقم الهاتف والمحافظة. كما نجمع بيانات استخدام التطبيق لتحسين تجربتك." data-en="We collect information you provide during registration such as name, phone number, and governorate. We also collect app usage data to improve your experience.">نجمع المعلومات التي تقدمها عند التسجيل مثل الاسم ورقم الهاتف والمحافظة. كما نجمع بيانات استخدام التطبيق لتحسين تجربتك.</p>
+
+      <h3 data-ar="٢. كيف نستخدم معلوماتك" data-en="2. How We Use Your Information">٢. كيف نستخدم معلوماتك</h3>
+      <p data-ar="نستخدم معلوماتك لتوفير خدمات التطبيق، وتحسين تجربة المستخدم، وإرسال الإشعارات المتعلقة بطلباتك ومنتجاتك. لا نبيع بياناتك لأطراف ثالثة." data-en="We use your information to provide app services, improve user experience, and send notifications related to your orders and products. We do not sell your data to third parties.">نستخدم معلوماتك لتوفير خدمات التطبيق وتحسين تجربة المستخدم. لا نبيع بياناتك لأطراف ثالثة.</p>
+
+      <h3 data-ar="٣. حماية البيانات" data-en="3. Data Protection">٣. حماية البيانات</h3>
+      <p data-ar="نستخدم تشفير SSL وبروتوكولات أمان متقدمة لحماية بياناتك. يتم تخزين جميع البيانات على خوادم Firebase الآمنة." data-en="We use SSL encryption and advanced security protocols to protect your data. All data is stored on secure Firebase servers.">نستخدم تشفير SSL وبروتوكولات أمان متقدمة لحماية بياناتك. يتم تخزين جميع البيانات على خوادم Firebase الآمنة.</p>
+
+      <h3 data-ar="٤. سياسة الاسترجاع" data-en="4. Return Policy">٤. سياسة الاسترجاع</h3>
+      <p data-ar="نظراً لطبيعة المنتجات الزراعية الطازجة، لا يتم قبول الاسترجاع بعد الاستلام. في حال وجود خلل واضح في جودة المنتج، يحق للمشتري تقديم شكوى خلال ٢٤ ساعة من الاستلام عبر التطبيق." data-en="Due to the nature of fresh agricultural products, returns are not accepted after delivery. In case of an obvious quality defect, the buyer has the right to file a complaint within 24 hours of receipt through the app.">نظراً لطبيعة المنتجات الزراعية الطازجة، لا يتم قبول الاسترجاع بعد الاستلام. يحق للمشتري تقديم شكوى خلال ٢٤ ساعة.</p>
+
+      <h3 data-ar="٥. التواصل معنا" data-en="5. Contact Us">٥. التواصل معنا</h3>
+      <p data-ar="لأي استفسار بخصوص سياسة الخصوصية، تواصل معنا عبر: privacy@hamedapps.com" data-en="For any privacy policy inquiries, contact us at: privacy@hamedapps.com">لأي استفسار بخصوص سياسة الخصوصية، تواصل معنا عبر: privacy@hamedapps.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="section-tag" data-ar="تواصل معنا" data-en="CONTACT US">تواصل معنا</div>
+  <h2 class="section-title reveal" data-ar="نحن هنا <span style='color:var(--gold)'>لمساعدتك</span>" data-en="We're here to <span style='color:var(--gold)'>help you</span>">نحن هنا <span style="color:var(--gold)">لمساعدتك</span></h2>
+  <p class="section-subtitle reveal" data-ar="تواصل معنا عبر أي من القنوات التالية وسنرد عليك في أقرب وقت" data-en="Contact us through any of the following channels and we'll respond as soon as possible">تواصل معنا عبر أي من القنوات التالية وسنرد عليك في أقرب وقت</p>
+  <div class="contact-cards">
+    <a href="mailto:support@hamedapps.com" class="contact-card reveal">
+      <span class="contact-card-icon">📧</span>
+      <div class="contact-card-label" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</div>
+      <div class="contact-card-value">support@hamedapps.com</div>
+    </a>
+    <a href="https://wa.me/96891234567" class="contact-card reveal">
+      <span class="contact-card-icon">💬</span>
+      <div class="contact-card-label" data-ar="واتساب" data-en="WhatsApp">واتساب</div>
+      <div class="contact-card-value">+968 9123 4567</div>
+    </a>
+    <a href="#" class="contact-card reveal">
+      <span class="contact-card-icon">📱</span>
+      <div class="contact-card-label" data-ar="انستغرام" data-en="Instagram">انستغرام</div>
+      <div class="contact-card-value">@hasaadi.app</div>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <span style="font-size:24px">🌾</span>
+    <span class="footer-logo-text">حصا<span>دي</span></span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
+    <li><a href="#privacy" data-ar="الخصوصية" data-en="Privacy">الخصوصية</a></li>
+    <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+  </ul>
+  <div class="footer-copy" data-ar="© ٢٠٢٥ حصادي. جميع الحقوق محفوظة." data-en="© 2025 Hasaadi. All rights reserved.">© ٢٠٢٥ حصادي. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+// Language toggle
+let currentLang = 'ar';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else {
+        el.innerHTML = text;
+      }
+    }
+  });
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
