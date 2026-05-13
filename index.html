@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hasaadi</title>
+  <title>Hasaadi — حصادي</title>
   <style>
     :root {
       --green-dark: #012104;
@@ -17,13 +17,113 @@
       --text-dark: #1A2418;
       --text-muted: #3D6B55;
     }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
       background: var(--cream);
       color: var(--text-dark);
+      line-height: 1.6;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-600));
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-text {
+      font-weight: 800;
+      font-size: 1.35rem;
+    }
+    .nav-logo-text span {
+      color: var(--gold);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 88px;
+      background: linear-gradient(180deg, var(--green-100), var(--cream));
+      text-align: center;
+    }
+    .hero .wheat-el {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      color: var(--green-800);
+    }
+    .hero p {
+      max-width: 520px;
+      margin: 0 auto;
+      color: var(--text-muted);
+    }
+    main {
+      padding: 48px 24px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    footer {
+      padding: 28px 24px;
+      background: var(--green-dark);
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
     }
   </style>
 </head>
-<body></body>
+<body>
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="logo.png" alt="حصادي" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
+      <span class="nav-logo-text">حصا<span>دي</span></span>
+    </div>
+    <nav aria-label="رئيسي"></nav>
+  </header>
+
+  <section class="hero">
+    <div class="wheat-el">
+      <img src="logo.png" style="position:absolute;top:10%;right:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
+    </div>
+    <div class="wheat-el">
+      <img src="logo.png" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
+    </div>
+    <h1>سوقك الزراعي الذكي</h1>
+    <p>من المزارع إلى يدك — منتجات طازجة وموثوقة في سلطنة عُمان.</p>
+  </section>
+
+  <main>
+    <p style="color: var(--text-muted); margin: 0;">مرحباً بك في حصادي.</p>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="logo.png" alt="حصادي" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+      <strong>حصادي</strong>
+    </div>
+    <small style="opacity: 0.75;">© Hasaadi</small>
+  </footer>
+</body>
 </html>
