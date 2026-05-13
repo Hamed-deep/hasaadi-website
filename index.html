@@ -1,137 +1,515 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hasaadi — حصادي</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --green-dark: #012104;
-      --green-800: #012104;
-      --green-600: #4B743D;
-      --green-400: #5A8570;
-      --green-200: #B5D4C4;
-      --green-100: #EEF4F0;
-      --gold: #E9C46A;
-      --cream: #F5F7F2;
-      --text-dark: #1A2418;
-      --text-muted: #3D6B55;
-    }
-    h1, h2, h3, .hero-title, .section-title {
-      font-family: 'Tajawal', sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 24px;
-      background: linear-gradient(135deg, var(--green-dark), var(--green-600));
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .nav-logo-text {
-      font-weight: 800;
-      font-size: 1.35rem;
-    }
-    .nav-logo-text span {
-      color: var(--gold);
-    }
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 72px 24px 88px;
-      background: linear-gradient(180deg, var(--green-100), var(--cream));
-      text-align: center;
-    }
-    .hero .wheat-el {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    .hero h1 {
-      margin: 0 0 12px;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      color: var(--green-800);
-    }
-    .hero p {
-      max-width: 520px;
-      margin: 0 auto;
-      color: var(--text-muted);
-    }
-    main {
-      padding: 48px 24px;
-      max-width: 880px;
-      margin: 0 auto;
-    }
-    footer {
-      padding: 28px 24px;
-      background: var(--green-dark);
-      color: rgba(255, 255, 255, 0.92);
-      text-align: center;
-    }
-    .footer-brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حصادي — سوقك الزراعي الذكي | Hasaadi</title>
+<meta name="description" content="حصادي منصة زراعية رقمية تربط المزارعين والتجار في ٢٢ دولة عربية">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=Playfair+Display:wght@700;900family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g900:#012104;--g800:#0d2a0d;--g500:#4B743D;--g400:#5A8570;
+  --g100:#EEF4F0;--g50:#F5F7F2;
+  --hero-bg:#EEF4F0;
+  --gold:#E9C46A;--gold-dark:#C9A227;
+  --txt:#1A2418;--muted:#4a6356;--muted2:#7A9F8C;
+  --white:#fff;--border:#E2E8E4;--nav-h:60px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Naskh Arabic','Scheherazade New',serif;background:var(--white);color:var(--txt);overflow-x:hidden}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);
+  background:linear-gradient(to left,#012104,#1a3d1a);
+  display:flex;align-items:center;justify-content:space-between;padding:0 4%;
+}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.nav-logo-txt{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:20px;font-weight:900;color:#fff}
+.nav-logo-txt em{color:var(--gold);font-style:normal}
+.nav-links{display:flex;gap:24px;list-style:none;flex:1;justify-content:center}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang-wrap{position:relative}
+.lang-btn-main{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  border-radius:6px;padding:6px 12px;color:#fff;font-size:12px;font-weight:600;
+  cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;
+}
+.lang-dropdown{
+  position:absolute;top:calc(100% + 6px);left:0;
+  background:#fff;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);
+  overflow:hidden;min-width:120px;display:none;
+}
+.lang-dropdown.open{display:block}
+.lang-option{padding:10px 16px;font-size:13px;cursor:pointer;color:var(--txt);transition:background .2s}
+.lang-option:hover{background:var(--g100)}
+.lang-option.active{color:var(--g500);font-weight:700}
+.nav-cta{background:var(--gold);color:var(--g900);padding:8px 18px;border-radius:6px;font-size:13px;font-weight:800;text-decoration:none;font-family:'IBM Plex Sans Arabic',sans-serif;white-space:nowrap;transition:all .2s}
+.nav-cta:hover{background:var(--gold-dark)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding:calc(var(--nav-h)+60px) 5% 60px;
+  background:var(--hero-bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+}
+/* 3 large logo watermarks like banani */
+.wm{position:absolute;pointer-events:none;opacity:0.18}
+.wm img{width:100%;height:100%;object-fit:contain}
+.wm1{width:280px;height:280px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.wm2{width:220px;height:220px;top:50%;left:8%;transform:translateY(-50%)}
+.wm3{width:220px;height:220px;top:50%;right:8%;transform:translateY(-50%)}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(75,116,61,0.1);border:1px solid rgba(75,116,61,0.2);
+  color:var(--g500);padding:7px 18px;border-radius:20px;
+  font-size:12px;font-weight:600;margin-bottom:20px;
+  position:relative;z-index:2;
+}
+.hero-title{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-family:'Scheherazade New','Noto Naskh Arabic',serif;
+  font-size:clamp(80px,13vw,160px);
+  font-weight:900;color:var(--txt);line-height:1;
+  margin-bottom:14px;letter-spacing:-3px;
+  position:relative;z-index:2;
+}
+.hero-title em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:clamp(16px,1.8vw,20px);color:var(--muted);margin-bottom:4px;position:relative;z-index:2}
+.hero-sub-en{font-size:14px;color:var(--muted2);font-style:italic;margin-bottom:36px;position:relative;z-index:2}
+.hero-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--g900);padding:13px 28px;
+  border-radius:8px;font-size:15px;font-weight:800;text-decoration:none;
+  position:relative;z-index:2;transition:all .25s;
+  font-family:'IBM Plex Sans Arabic',sans-serif;
+  box-shadow:0 4px 16px rgba(233,196,106,0.3);
+}
+.hero-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.hero-stats{
+  display:flex;gap:60px;justify-content:center;margin-top:56px;
+  position:relative;z-index:2;flex-wrap:wrap;
+}
+.stat-n{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:42px;font-weight:900;color:var(--gold)}
+.stat-l{font-size:12px;color:var(--muted);margin-top:2px;display:block}
+
+/* ── FEATURES ── */
+#features{padding:80px 5%;background:var(--white)}
+.sec-hdr{text-align:center;margin-bottom:44px}
+.sec-title{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--txt);margin-bottom:8px}
+.sec-title em{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal}
+.sec-sub{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.7}
+/* Banani-style: white cards, no icons, simple border */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+.fc{
+  background:var(--white);border:1px solid var(--border);border-radius:12px;
+  padding:28px 24px;transition:all .3s;
+}
+.fc:hover{box-shadow:0 8px 28px rgba(0,0,0,0.07);transform:translateY(-3px)}
+.fc-title{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:800;color:var(--txt);margin-bottom:6px}
+.fc-sub{font-size:12px;color:var(--g500);margin-bottom:10px;font-weight:500}
+.fc-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ── HOW IT WORKS ── */
+#how{padding:80px 5%;background:var(--g900);text-align:center}
+#how .sec-title{color:#fff}
+#how .sec-sub{color:rgba(255,255,255,0.5)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+@media(max-width:700px){.steps{grid-template-columns:1fr}}
+.step{text-align:center}
+/* Gold circle number like banani */
+.step-num{
+  width:54px;height:54px;border-radius:50%;
+  border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:22px;font-weight:900;color:var(--gold);
+  margin:0 auto 14px;
+}
+.step-ico{font-size:32px;display:block;margin-bottom:12px}
+.step-t{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:4px}
+.step-t-en{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:7px}
+.step-d{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
+
+/* ── COUNTRIES ── */
+#countries{padding:80px 5%;background:var(--g50);text-align:center}
+.cw{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:38px}
+.cc{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--txt);transition:all .2s;display:flex;align-items:center;gap:6px}
+.cc:hover{background:var(--g100);border-color:var(--g400);color:var(--g500);transform:translateY(-2px)}
+
+/* ── USER GUIDE ── */
+#guide{padding:80px 5%;background:var(--white)}
+/* Banani-style tabs */
+.gtabs{display:flex;gap:8px;justify-content:center;margin:36px 0 28px;flex-wrap:wrap}
+.gtab{
+  padding:10px 22px;border-radius:24px;
+  border:1.5px solid var(--border);
+  background:var(--white);color:var(--txt);
+  font-family:'IBM Plex Sans Arabic',sans-serif;font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;
+}
+.gtab.on{background:var(--g500);color:#fff;border-color:var(--g500)}
+.gtab:hover:not(.on){background:var(--g100);border-color:var(--g400)}
+.gc{display:none;animation:fin .35s ease}
+.gc.on{display:block}
+@keyframes fin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+/* Banani guide card style — minimal, 2 col */
+.gg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:700px){.gg{grid-template-columns:1fr}}
+.gcard{
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:18px 20px;transition:all .2s;
+}
+.gcard:hover{border-color:var(--g400);box-shadow:0 4px 16px rgba(75,116,61,0.07)}
+.gc-ar{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:15px;font-weight:800;color:var(--txt);margin-bottom:2px}
+.gc-en{font-size:11px;color:var(--g500);font-weight:600;margin-bottom:8px;font-style:italic}
+.gc-desc-ar{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:3px}
+.gc-desc-en{font-size:11px;color:var(--muted2);line-height:1.6;font-style:italic}
+.ai-hdr{background:linear-gradient(135deg,var(--g900),var(--g500));border-radius:10px;padding:20px;text-align:center;margin-bottom:12px}
+.pbadge{background:var(--gold);color:var(--g900);padding:2px 10px;border-radius:8px;font-size:10px;font-weight:800;display:inline-block}
+
+/* ── DOWNLOAD ── */
+#download{padding:80px 5%;background:var(--g50);text-align:center}
+.sbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.sbtn{display:inline-flex;align-items:center;gap:10px;background:var(--g900);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;transition:all .3s}
+.sbtn:hover{background:var(--g500);transform:translateY(-2px)}
+.sbtn-ico{font-size:24px}
+.sbtn-sub{font-size:10px;opacity:.6;display:block}
+.sbtn-name{font-size:16px;font-weight:800;display:block}
+
+/* ── PRIVACY ── */
+#privacy{padding:80px 5%;background:var(--white)}
+.pcard{background:var(--g50);border:1px solid var(--border);border-radius:14px;padding:36px;max-width:720px;margin:36px auto 0}
+.psec{margin-bottom:22px}
+.psec:last-child{margin-bottom:0}
+.ptit{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:15px;font-weight:800;color:var(--g500);margin-bottom:6px}
+.ptxt{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* ── CONTACT ── */
+#contact{padding:80px 5%;background:var(--g900);text-align:center}
+#contact .sec-title{color:#fff}
+#contact .sec-sub{color:rgba(255,255,255,0.5);margin:0 auto}
+.ccards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.ccard{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:24px 30px;text-align:center;text-decoration:none;color:#fff;transition:all .3s;min-width:155px}
+.ccard:hover{background:rgba(255,255,255,0.12);transform:translateY(-3px);border-color:rgba(233,196,106,0.2)}
+.c-ico{font-size:26px;display:block;margin-bottom:8px}
+.c-lbl{font-size:10px;opacity:.5;display:block;margin-bottom:2px}
+.c-val{font-size:12px;font-weight:700}
+
+/* ── FOOTER ── */
+footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);padding:28px 5%;text-align:center}
+.flogo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:10px}
+.flogo img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.flt{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:900;color:#fff}
+.flt em{color:var(--gold);font-style:normal}
+.fcp{color:rgba(255,255,255,0.25);font-size:11px;margin-top:6px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.vs{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-stats{gap:28px}
+  .stat-n{font-size:30px}
+  .wm1{width:180px;height:180px}
+  .wm2,.wm3{display:none}
+}
+</style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="nav-logo">
-      <img src="logo.png" alt="حصادي" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
-      <span class="nav-logo-text">حصا<span>دي</span></span>
-    </div>
-    <nav aria-label="رئيسي"></nav>
-  </header>
 
-  <section class="hero">
-    <div class="wheat-el">
-      <img src="logo.png" style="position:absolute;top:10%;right:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="حصادي" onerror="this.style.display='none'">
+    <span class="nav-logo-txt">حصا<em>دي</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
+    <li><a href="#how" data-ar="كيف يعمل" data-en="How it works">كيف يعمل</a></li>
+    <li><a href="#countries" data-ar="الدول" data-en="Countries">الدول</a></li>
+    <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      <div class="lang-btn-main" onclick="toggleLangMenu()">
+        🌐 <span id="lang-label">عربي</span> ▾
+      </div>
+      <div class="lang-dropdown" id="langMenu">
+        <div class="lang-option active" onclick="setLang('ar')">عربي (Arabic)</div>
+        <div class="lang-option" onclick="setLang('en')">English</div>
+      </div>
     </div>
-    <div class="wheat-el">
-      <img src="logo.png" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
-    </div>
-    <h1 class="hero-title">سوقك الزراعي الذكي</h1>
-    <p>من المزارع إلى يدك — منتجات طازجة وموثوقة في سلطنة عُمان.</p>
-  </section>
+    <a href="#download" class="nav-cta" data-ar="حمّل التطبيق" data-en="Download">حمّل التطبيق</a>
+  </div>
+</nav>
 
-  <main>
-    <p style="color: var(--text-muted); margin: 0;">مرحباً بك في حصادي.</p>
-  </main>
+<!-- HERO -->
+<section class="hero">
+  <!-- 3 logo watermarks like Banani -->
+  <div class="wm wm1"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
+  <div class="wm wm2"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
+  <div class="wm wm3"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
 
-  <footer>
-    <div class="footer-brand">
-      <img src="logo.png" alt="حصادي" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
-      <strong>حصادي</strong>
+  <div class="hero-badge">🌾 <span data-ar="السوق الزراعي الرقمي العربي" data-en="Arab Digital Agricultural Marketplace">السوق الزراعي الرقمي العربي</span></div>
+  <h1 class="hero-title" data-ar="حصا<em>دي</em>" data-en="Hasaa<em>di</em>">حصا<em>دي</em></h1>
+  <p class="hero-sub" data-ar="سوقك الزراعي الذكي — من المزارع إلى يدك" data-en="Your Smart Agricultural Market — From Farm to Hand">سوقك الزراعي الذكي — من المزارع إلى يدك</p>
+  <p class="hero-sub-en" data-ar="Your Smart Agricultural Market" data-en="سوقك الزراعي الذكي">Your Smart Agricultural Market — From Farm to Hand</p>
+  <a href="#download" class="hero-btn">
+    🌾 <span data-ar="حمّل مجاناً" data-en="Download Free">حمّل مجاناً</span>
+  </a>
+  <div class="hero-stats">
+    <div><span class="stat-n">٢٢</span><span class="stat-l" data-ar="دولة عربية" data-en="Arab Countries">دولة عربية</span></div>
+    <div><span class="stat-n">٥٠٠٠+</span><span class="stat-l" data-ar="مزارع ومنتج" data-en="Farmers & Producers">مزارع ومنتج</span></div>
+    <div><span class="stat-n">٢٧</span><span class="stat-l" data-ar="سلعة زراعية" data-en="Commodities">سلعة زراعية</span></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="sec-hdr">
+    <h2 class="sec-title rv" data-ar="مميزات <em>حصادي</em>" data-en="<em>Hasaadi</em> Features">مميزات <em>حصادي</em></h2>
+    <p class="sec-sub rv" data-ar="كل ما تحتاجه في منصة زراعية واحدة" data-en="Everything you need in one agricultural platform">كل ما تحتاجه في منصة زراعية واحدة</p>
+  </div>
+  <div class="feat-grid">
+    <div class="fc rv">
+      <div class="fc-title" data-ar="سوق زراعي متكامل" data-en="Integrated Market">سوق زراعي متكامل</div>
+      <div class="fc-sub" data-ar="بيع وشراء المحاصيل بسهولة" data-en="Buy and sell crops easily">بيع وشراء المحاصيل بسهولة</div>
+      <p class="fc-desc" data-ar="بيع وشراء المحاصيل والمواشي والخضروات مباشرة في ٢٢ دولة بأسعار تنافسية" data-en="Buy and sell crops, livestock and vegetables directly across 22 countries">بيع وشراء المحاصيل والمواشي والخضروات مباشرة في ٢٢ دولة بأسعار تنافسية</p>
     </div>
-    <small style="opacity: 0.75;">© Hasaadi</small>
-  </footer>
+    <div class="fc rv">
+      <div class="fc-title" data-ar="ذكاء اصطناعي للأسعار" data-en="AI Pricing">ذكاء اصطناعي للأسعار</div>
+      <div class="fc-sub" data-ar="تحليل دقيق لأسعار السوق" data-en="Accurate market price analysis">تحليل دقيق لأسعار السوق</div>
+      <p class="fc-desc" data-ar="تحليل دقيق لأسعار السوق وتوقع الأسعار المستقبلية لمعرفة أفضل وقت للبيع" data-en="Accurate market price analysis and future predictions to know the best time to sell">تحليل دقيق لأسعار السوق وتوقع الأسعار المستقبلية لمعرفة أفضل وقت للبيع</p>
+    </div>
+    <div class="fc rv">
+      <div class="fc-title" data-ar="تواصل مباشر" data-en="Direct Chat">تواصل مباشر</div>
+      <div class="fc-sub" data-ar="دردشة فورية بين البائع والمشتري" data-en="Instant chat between buyer and seller">دردشة فورية بين البائع والمشتري</div>
+      <p class="fc-desc" data-ar="دردشة فورية بين البائع والمشتري لتسهيل التفاوض وإتمام الصفقات بسرعة" data-en="Instant chat between buyer and seller to facilitate negotiation and close deals quickly">دردشة فورية بين البائع والمشتري لتسهيل التفاوض وإتمام الصفقات بسرعة</p>
+    </div>
+    <div class="fc rv">
+      <div class="fc-title" data-ar="تقارير وإحصاءات" data-en="Reports & Analytics">تقارير وإحصاءات</div>
+      <div class="fc-sub" data-ar="بيانات لحظية لحركة السوق" data-en="Real-time market movement data">بيانات لحظية لحركة السوق</div>
+      <p class="fc-desc" data-ar="بيانات لحظية لحركة السوق ولوحة تحكم شاملة لمتابعة أداء مبيعاتك" data-en="Real-time market data and comprehensive dashboard to track your sales">بيانات لحظية لحركة السوق ولوحة تحكم شاملة لمتابعة أداء مبيعاتك</p>
+    </div>
+    <div class="fc rv">
+      <div class="fc-title" data-ar="ريلز زراعية" data-en="Agri Reels">ريلز زراعية</div>
+      <div class="fc-sub" data-ar="فيديوهات قصيرة تعليمية وتجارية" data-en="Short educational & commercial videos">فيديوهات قصيرة تعليمية وتجارية</div>
+      <p class="fc-desc" data-ar="فيديوهات قصيرة من المزارعين لعرض منتجاتهم وجذب المزيد من المشترين" data-en="Short videos from farmers to showcase products and attract more buyers">فيديوهات قصيرة من المزارعين لعرض منتجاتهم وجذب المزيد من المشترين</p>
+    </div>
+    <div class="fc rv">
+      <div class="fc-title" data-ar="دعم عربي كامل" data-en="Full Arabic Support">دعم عربي كامل</div>
+      <div class="fc-sub" data-ar="متوفر بجميع اللهجات العربية" data-en="Available in all Arabic dialects">متوفر بجميع اللهجات العربية</div>
+      <p class="fc-desc" data-ar="متوفر بجميع اللهجات العربية مع واجهة RTL كاملة وإمكانية التبديل للإنجليزية" data-en="Available in all Arabic dialects with full RTL interface and English toggle">متوفر بجميع اللهجات العربية مع واجهة RTL كاملة وإمكانية التبديل للإنجليزية</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="sec-hdr">
+    <h2 class="sec-title rv" data-ar="كيف يعمل؟" data-en="How It Works?">كيف يعمل؟</h2>
+    <p class="sec-sub rv" data-ar="ابدأ في ٣ خطوات بسيطة" data-en="Get started in 3 simple steps">ابدأ في ٣ خطوات بسيطة</p>
+  </div>
+  <div class="steps">
+    <div class="step rv">
+      <div class="step-num">١</div>
+      <span class="step-ico">📱</span>
+      <div class="step-t" data-ar="حمّل التطبيق" data-en="Download App">حمّل التطبيق</div>
+      <div class="step-t-en" data-ar="Available on all stores" data-en="متوفر على جميع المتاجر">Available on all stores</div>
+      <p class="step-d" data-ar="متوفر على App Store وGoogle Play مجاناً" data-en="Available on App Store and Google Play for free">متوفر على App Store وGoogle Play مجاناً</p>
+    </div>
+    <div class="step rv">
+      <div class="step-num">٢</div>
+      <span class="step-ico">✅</span>
+      <div class="step-t" data-ar="سجّل حسابك" data-en="Create Account">سجّل حسابك</div>
+      <div class="step-t-en" data-ar="Fast and simple steps" data-en="خطوات بسيطة وسريعة">Fast and simple steps</div>
+      <p class="step-d" data-ar="أدخل بريدك الإلكتروني واسمك ومحافظتك وابدأ فوراً" data-en="Enter your email, name and governorate and start immediately">أدخل بريدك الإلكتروني واسمك ومحافظتك وابدأ فوراً</p>
+    </div>
+    <div class="step rv">
+      <div class="step-num">٣</div>
+      <span class="step-ico">🌾</span>
+      <div class="step-t" data-ar="ابدأ البيع والشراء" data-en="Start Trading">ابدأ البيع والشراء</div>
+      <div class="step-t-en" data-ar="Connect with farmers & traders" data-en="تواصل مع المزارعين والتجار">Connect with farmers & traders</div>
+      <p class="step-d" data-ar="أضف منتجاتك أو تصفح السوق وتواصل مع آلاف المزارعين" data-en="Add your products or browse and connect with thousands of farmers">أضف منتجاتك أو تصفح السوق وتواصل مع آلاف المزارعين</p>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES - hidden until app approval -->
+
+<!-- USER GUIDE -->
+<section id="guide">
+  <div class="sec-hdr">
+    <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--g500);margin-bottom:8px;text-transform:uppercase" data-ar="دليل الاستخدام / USER GUIDE" data-en="USER GUIDE / دليل الاستخدام">دليل الاستخدام / USER GUIDE</div>
+    <h2 class="sec-title rv" data-ar="كيف تستخدم <em>حصادي؟</em>" data-en="How to use <em>Hasaadi?</em>">كيف تستخدم <em>حصادي؟</em></h2>
+  </div>
+  <div class="gtabs">
+    <button class="gtab on" onclick="showTab('buyer')" id="tab-buyer">🛒 <span data-ar="المشتري / Buyer" data-en="Buyer / المشتري">المشتري / Buyer</span></button>
+    <button class="gtab" onclick="showTab('seller')" id="tab-seller">🌾 <span data-ar="البائع / Seller" data-en="Seller / البائع">البائع / Seller</span></button>
+    <button class="gtab" onclick="showTab('ai')" id="tab-ai">🤖 <span data-ar="الذكاء الاصطناعي / AI Center" data-en="AI Center / الذكاء">الذكاء الاصطناعي / AI Center</span></button>
+    <button class="gtab" onclick="showTab('agent')" id="tab-agent">🛵 <span data-ar="المندوب / Agent" data-en="Agent / المندوب">المندوب / Agent</span></button>
+  </div>
+
+  <!-- BUYER -->
+  <div class="gc on" id="content-buyer">
+    <div class="gg">
+      <div class="gcard"><div class="gc-ar" data-ar="التسجيل" data-en="Sign Up">التسجيل</div><div class="gc-en" data-ar="Sign Up" data-en="التسجيل">Sign Up</div><p class="gc-desc-ar" data-ar="أدخل بريدك الإلكتروني وكلمة المرور ← اسمك ومحافظتك ← ابدأ التسوق فوراً." data-en="Enter email and password → name and governorate → Start shopping.">أدخل بريدك الإلكتروني وكلمة المرور ← اسمك ومحافظتك ← ابدأ التسوق فوراً.</p><p class="gc-desc-en">Email + password login, enter name and governorate.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="تصفح السوق" data-en="Browse Market">تصفح السوق</div><div class="gc-en" data-ar="Browse Market" data-en="تصفح السوق">Browse Market</div><p class="gc-desc-ar" data-ar="من تبويب السوق تصفح حسب الفئة: جملة، محاصيل، ماشية، خضروات. فلتر البلد 🇴🇲" data-en="From Market tab browse by category: Wholesale, Crops, Livestock, Vegetables. Country filter OM">من تبويب السوق تصفح حسب الفئة: جملة، محاصيل، ماشية، خضروات. فلتر البلد 🇴🇲</p><p class="gc-desc-en">Categories: wholesale, crops, livestock, vegetables. Country filter OM.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="الخريطة الزراعية" data-en="Agricultural Map">الخريطة الزراعية</div><div class="gc-en" data-ar="Agricultural Map" data-en="الخريطة الزراعية">Agricultural Map</div><p class="gc-desc-ar" data-ar="تبويب الخريطة لرؤية البائعين المتجولين القريبين منك على Google Maps." data-en="Map tab to see nearby mobile sellers on Google Maps.">تبويب الخريطة لرؤية البائعين المتجولين القريبين منك على Google Maps.</p><p class="gc-desc-en">Google Maps, find nearby mobile sellers.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="أسعار السوق" data-en="Market Prices">أسعار السوق</div><div class="gc-en" data-ar="Market Prices" data-en="أسعار السوق">Market Prices</div><p class="gc-desc-ar" data-ar="تابع أسعار ٢٧ سلعة زراعية مدعومة بالذكاء الاصطناعي وتُحدَّث كل ساعتين." data-en="27 commodities, AI-powered, updated every 2 hours.">تابع أسعار ٢٧ سلعة زراعية مدعومة بالذكاء الاصطناعي وتُحدَّث كل ساعتين.</p><p class="gc-desc-en">27 commodities, AI-powered, updated every 2 hours.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="ريلز المزارعين" data-en="Farmers Reels">ريلز المزارعين</div><div class="gc-en" data-ar="Farmers Reels" data-en="ريلز المزارعين">Farmers Reels</div><p class="gc-desc-ar" data-ar="اضغط على زر ▶️ الأوسط لمشاهدة مقاطع فيديو قصيرة من المزارعين." data-en="Short videos from farmers, center ▶️ button.">اضغط على زر ▶️ الأوسط لمشاهدة مقاطع فيديو قصيرة من المزارعين.</p><p class="gc-desc-en">Short videos from farmers, center ▶️ button.</p></div>
+    </div>
+  </div>
+
+  <!-- SELLER -->
+  <div class="gc" id="content-seller">
+    <div class="gg">
+      <div class="gcard"><div class="gc-ar" data-ar="إضافة منتج" data-en="Add Product">إضافة منتج</div><div class="gc-en" data-ar="Add Product" data-en="إضافة منتج">Add Product</div><p class="gc-desc-ar" data-ar="القائمة ← منتجاتي ← إضافة منتج. حتى ٥ صور. أول ١٠ منتجات مجانية!" data-en="Menu → My Products → Add Product. Up to 5 photos. First 10 FREE!">القائمة ← منتجاتي ← إضافة منتج. حتى ٥ صور. أول ١٠ منتجات مجانية!</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="خطط الاشتراك" data-en="Subscription Plans">خطط الاشتراك</div><div class="gc-en" data-ar="Subscription Plans" data-en="خطط الاشتراك">Subscription Plans</div><p class="gc-desc-ar" data-ar="شهري (٣ ر.ع) | ٣ أشهر (٧ ر.ع) | سنوي (٢٠ ر.ع + شارة موثق ⭐)" data-en="Monthly 3 OMR | 3 Months 7 OMR | Yearly 20 OMR + ⭐ Verified">شهري (٣ ر.ع) | ٣ أشهر (٧ ر.ع) | سنوي (٢٠ ر.ع + شارة موثق ⭐)</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="لوحة التحكم" data-en="Dashboard">لوحة التحكم</div><div class="gc-en" data-ar="Dashboard" data-en="لوحة التحكم">Dashboard</div><p class="gc-desc-ar" data-ar="تابع مبيعاتك وطلباتك. اقبل أو ارفض الطلبات بضغطة واحدة." data-en="Track sales and orders. Accept or reject with one tap.">تابع مبيعاتك وطلباتك. اقبل أو ارفض الطلبات بضغطة واحدة.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="بائع متجول" data-en="Mobile Seller">بائع متجول</div><div class="gc-en" data-ar="Mobile Seller" data-en="بائع متجول">Mobile Seller</div><p class="gc-desc-ar" data-ar="سجّل موقعك الاعتيادي ليظهر على خريطة حصادي ويراك العملاء القريبون." data-en="Register your location to appear on Hasaadi map for nearby customers.">سجّل موقعك الاعتيادي ليظهر على خريطة حصادي ويراك العملاء القريبون.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="توثيق الحساب" data-en="Verification">توثيق الحساب</div><div class="gc-en" data-ar="Verification" data-en="توثيق الحساب">Account Verification</div><p class="gc-desc-ar" data-ar="احصل على شارة ✅ الخضراء التي تزيد ثقة المشترين بك." data-en="Get the green ✅ badge to increase buyer trust.">احصل على شارة ✅ الخضراء التي تزيد ثقة المشترين بك.</p></div>
+    </div>
+  </div>
+
+  <!-- AI -->
+  <div class="gc" id="content-ai">
+    <div class="ai-hdr">
+      <div style="font-size:34px;margin-bottom:8px">🤖</div>
+      <h3 style="font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:5px" data-ar="مركز الذكاء الاصطناعي" data-en="AI Center">مركز الذكاء الاصطناعي</h3>
+      <span class="pbadge">Premium Features</span>
+    </div>
+    <div class="gg">
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="المستشار الزراعي" data-en="Agricultural Advisor">المستشار الزراعي</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="توصيات للزراعة وجداول الري ومقترحات الأسمدة بناءً على المحصول والتربة." data-en="Farming recommendations, irrigation and fertilizer suggestions.">توصيات للزراعة وجداول الري ومقترحات الأسمدة بناءً على المحصول والتربة.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="كاشف الآفات" data-en="Pest Detector">كاشف الآفات</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="التقط صورة ← يحلل الذكاء الاصطناعي ← توصيات العلاج الفورية." data-en="Photo → AI analyzes → instant treatment recommendations.">التقط صورة ← يحلل الذكاء الاصطناعي ← توصيات العلاج الفورية.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="متوقع الأسعار" data-en="Price Predictor">متوقع الأسعار</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="تحليل اتجاهات السوق لمعرفة أفضل وقت لبيع محاصيلك." data-en="Market trend analysis to know the best time to sell.">تحليل اتجاهات السوق لمعرفة أفضل وقت لبيع محاصيلك.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="توقعات الطقس" data-en="Weather Forecast">توقعات الطقس</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="توقعات طقس زراعية لـ ٧ أيام تشمل الهطول والرطوبة." data-en="7-day agricultural weather forecasts including rainfall and humidity.">توقعات طقس زراعية لـ ٧ أيام تشمل الهطول والرطوبة.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="اقترح محصولك" data-en="Crop Suggester">اقترح محصولك</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="ارفع صورة التربة ← يقدّر الحموضة والنواقص ← يقترح أنسب المحاصيل." data-en="Upload soil photo → estimates pH → suggests suitable crops.">ارفع صورة التربة ← يقدّر الحموضة والنواقص ← يقترح أنسب المحاصيل.</p></div>
+    </div>
+  </div>
+
+  <!-- AGENT -->
+  <div class="gc" id="content-agent">
+    <div class="gg">
+      <div class="gcard"><div class="gc-ar" data-ar="التسجيل كمندوب" data-en="Register as Agent">التسجيل كمندوب</div><div class="gc-en" data-ar="Register as Agent" data-en="التسجيل كمندوب">Register as Agent</div><p class="gc-desc-ar" data-ar="القائمة ← سجل كمندوب. أدخل بياناتك وارفع رخصة القيادة. موافقة خلال ٢٤ ساعة." data-en="Menu → Register as Agent. Enter details, upload license. 24hr approval.">القائمة ← سجل كمندوب. أدخل بياناتك وارفع رخصة القيادة. موافقة خلال ٢٤ ساعة.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="قبول الطلبات" data-en="Accept Orders">قبول الطلبات</div><div class="gc-en" data-ar="Accept Orders" data-en="قبول الطلبات">Accept Orders</div><p class="gc-desc-ar" data-ar="نافذة تلقائية مع تفاصيل الطلب والأجرة. ١٥ ثانية للقبول أو الرفض." data-en="Popup with order details and fee. 15 seconds to accept or reject.">نافذة تلقائية مع تفاصيل الطلب والأجرة. ١٥ ثانية للقبول أو الرفض.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="تنفيذ التوصيل" data-en="Complete Delivery">تنفيذ التوصيل</div><div class="gc-en" data-ar="Complete Delivery" data-en="تنفيذ التوصيل">Complete Delivery</div><p class="gc-desc-ar" data-ar="اذهب للبائع ← تأكيد الاستلام ← توجّه للمشتري ← تأكيد التوصيل ← احصل على أجرتك." data-en="Go to seller → Confirm Pickup → buyer → Confirm Delivery → get paid.">اذهب للبائع ← تأكيد الاستلام ← توجّه للمشتري ← تأكيد التوصيل ← احصل على أجرتك.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="الأرباح والرصيد" data-en="Earnings">الأرباح والرصيد</div><div class="gc-en" data-ar="Earnings" data-en="الأرباح والرصيد">Earnings & Balance</div><p class="gc-desc-ar" data-ar="أرباحك تتراكم تلقائياً. اعرض إحصاءاتك واسحب رصيدك متى تريد." data-en="Earnings accumulate automatically. View stats and withdraw anytime.">أرباحك تتراكم تلقائياً. اعرض إحصاءاتك واسحب رصيدك متى تريد.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <div class="sec-hdr">
+    <h2 class="sec-title rv" data-ar="حمّل <em>حصادي</em> الآن" data-en="Download <em>Hasaadi</em> Now">حمّل <em>حصادي</em> الآن</h2>
+    <p class="sec-sub rv" data-ar="متوفر مجاناً على iOS وAndroid" data-en="Available for free on iOS and Android">متوفر مجاناً على iOS وAndroid</p>
+  </div>
+  <div class="sbtns rv">
+    <a href="#" class="sbtn">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span><span class="sbtn-sub" data-ar="حمّل من" data-en="Download on the">حمّل من</span><span class="sbtn-name">App Store</span></span>
+    </a>
+    <a href="#" class="sbtn">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.16.64.22.99.16l12.6-7.27-2.79-2.79-10.8 9.9zM.44 1.18C.17 1.53 0 2.04 0 2.7v18.6c0 .66.17 1.17.44 1.52l.08.07 10.42-10.42v-.25L.52 1.11l-.08.07zM20.12 10.5l-2.98-1.72-3.12 3.12 3.12 3.12 3-1.74c.86-.5.86-1.3-.02-1.78zM3.18.24l12.6 7.27-2.79 2.79L2.19.4c.3-.17.64-.23.99-.16z"/></svg>
+      <span><span class="sbtn-sub" data-ar="متاح على" data-en="Get it on">متاح على</span><span class="sbtn-name">Google Play</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy">
+  <div class="sec-hdr">
+    <h2 class="sec-title rv" data-ar="خصوصيتك <em>أولويتنا</em>" data-en="Your Privacy is <em>Our Priority</em>">خصوصيتك <em>أولويتنا</em></h2>
+  </div>
+  <div class="pcard rv">
+    <div class="psec"><div class="ptit" data-ar="١. المعلومات التي نجمعها" data-en="1. Information We Collect">١. المعلومات التي نجمعها</div><p class="ptxt" data-ar="نجمع البريد الإلكتروني والاسم والمحافظة عند التسجيل. كما نجمع بيانات استخدام التطبيق لتحسين تجربتك." data-en="We collect email, name, and governorate during registration. We also collect app usage data to improve your experience.">نجمع البريد الإلكتروني والاسم والمحافظة عند التسجيل. كما نجمع بيانات استخدام التطبيق لتحسين تجربتك.</p></div>
+    <div class="psec"><div class="ptit" data-ar="٢. كيف نستخدم معلوماتك" data-en="2. How We Use Your Information">٢. كيف نستخدم معلوماتك</div><p class="ptxt" data-ar="نستخدم معلوماتك لتوفير خدمات التطبيق وإرسال الإشعارات. لا نبيع بياناتك لأطراف ثالثة أبداً." data-en="We use your information to provide app services and send notifications. We never sell your data to third parties.">نستخدم معلوماتك لتوفير خدمات التطبيق وإرسال الإشعارات. لا نبيع بياناتك لأطراف ثالثة أبداً.</p></div>
+    <div class="psec"><div class="ptit" data-ar="٣. حماية البيانات" data-en="3. Data Protection">٣. حماية البيانات</div><p class="ptxt" data-ar="نستخدم تشفير SSL. جميع البيانات مخزنة على خوادم Firebase الآمنة في أوروبا." data-en="We use SSL encryption. All data is stored on secure Firebase servers in Europe.">نستخدم تشفير SSL. جميع البيانات مخزنة على خوادم Firebase الآمنة في أوروبا.</p></div>
+    <div class="psec"><div class="ptit" data-ar="٤. سياسة الاسترجاع" data-en="4. Return Policy">٤. سياسة الاسترجاع</div><p class="ptxt" data-ar="نظراً لطبيعة المنتجات الزراعية الطازجة لا يتم قبول الاسترجاع. شكاوى الجودة خلال ٢٤ ساعة عبر التطبيق." data-en="Due to the nature of fresh agricultural products, returns are not accepted. Quality complaints within 24 hours through the app.">نظراً لطبيعة المنتجات الزراعية الطازجة لا يتم قبول الاسترجاع. شكاوى الجودة خلال ٢٤ ساعة عبر التطبيق.</p></div>
+    <div class="psec"><div class="ptit" data-ar="٥. تواصل معنا" data-en="5. Contact Us">٥. تواصل معنا</div><p class="ptxt">privacy@hamedapps.com</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-hdr">
+    <h2 class="sec-title rv" data-ar="تواصل <em>معنا</em>" data-en="Contact <em>Us</em>">تواصل <em>معنا</em></h2>
+    <p class="sec-sub rv" data-ar="نحن هنا لمساعدتك" data-en="We're here to help you">نحن هنا لمساعدتك</p>
+  </div>
+  <div class="ccards">
+    <a href="mailto:support@hamedapps.com" class="ccard rv"><span class="c-ico">📧</span><span class="c-lbl" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</span><span class="c-val">support@hamedapps.com</span></a>
+    <a href="https://wa.me/96895268707" class="ccard rv"><span class="c-ico">💬</span><span class="c-lbl" data-ar="واتساب" data-en="WhatsApp">واتساب</span><span class="c-val" dir="ltr">+968 9526 8707</span></a>
+    <a href="#" class="ccard rv"><span class="c-ico">📱</span><span class="c-lbl" data-ar="انستغرام" data-en="Instagram">انستغرام</span><span class="c-val">@hasaadi.app</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="flogo">
+    <img src="logo.png" alt="حصادي" onerror="this.style.display='none'">
+    <span class="flt">حصا<em>دي</em></span>
+  </a>
+  <div class="fcp" data-ar="© ٢٠٢٥ حصادي. جميع الحقوق محفوظة." data-en="© 2025 Hasaadi. All rights reserved.">© ٢٠٢٥ حصادي. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+// Language
+function setLang(l){
+  document.documentElement.lang=l;
+  document.documentElement.dir=l==='ar'?'rtl':'ltr';
+  document.getElementById('lang-label').textContent=l==='ar'?'عربي':'EN';
+  document.getElementById('langMenu').classList.remove('open');
+  document.querySelectorAll('.lang-option').forEach(o=>{
+    o.classList.toggle('active', o.textContent.includes(l==='ar'?'Arabic':'English'));
+  });
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(!v)return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+    else el.innerHTML=v;
+  });
+}
+function toggleLangMenu(){
+  document.getElementById('langMenu').classList.toggle('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.lang-wrap'))document.getElementById('langMenu').classList.remove('open');
+});
+
+// Guide tabs
+function showTab(t){
+  ['buyer','seller','ai','agent'].forEach(x=>{
+    document.getElementById('content-'+x).classList.remove('on');
+    document.getElementById('tab-'+x).classList.remove('on');
+  });
+  document.getElementById('content-'+t).classList.add('on');
+  document.getElementById('tab-'+t).classList.add('on');
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vs')})},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
 </body>
 </html>
