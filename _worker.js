@@ -25,6 +25,13 @@ export default {
       });
     }
 
+    // صفحة المنتج الديناميكية (/product?id=…)
+    if (pathname === '/product' || pathname.startsWith('/product/')) {
+      const productUrl = new URL(request.url);
+      productUrl.pathname = '/product.html';
+      return env.ASSETS.fetch(new Request(productUrl.toString(), request));
+    }
+
     // باقي الطلبات تُمرَّر للموقع الأصلي
     return env.ASSETS.fetch(request);
   },

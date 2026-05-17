@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- OG Tags للمعاينة في WhatsApp/Twitter -->
+  <meta property="og:title" id="og-title" content="حصادي - سوق المنتجات الزراعية">
+  <meta property="og:description" id="og-desc" content="تسوق أفضل المنتجات الزراعية الطازجة">
+  <meta property="og:image" id="og-image" content="https://hasaadi.hamedapps.com/og-default.jpg">
+  <meta property="og:url" id="og-url" content="https://hasaadi.hamedapps.com">
+  <meta property="og:type" content="product">
+
+  <title id="page-title">حصادي</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Cairo', sans-serif; background: #f5f5f5; color: #333; }
+
+    .container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; }
+
+    /* Header */
+    .header { background: #2D6A4F; padding: 16px; display: flex; align-items: center; gap: 12px; }
+    .header img { height: 40px; }
+    .header span { color: white; font-size: 20px; font-weight: bold; }
+
+    /* Product Image */
+    .product-image { width: 100%; height: 300px; object-fit: cover; background: #eee; }
+    .image-placeholder { width: 100%; height: 300px; background: #e8f5e9; display: flex; align-items: center; justify-content: center; font-size: 60px; }
+
+    /* Product Info */
+    .product-info { padding: 20px; }
+    .product-name { font-size: 22px; font-weight: bold; margin-bottom: 8px; }
+    .product-price { font-size: 24px; color: #2D6A4F; font-weight: bold; margin-bottom: 12px; }
+    .product-desc { color: #666; line-height: 1.6; margin-bottom: 16px; white-space: pre-wrap; }
+    .seller-info { display: flex; align-items: center; gap: 8px; padding: 12px; background: #f9f9f9; border-radius: 8px; margin-bottom: 20px; }
+    .seller-name { font-weight: 600; }
+    .seller-location { color: #888; font-size: 13px; }
+
+    /* Download Button */
+    .download-section { padding: 20px; background: #f0f7f4; border-top: 1px solid #ddd; position: sticky; bottom: 0; }
+    .download-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 12px; color: #2D6A4F; }
+    .download-buttons { display: flex; gap: 10px; }
+    .btn-store { flex: 1; padding: 12px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-weight: bold; font-size: 14px; }
+    .btn-appstore { background: #000; color: white; }
+    .btn-playstore { background: #2D6A4F; color: white; }
+
+    /* Loading */
+    .loading { display: flex; align-items: center; justify-content: center; height: 300px; }
+    .spinner { width: 40px; height: 40px; border: 4px solid #eee; border-top-color: #2D6A4F; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="/logo.png" alt="حصادي" onerror="this.style.display='none'">
+      <span>حصادي 🌿</span>
+    </div>
+
+    <div id="loading" class="loading"><div class="spinner"></div></div>
+    <div id="content" style="display:none">
+      <div id="product-image-container"></div>
+      <div class="product-info">
+        <div id="product-name" class="product-name"></div>
+        <div id="product-price" class="product-price"></div>
+        <div id="product-desc" class="product-desc"></div>
+        <div id="seller-info" class="seller-info" style="display:none;"></div>
+      </div>
+    </div>
+    <div id="error" style="display:none; padding:40px; text-align:center; color:#888;">
+      <div style="font-size:48px">🌿</div>
+      <p style="margin-top:16px">المنتج غير موجود</p>
+    </div>
+
+    <div class="download-section">
+      <div class="download-title">📱 حمّل تطبيق حصادي الآن</div>
+      <div class="download-buttons">
+        <a href="https://apps.apple.com/app/hasaadi/id6743284310" class="btn-store btn-appstore">
+          🍎 App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.hasaadi.app" class="btn-store btn-playstore">
+          ▶ Google Play
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function escapeHtml(str) {
+      if (str == null || str === '') return '';
+      const div = document.createElement('div');
+      div.textContent = String(str);
+      return div.innerHTML;
+    }
+
+    function safeImageUrl(p) {
+      const img =
+        (p.imageUrl && String(p.imageUrl).trim()) ||
+        (p.image && String(p.image).trim()) ||
+        (Array.isArray(p.images) && p.images.length && String(p.images[0]).trim()) ||
+        '';
+      if (!img) return '';
+      try {
+        const u = new URL(img, window.location.origin);
+        return u.protocol === 'http:' || u.protocol === 'https:' ? u.href : '';
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function currencyLabel(c) {
+      const x = (c || '').toString().toUpperCase();
+      if (x === 'OMR') return 'ر.ع';
+      return x || 'ر.ع';
+    }
+
+    function displayTitle(p) {
+      return (p.title || p.name || 'منتج').trim();
+    }
+
+    function displayLocation(p) {
+      const addr = (p.sellerAddress || '').trim();
+      const cn = (p.countryName || '').trim();
+      const city = (p.exportCity || '').trim();
+      const loc = (p.location || '').trim();
+      return addr || cn || city || loc || 'عُمان';
+    }
+
+    const firebaseConfig = {
+      apiKey: 'AIzaSyC_y77fvvgAK8GvigibkO79AZX19BRjrYs',
+      authDomain: 'hasaadi-oman-jl8cbr.firebaseapp.com',
+      projectId: 'hasaadi-oman-jl8cbr',
+      storageBucket: 'hasaadi-oman-jl8cbr.firebasestorage.app',
+      messagingSenderId: '28159658857'
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+
+    async function loadProduct() {
+      if (!productId) {
+        showError();
+        return;
+      }
+
+      try {
+        const doc = await db.collection('products').doc(productId).get();
+        if (!doc.exists) {
+          showError();
+          return;
+        }
+
+        const p = doc.data();
+        const title = displayTitle(p);
+        const desc =
+          (p.description ||
+            p.productDesc ||
+            p.productDescription ||
+            '').trim();
+        const priceNum =
+          typeof p.price === 'number'
+            ? p.price
+            : parseFloat(p.price) || 0;
+        const unit = (p.unit || '').trim();
+        const cur = currencyLabel(p.currency);
+
+        const canonicalUrl =
+          'https://hasaadi.hamedapps.com/product?id=' +
+          encodeURIComponent(productId);
+
+        document.getElementById('og-title').content = title;
+        document.getElementById('og-desc').content =
+          desc || 'تسوق على تطبيق حصادي';
+        const ogImg = safeImageUrl(p);
+        if (ogImg) document.getElementById('og-image').content = ogImg;
+        document.getElementById('og-url').content = canonicalUrl;
+        document.title = title;
+
+        const imgContainer = document.getElementById('product-image-container');
+        const imgUrl = safeImageUrl(p);
+        if (imgUrl) {
+          imgContainer.innerHTML =
+            '<img class="product-image" src="' +
+            escapeHtml(imgUrl) +
+            '" alt="' +
+            escapeHtml(title) +
+            '">';
+        } else {
+          imgContainer.innerHTML =
+            '<div class="image-placeholder">🌿</div>';
+        }
+
+        document.getElementById('product-name').textContent = title;
+        let priceLine =
+          priceNum.toFixed(3) + ' ' + cur + (unit ? ' / ' + unit : '');
+        document.getElementById('product-price').textContent = priceLine;
+        document.getElementById('product-desc').textContent = desc;
+
+        const sellerEl = document.getElementById('seller-info');
+        const sellerName = (p.sellerName || '').trim();
+        if (sellerName) {
+          sellerEl.style.display = 'flex';
+          sellerEl.innerHTML =
+            '<div style="font-size:32px">👨‍🌾</div><div>' +
+            '<div class="seller-name">' +
+            escapeHtml(sellerName) +
+            '</div>' +
+            '<div class="seller-location">📍 ' +
+            escapeHtml(displayLocation(p)) +
+            '</div></div>';
+        }
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } catch (e) {
+        console.error(e);
+        showError();
+      }
+    }
+
+    function showError() {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('error').style.display = 'block';
+    }
+
+    loadProduct();
+  </script>
+</body>
+</html>
