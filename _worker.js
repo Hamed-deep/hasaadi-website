@@ -1,25 +1,31 @@
-/**
- * Cloudflare Pages advanced mode — يمرّر الطلبات إلى الأصول الثابتة
- * ويضبط رؤوس JSON لملفات /.well-known/ (App Links + Universal Links).
- */
+const GITHUB_RAW = 'https://raw.githubusercontent.com/Hamed-deep/hasaadi-website/main';
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const pathname = url.pathname;
 
-    if (url.pathname.startsWith('/.well-known/')) {
-      const assetResponse = await env.ASSETS.fetch(request);
-      if (!assetResponse.ok) {
-        return assetResponse;
+    // خدمة ملفات .well-known مباشرة من GitHub
+    if (pathname.startsWith('/.well-known/')) {
+      const fileName = pathname.slice(1); // إزالة الـ /
+      const githubUrl = `${GITHUB_RAW}/${fileName}`;
+      const response = await fetch(githubUrl);
+
+      if (!response.ok) {
+        return new Response('Not found', { status: 404 });
       }
-      return new Response(assetResponse.body, {
-        status: assetResponse.status,
+
+      return new Response(response.body, {
+        status: 200,
         headers: {
           'Content-Type': 'application/json',
           'Cache-Control': 'public, max-age=3600',
+          'Access-Control-Allow-Origin': '*',
         },
       });
     }
 
+    // باقي الطلبات تُمرَّر للموقع الأصلي
     return env.ASSETS.fetch(request);
   },
 };
