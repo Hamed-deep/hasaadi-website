@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "5V22N68XCT.com.hasaadi.app",
+        "paths": [
+          "/product/*",
+          "/invite/*",
+          "/reel/*",
+          "/user/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["5V22N68XCT.com.hasaadi.app"]
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hasaadi.app",
+      "sha256_cert_fingerprints": [
+        "62:46:64:37:4C:27:93:15:82:92:44:E8:9B:2F:35:4E:64:B3:70:35:CB:8A:DE:B4:04:0C:56:06:AA:55:62:99"
+      ]
+    }
+  }
+]
