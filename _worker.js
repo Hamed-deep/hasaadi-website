@@ -42,6 +42,11 @@ export default {
       url.pathname = '/refund.html';
       return env.ASSETS.fetch(new Request(url.toString(), request));
     }
+    if (pathname === '/escrow-policy') {
+      const url = new URL(request.url);
+      url.pathname = '/escrow-policy.html';
+      return env.ASSETS.fetch(new Request(url.toString(), request));
+    }
 
     // باقي الطلبات تُمرَّر للموقع الأصلي
     return env.ASSETS.fetch(request);
