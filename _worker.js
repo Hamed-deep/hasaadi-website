@@ -32,6 +32,17 @@ export default {
       return env.ASSETS.fetch(new Request(productUrl.toString(), request));
     }
 
+    if (pathname === '/terms') {
+      const url = new URL(request.url);
+      url.pathname = '/terms.html';
+      return env.ASSETS.fetch(new Request(url.toString(), request));
+    }
+    if (pathname === '/refund') {
+      const url = new URL(request.url);
+      url.pathname = '/refund.html';
+      return env.ASSETS.fetch(new Request(url.toString(), request));
+    }
+
     // باقي الطلبات تُمرَّر للموقع الأصلي
     return env.ASSETS.fetch(request);
   },
