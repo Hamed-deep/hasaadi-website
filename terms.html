@@ -26,6 +26,13 @@
       font-weight: 800;
       letter-spacing: -0.5px;
     }
+    html[lang="en"] h1,
+    html[lang="en"] h2,
+    html[lang="en"] h3,
+    html[lang="en"] .hero-title,
+    html[lang="en"] .section-title {
+      font-family: system-ui, 'Segoe UI', 'Tajawal', sans-serif;
+    }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
@@ -37,6 +44,9 @@
       background: var(--cream);
       color: var(--text-dark);
       line-height: 1.65;
+    }
+    html[lang="en"] body {
+      font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     }
     .navbar {
       display: flex;
@@ -82,6 +92,17 @@
       margin: 0 auto;
       padding: 16px 24px 0;
     }
+    .back-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    html[dir="rtl"] .back-bar-row {
+      justify-content: flex-start;
+    }
     .back-btn {
       display: inline-block;
       padding: 8px 16px;
@@ -91,6 +112,66 @@
       border-radius: 8px;
       font-size: 0.92rem;
       font-weight: 600;
+    }
+    .lang-toggle-btn {
+      cursor: pointer;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--green-policy);
+      border: 2px solid var(--green-policy);
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: inherit;
+    }
+    .lang-toggle-btn:hover {
+      background: rgba(45, 106, 79, 0.08);
+    }
+    /* Bilingual wrappers */
+    main.ar-content,
+    main.en-content,
+    section.hero-inner.ar-content,
+    section.hero-inner.en-content {
+      display: block;
+    }
+    html[lang="en"] main.ar-content,
+    html[lang="en"] .hero-inner.ar-content {
+      display: none !important;
+    }
+    html[lang="ar"] main.en-content,
+    html[lang="ar"] .hero-inner.en-content {
+      display: none !important;
+    }
+    html[lang="en"] main.en-content,
+    html[lang="en"] .hero-inner.en-content {
+      display: block !important;
+    }
+    html[lang="ar"] .nav-links .en-label {
+      display: none !important;
+    }
+    html[lang="en"] .nav-links .ar-label {
+      display: none !important;
+    }
+    html[lang="en"] .nav-links .en-label {
+      display: inline !important;
+    }
+    html[lang="ar"] .back-btn .en-label {
+      display: none !important;
+    }
+    html[lang="en"] .back-btn .ar-label {
+      display: none !important;
+    }
+    html[lang="en"] .back-btn .en-label {
+      display: inline !important;
+    }
+    html[lang="ar"] .footer-links .en-label {
+      display: none !important;
+    }
+    html[lang="en"] .footer-links .ar-label {
+      display: none !important;
+    }
+    html[lang="en"] .footer-links .en-label {
+      display: inline !important;
     }
     .hero {
       position: relative;
@@ -110,7 +191,7 @@
       color: var(--green-policy);
     }
     .hero p {
-      max-width: 560px;
+      max-width: 680px;
       margin: 0 auto;
       color: var(--text-muted);
       font-weight: 500;
@@ -141,6 +222,10 @@
       padding-right: 1.25rem;
       color: var(--text-dark);
     }
+    html[dir="ltr"] .policy-section ul {
+      padding-right: 0;
+      padding-left: 1.25rem;
+    }
     .policy-section ul li {
       margin-bottom: 0.5rem;
       list-style-type: disc;
@@ -151,6 +236,10 @@
       border-radius: 12px;
       border-right: 4px solid #e65100;
       margin-bottom: 2rem;
+    }
+    html[dir="ltr"] .warning {
+      border-right: none;
+      border-left: 4px solid #e65100;
     }
     .warning strong.intro {
       display: inline-flex;
@@ -176,21 +265,27 @@
       text-decoration: none;
       font-weight: 600;
     }
+    .en-label {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <header class="navbar">
     <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="حصادي" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
+      <img src="logo.png" alt="Hasaadi" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
       <span class="nav-logo-text">حصا<span>دي</span></span>
     </a>
-    <nav class="nav-links" aria-label="رئيسي">
-      <a href="index.html">الرئيسية</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html"><span class="ar-label">الرئيسية</span><span class="en-label">Home</span></a>
     </nav>
   </header>
 
   <div class="back-bar">
-    <a href="index.html" class="back-btn">→ العودة للرئيسية</a>
+    <div class="back-bar-row">
+      <a href="index.html" class="back-btn"><span class="ar-label">→ العودة للرئيسية</span><span class="en-label">← Back to home</span></a>
+      <button type="button" id="langToggle" class="lang-toggle-btn" aria-label="Switch language">EN</button>
+    </div>
   </div>
 
   <section class="hero">
@@ -200,11 +295,17 @@
     <div class="wheat-el">
       <img src="logo.png" alt="" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
     </div>
-    <h1 class="hero-title">🌿 شروط الخدمة</h1>
-    <p>Terms of Service — آخر تحديث: مايو 2026</p>
+    <div class="hero-inner ar-content">
+      <h1 class="hero-title">🌿 شروط الخدمة</h1>
+      <p>Terms of Service — آخر تحديث: مايو 2026</p>
+    </div>
+    <div class="hero-inner en-content" style="display:none">
+      <h1 class="hero-title">🌿 Terms of Service</h1>
+      <p>آخر تحديث: May 2026 — Terms of Service</p>
+    </div>
   </section>
 
-  <main>
+  <main class="ar-content">
 
       <article class="policy-section">
         <h2 class="section-title">١. القبول بالشروط</h2>
@@ -317,17 +418,152 @@
 
   </main>
 
+  <main class="en-content" style="display:none">
+
+      <article class="policy-section">
+        <h2 class="section-title">1. Acceptance of Terms</h2>
+        <p>By using the &quot;Hasaadi&quot; application or website, you agree to comply with these Terms and Conditions and the Platform's Refund and Dispute Resolution Policy. If you do not agree with any of these terms, please discontinue use of the service. The service is intended for use and transactions within the Sultanate of Oman only.</p>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">2. Service Description &amp; Target Market</h2>
+        <p>&quot;Hasaadi&quot; is an intermediary e-commerce platform operating exclusively within the Sultanate of Oman, connecting farmers, livestock breeders, and sellers of agricultural and animal products with buyers to support food security. Our services do not include marketing, selling, or shipping outside Oman.</p>
+        <p>Our services include:</p>
+        <ul>
+          <li>An intermediary marketplace for listing and selling agricultural, animal, and equipment products</li>
+          <li>A technical system for order management, delivery, and market price tracking</li>
+          <li>Featured advertising services and subscription plans for sellers</li>
+          <li>AI-powered advisory and educational tools (AI Consultant)</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">3. Registration &amp; Accounts</h2>
+        <ul>
+          <li>Users must be 18 years or older with full legal capacity</li>
+          <li>Accurate and truthful information must be provided upon registration</li>
+          <li>You are fully responsible for maintaining the confidentiality of your account credentials</li>
+          <li>Creating more than one account per person or entity is prohibited</li>
+          <li>Hasaadi reserves the right to suspend or cancel any non-compliant account</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">4. Seller Responsibilities</h2>
+        <ul>
+          <li>Ensure accuracy and quality of listed products matching reality</li>
+          <li>Commit to delivering products within the specified timeframe</li>
+          <li>Comply with all health and veterinary regulations in Oman</li>
+          <li>Honor confirmed order prices via the app — no external payments</li>
+          <li>Bear full responsibility for goods until accepted by the buyer</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">5. Buyer Responsibilities &amp; Digital Delivery System</h2>
+        <ul>
+          <li>Provide accurate delivery information and location</li>
+          <li>Pay only through approved payment methods on the platform</li>
+          <li>Inspect and examine goods immediately upon arrival before handing over the verification code</li>
+        </ul>
+      </article>
+
+      <div class="warning">
+        <strong class="intro" role="presentation"><span aria-hidden="true">⚠️</span> Critical Clause</strong>
+        <p style="margin-top:10px;color:#444;">The buyer handing over the internal digital verification code (Release OTP) to the delivery agent constitutes an official and legally binding acknowledgment — with no recourse — that the goods have been inspected, found free of apparent defects, and match the description. The platform's system will then automatically release the payment to the seller's account.</p>
+      </div>
+
+      <article class="policy-section">
+        <h2 class="section-title">6. Payments &amp; Internal Financial Intermediation</h2>
+        <ul>
+          <li>All payments exclusively through Thawani Pay — no external transactions</li>
+          <li>All prices in Omani Rial (OMR) only</li>
+          <li>Hasaadi applies an Internal Escrow System: buyer funds remain held in the seller's digital wallet within the app and cannot be withdrawn until the order's OTP code is successfully entered</li>
+          <li>Hasaadi charges a commission according to the merchant's subscription plan</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">7. Prohibited Content &amp; Products</h2>
+        <p><strong>It is prohibited to list or publish:</strong></p>
+        <ul>
+          <li>Counterfeit, damaged, or non-compliant products</li>
+          <li>Prohibited veterinary drugs or controlled substances without official licenses</li>
+          <li>Misleading information or content violating intellectual property rights</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">8. Governing Law &amp; Dispute Resolution</h2>
+        <ul>
+          <li>These terms are governed exclusively by the laws of Oman</li>
+          <li>Hasaadi acts as a neutral intermediary via Admin Control Center</li>
+          <li>To open a dispute: support@hamedapps.com — processed within 7 business days</li>
+          <li>Hasaadi's decision in platform disputes is final and binding</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">9. Limitation of Liability</h2>
+        <ul>
+          <li>Hasaadi is a technical intermediary — not liable for product quality</li>
+          <li>Not responsible for goods damaged after successful OTP delivery</li>
+          <li>Payment processing and card encryption fully protected by Thawani Pay, licensed by the Central Bank of Oman</li>
+        </ul>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">10. Amendments to Terms</h2>
+        <p>Hasaadi reserves the right to amend these terms at any time.</p>
+        <p>Users will be notified via the app or email.</p>
+        <p>Continued use after updates constitutes implicit acceptance.</p>
+      </article>
+
+      <article class="policy-section">
+        <h2 class="section-title">11. Contact Us</h2>
+        <ul>
+          <li>Email: support@hamedapps.com</li>
+          <li>WhatsApp Support: +968 9526 8707</li>
+          <li>Website: hasaadi.hamedapps.com</li>
+        </ul>
+      </article>
+
+  </main>
+
   <footer>
     <div class="footer-brand">
-      <img src="logo.png" alt="حصادي" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+      <img src="logo.png" alt="Hasaadi" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
       <strong>حصادي</strong>
     </div>
     <p class="footer-links" style="margin:8px 0 12px;font-size:0.9rem;">
-      <a href="/terms.html">شروط الخدمة</a>
+      <a href="/privacy.html"><span class="ar-label">سياسة الخصوصية</span><span class="en-label">Privacy Policy</span></a>
       ·
-      <a href="/refund.html">سياسة الاسترداد</a>
+      <a href="/refund.html"><span class="ar-label">سياسة الاسترداد</span><span class="en-label">Refund Policy</span></a>
     </p>
     <small style="opacity: 0.75;">© 2026 حصادي — Hasaadi</small>
   </footer>
+
+  <script>
+    function toggleLanguage() {
+      const html = document.documentElement;
+      const btn = document.getElementById('langToggle');
+      const showingEn = html.getAttribute('lang') === 'en';
+      if (!showingEn) {
+        html.setAttribute('lang', 'en');
+        html.setAttribute('dir', 'ltr');
+        if (btn) btn.textContent = 'ع';
+        document.title = 'Terms of Service — Hasaadi';
+      } else {
+        html.setAttribute('lang', 'ar');
+        html.setAttribute('dir', 'rtl');
+        if (btn) btn.textContent = 'EN';
+        document.title = 'شروط الخدمة — حصادي';
+      }
+    }
+    (function () {
+      var btn = document.getElementById('langToggle');
+      if (btn) btn.addEventListener('click', toggleLanguage);
+    })();
+  </script>
 </body>
 </html>

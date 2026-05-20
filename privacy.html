@@ -10,9 +10,7 @@
   <style>
     :root {
       --green-dark: #012104;
-      --green-800: #012104;
       --green-600: #4B743D;
-      --green-400: #5A8570;
       --green-policy: #2D6A4F;
       --green-200: #B5D4C4;
       --green-100: #EEF4F0;
@@ -26,6 +24,12 @@
       font-weight: 800;
       letter-spacing: -0.5px;
     }
+    html[lang="en"] h1,
+    html[lang="en"] h2,
+    html[lang="en"] .hero-title,
+    html[lang="en"] .section-title {
+      font-family: system-ui, 'Segoe UI', 'Tajawal', sans-serif;
+    }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
@@ -37,6 +41,9 @@
       background: var(--cream);
       color: var(--text-dark);
       line-height: 1.65;
+    }
+    html[lang="en"] body {
+      font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     }
     .navbar {
       display: flex;
@@ -56,31 +63,24 @@
       text-decoration: none;
       color: inherit;
     }
-    .nav-logo-text {
-      font-weight: 800;
-      font-size: 1.35rem;
-    }
-    .nav-logo-text span {
-      color: var(--gold);
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    .nav-logo-text { font-weight: 800; font-size: 1.35rem; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
     .nav-links a {
       color: rgba(255, 255, 255, 0.92);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
     }
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-    .back-bar {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 16px 24px 0;
+    .nav-links a:hover { color: var(--gold); }
+    .back-bar { max-width: 880px; margin: 0 auto; padding: 16px 24px 0; }
+    .back-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: 100%;
     }
     .back-btn {
       display: inline-block;
@@ -92,6 +92,37 @@
       font-size: 0.92rem;
       font-weight: 600;
     }
+    .lang-toggle-btn {
+      cursor: pointer;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--green-policy);
+      border: 2px solid var(--green-policy);
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: inherit;
+    }
+    .lang-toggle-btn:hover { background: rgba(45, 106, 79, 0.08); }
+    main.ar-content,
+    main.en-content,
+    section.hero-inner.ar-content,
+    section.hero-inner.en-content { display: block; }
+    html[lang="en"] main.ar-content,
+    html[lang="en"] .hero-inner.ar-content { display: none !important; }
+    html[lang="ar"] main.en-content,
+    html[lang="ar"] .hero-inner.en-content { display: none !important; }
+    html[lang="en"] main.en-content,
+    html[lang="en"] .hero-inner.en-content { display: block !important; }
+    html[lang="ar"] .nav-links .en-label { display: none !important; }
+    html[lang="en"] .nav-links .ar-label { display: none !important; }
+    html[lang="en"] .nav-links .en-label { display: inline !important; }
+    html[lang="ar"] .back-btn .en-label { display: none !important; }
+    html[lang="en"] .back-btn .ar-label { display: none !important; }
+    html[lang="en"] .back-btn .en-label { display: inline !important; }
+    html[lang="ar"] .footer-links .en-label { display: none !important; }
+    html[lang="en"] .footer-links .ar-label { display: none !important; }
+    html[lang="en"] .footer-links .en-label { display: inline !important; }
     .hero {
       position: relative;
       overflow: hidden;
@@ -99,11 +130,7 @@
       background: linear-gradient(180deg, var(--green-100), var(--cream));
       text-align: center;
     }
-    .hero .wheat-el {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
+    .hero .wheat-el { position: absolute; inset: 0; pointer-events: none; }
     .hero h1 {
       margin: 0 0 12px;
       font-size: clamp(1.75rem, 4vw, 2.25rem);
@@ -116,11 +143,7 @@
       font-weight: 500;
       font-style: italic;
     }
-    main {
-      padding: 48px 24px 64px;
-      max-width: 880px;
-      margin: 0 auto;
-    }
+    main { padding: 48px 24px 64px; max-width: 880px; margin: 0 auto; }
     .intro-box {
       background: var(--green-100);
       border: 1px solid var(--green-200);
@@ -131,9 +154,7 @@
       font-size: 0.98rem;
       line-height: 1.75;
     }
-    .policy-section {
-      margin-bottom: 2.25rem;
-    }
+    .policy-section { margin-bottom: 2.25rem; }
     .policy-section h2.section-title {
       font-size: 1.22rem;
       color: var(--green-policy);
@@ -141,21 +162,9 @@
       padding-bottom: 0.35rem;
       border-bottom: 2px solid var(--green-200);
     }
-    .policy-section p.lead {
-      margin: 0 0 0.5rem;
-      color: var(--text-dark);
-      font-size: 0.98rem;
-    }
-    .policy-section ul {
-      margin: 0;
-      padding-right: 1.25rem;
-      color: var(--text-dark);
-    }
-    .policy-section ul li {
-      margin-bottom: 0.5rem;
-      list-style-type: disc;
-    }
-    /* Commitment: green panel + ✅ — per official spec */
+    .policy-section ul { margin: 0; padding-right: 1.25rem; color: var(--text-dark); }
+    html[dir="ltr"] .policy-section ul { padding-right: 0; padding-left: 1.25rem; }
+    .policy-section ul li { margin-bottom: 0.5rem; list-style-type: disc; }
     .commitment-positive {
       background: #e8f5e9;
       border: 1px solid var(--green-policy);
@@ -165,6 +174,9 @@
       display: flex;
       align-items: flex-start;
       gap: 12px;
+    }
+    html[dir="ltr"] .commitment-positive {
+      flex-direction: row;
     }
     .commitment-positive p {
       margin: 0;
@@ -190,21 +202,25 @@
       text-decoration: none;
       font-weight: 600;
     }
+    .en-label { display: none; }
   </style>
 </head>
 <body>
   <header class="navbar">
     <a href="index.html" class="nav-logo">
-      <img src="logo.png" alt="حصادي" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
+      <img src="logo.png" alt="Hasaadi" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
       <span class="nav-logo-text">حصا<span>دي</span></span>
     </a>
-    <nav class="nav-links" aria-label="رئيسي">
-      <a href="index.html">الرئيسية</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html"><span class="ar-label">الرئيسية</span><span class="en-label">Home</span></a>
     </nav>
   </header>
 
   <div class="back-bar">
-    <a href="index.html" class="back-btn">→ العودة للرئيسية</a>
+    <div class="back-bar-row">
+      <a href="index.html" class="back-btn"><span class="ar-label">→ العودة للرئيسية</span><span class="en-label">← Back to home</span></a>
+      <button type="button" id="langToggle" class="lang-toggle-btn" aria-label="Switch language">EN</button>
+    </div>
   </div>
 
   <section class="hero">
@@ -214,11 +230,17 @@
     <div class="wheat-el">
       <img src="logo.png" alt="" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
     </div>
-    <h1 class="hero-title">🔒 سياسة الخصوصية</h1>
-    <p>Privacy Policy — تطبيق حصادي — آخر تحديث: مايو 2026</p>
+    <div class="hero-inner ar-content">
+      <h1 class="hero-title">🔒 سياسة الخصوصية</h1>
+      <p>Privacy Policy — تطبيق حصادي — آخر تحديث: مايو 2026</p>
+    </div>
+    <div class="hero-inner en-content" style="display:none">
+      <h1 class="hero-title">🔒 Privacy Policy</h1>
+      <p>Privacy Policy — Hasaadi App — Last updated: May 2026</p>
+    </div>
   </section>
 
-  <main>
+  <main class="ar-content">
     <div class="intro-box">
       تلتزم منصة &quot;حصادي&quot; بحماية خصوصية بياناتك الشخصية ومعالجتها بمسؤولية وأمان، وفق قانون حماية البيانات الشخصية الصادر بالمرسوم السلطاني رقم 6/2022 في سلطنة عُمان.
     </div>
@@ -286,17 +308,108 @@
     </article>
   </main>
 
+  <main class="en-content" style="display:none">
+    <div class="intro-box">
+      The &quot;Hasaadi&quot; platform is committed to protecting your personal data and processing it responsibly and securely, in accordance with the Personal Data Protection Law issued by Royal Decree No. 6/2022 in the Sultanate of Oman.
+    </div>
+
+    <article class="policy-section">
+      <h2 class="section-title">1. Information We Collect</h2>
+      <ul>
+        <li><strong>Account &amp; Contact Data:</strong> Name, phone number, email, digital account ID</li>
+        <li><strong>Commercial &amp; Logistical Data:</strong> Product details, ads, purchase/sale transactions, and internal communications between parties</li>
+        <li><strong>Geographic Location Data:</strong> Via GPS after your explicit permission, for delivery and shipping distance calculation within Oman</li>
+        <li><strong>Media &amp; Files:</strong> Photos and videos uploaded in product ads or refund requests</li>
+        <li><strong>Device &amp; Usage Data:</strong> Device type, OS, IP address, error logs</li>
+        <li><strong>Third-Party Data:</strong> From connected service providers such as maps and identity verification</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">2. How We Use Your Information</h2>
+      <ul>
+        <li>Operating the platform, managing orders, connecting all parties</li>
+        <li>Processing subscriptions, activating ads, managing internal wallets</li>
+        <li>Technical support and dispute resolution via Admin Control Center</li>
+        <li>Improving the app and providing AI Consultant advisory services</li>
+        <li>Compliance with legal obligations in Oman</li>
+      </ul>
+      <div class="commitment-positive">
+        <span aria-hidden="true" style="font-size:22px;line-height:1;flex-shrink:0;">✅</span>
+        <p><strong>Commitment:</strong> We do not sell, rent, or share your personal information with any external parties for independent marketing purposes without your explicit consent.</p>
+      </div>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">3. Data Sharing &amp; Legal Disclosure</h2>
+      <ul>
+        <li>Between transaction parties: Contact and location data for delivery purposes only</li>
+        <li><strong>Thawani Pay:</strong> Handles direct payment processing and card encryption — Hasaadi manages internal digital wallets and never stores your card credentials</li>
+        <li><strong>Government authorities:</strong> Only when legally required by court order</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">4. Data Protection &amp; Storage</h2>
+      <ul>
+        <li>Full encryption and Firebase cloud protection with international standards</li>
+        <li>Confidentiality of login credentials and internal OTP codes is the user's full responsibility</li>
+        <li>Secure cloud servers compliant with Omani regulations</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">5. User Rights (Under Omani Law)</h2>
+      <ul>
+        <li>Access, review, and update your personal data via account settings</li>
+        <li>Request correction of any inaccurate data</li>
+        <li>Request permanent account deletion (unless pending disputes or legal obligations exist)</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">6. Contact Us</h2>
+      <ul>
+        <li>Email: <a href="mailto:support@hamedapps.com">support@hamedapps.com</a></li>
+        <li>WhatsApp: <a href="https://wa.me/96895268707">+968&nbsp;9526&nbsp;8707</a></li>
+      </ul>
+    </article>
+  </main>
+
   <footer>
     <div class="footer-brand">
-      <img src="logo.png" alt="حصادي" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+      <img src="logo.png" alt="Hasaadi" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
       <strong>حصادي</strong>
     </div>
     <p class="footer-links" style="margin:8px 0 12px;font-size:0.9rem;">
-      <a href="/terms.html">شروط الخدمة</a>
+      <a href="/terms.html"><span class="ar-label">شروط الخدمة</span><span class="en-label">Terms of Service</span></a>
       ·
-      <a href="/refund.html">سياسة الاسترداد</a>
+      <a href="/refund.html"><span class="ar-label">سياسة الاسترداد</span><span class="en-label">Refund Policy</span></a>
     </p>
     <small style="opacity: 0.75;">© 2026 حصادي — Hasaadi</small>
   </footer>
+
+  <script>
+    function toggleLanguage() {
+      var html = document.documentElement;
+      var btn = document.getElementById('langToggle');
+      var showingEn = html.getAttribute('lang') === 'en';
+      if (!showingEn) {
+        html.setAttribute('lang', 'en');
+        html.setAttribute('dir', 'ltr');
+        if (btn) btn.textContent = 'ع';
+        document.title = 'Privacy Policy — Hasaadi';
+      } else {
+        html.setAttribute('lang', 'ar');
+        html.setAttribute('dir', 'rtl');
+        if (btn) btn.textContent = 'EN';
+        document.title = 'سياسة الخصوصية — حصادي';
+      }
+    }
+    (function () {
+      var b = document.getElementById('langToggle');
+      if (b) b.addEventListener('click', toggleLanguage);
+    })();
+  </script>
 </body>
 </html>
