@@ -4,49 +4,252 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>سياسة الاسترداد وفض النزاعات — حصادي</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Cairo', sans-serif; background: #f5f5f5; color: #333; line-height: 1.8; }
-    .container { max-width: 800px; margin: 0 auto; background: white; min-height: 100vh; }
-    .header { background: #2D6A4F; padding: 24px; text-align: center; }
-    .header h1 { color: white; font-size: 24px; }
-    .header p { color: #a8d5b5; font-size: 14px; margin-top: 4px; }
-    .content { padding: 32px 24px; }
-    .section { margin-bottom: 32px; }
-    .section h2 { color: #2D6A4F; font-size: 18px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e8f5e9; font-weight: 700; }
-    .section p { color: #555; margin-bottom: 8px; }
-    .section ul { padding-right: 20px; color: #555; }
-    .section ul li { margin-bottom: 6px; list-style-type: disc; }
-    .warning { background: #fff3e0; padding: 16px; border-radius: 8px; border-right: 4px solid #e65100; margin-bottom: 16px; }
-    .warning strong.intro { display: inline-flex; align-items: center; gap: 8px; color: #bf360c; }
-    .footer { background: #f9f9f9; padding: 20px; text-align: center; color: #888; font-size: 13px; border-top: 1px solid #eee; }
-    .back-btn { display: inline-block; margin: 16px 24px; padding: 8px 16px; background: #2D6A4F; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 12px; border: 1px solid #cce3d8; }
-    thead th { background: #2D6A4F; color: white; padding: 10px; text-align: right; font-size: 14px; border: 1px solid #245a43; }
-    tbody td { padding: 10px; border-bottom: 1px solid #e0eae4; border-left: 1px solid #e8f5e9; color: #555; font-size: 14px; vertical-align: top; }
-    tbody tr:nth-child(even) { background: #f4faf6; }
+    :root {
+      --green-dark: #012104;
+      --green-800: #012104;
+      --green-600: #4B743D;
+      --green-400: #5A8570;
+      --green-policy: #2D6A4F;
+      --green-200: #B5D4C4;
+      --green-100: #EEF4F0;
+      --gold: #E9C46A;
+      --cream: #F5F7F2;
+      --text-dark: #1A2418;
+      --text-muted: #3D6B55;
+    }
+    h1, h2, h3, .hero-title, .section-title {
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.65;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-600));
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .nav-logo-text {
+      font-weight: 800;
+      font-size: 1.35rem;
+    }
+    .nav-logo-text span {
+      color: var(--gold);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    .back-bar {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 16px 24px 0;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--green-policy);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 88px;
+      background: linear-gradient(180deg, var(--green-100), var(--cream));
+      text-align: center;
+    }
+    .hero .wheat-el {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      color: var(--green-policy);
+    }
+    .hero p {
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-style: italic;
+    }
+    main {
+      padding: 48px 24px 64px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .policy-section {
+      margin-bottom: 2.25rem;
+    }
+    .policy-section h2.section-title {
+      font-size: 1.22rem;
+      color: var(--green-policy);
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--green-200);
+    }
+    .policy-section p {
+      margin: 0 0 0.5rem;
+      color: var(--text-dark);
+      font-size: 0.98rem;
+    }
+    .policy-section ul {
+      margin: 0;
+      padding-right: 1.25rem;
+      color: var(--text-dark);
+    }
+    .policy-section ul li {
+      margin-bottom: 0.5rem;
+      list-style-type: disc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      border: 1px solid #cce3d8;
+      font-size: 0.98rem;
+    }
+    thead th {
+      background: var(--green-policy);
+      color: white;
+      padding: 10px;
+      text-align: right;
+      font-size: 0.95rem;
+      border: 1px solid #245a43;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+    }
+    tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #e0eae4;
+      border-left: 1px solid #e8f5e9;
+      color: var(--text-dark);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) {
+      background: #f4faf6;
+    }
+    .warning {
+      background: #fff3e0;
+      padding: 16px;
+      border-radius: 12px;
+      border-right: 4px solid #e65100;
+      margin-bottom: 2rem;
+    }
+    .warning strong.intro {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #bf360c;
+    }
+    .warning ul {
+      margin: 10px 0 0;
+      padding-right: 1.25rem;
+      color: var(--text-dark);
+    }
+    .warning ul li {
+      margin-bottom: 0.5rem;
+      list-style-type: disc;
+    }
+    footer {
+      padding: 28px 24px;
+      background: var(--green-dark);
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .footer-links a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>💰 سياسة الاسترداد وفض النزاعات</h1>
-      <p>Refund Policy — آخر تحديث: مايو 2026</p>
+  <header class="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="حصادي" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
+      <span class="nav-logo-text">حصا<span>دي</span></span>
+    </a>
+    <nav class="nav-links" aria-label="رئيسي">
+      <a href="index.html">الرئيسية</a>
+    </nav>
+  </header>
+
+  <div class="back-bar">
+    <a href="index.html" class="back-btn">→ العودة للرئيسية</a>
+  </div>
+
+  <section class="hero">
+    <div class="wheat-el">
+      <img src="logo.png" alt="" style="position:absolute;top:10%;right:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
     </div>
+    <div class="wheat-el">
+      <img src="logo.png" alt="" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
+    </div>
+    <h1 class="hero-title">💰 سياسة الاسترداد وفض النزاعات</h1>
+    <p>Refund Policy — آخر تحديث: مايو 2026</p>
+  </section>
 
-    <a href="/" class="back-btn">→ العودة للرئيسية</a>
+  <main>
 
-    <div class="content">
-
-      <div class="section">
-        <h2>🌿 التزامنا</h2>
+      <article class="policy-section">
+        <h2 class="section-title">🌿 التزامنا</h2>
         <p>نسعى دائماً لضمان رضا عملائنا وتعزيز الأمن الغذائي. إذا لم تكن راضياً عن تجربتك، فريقنا هنا لمساعدتك عبر نظام الوساطة المالي الداخلي والآمن للمنصة.</p>
         <p><strong>النطاق:</strong> تنطبق هذه السياسة على المعاملات داخل سلطنة عُمان فقط. تُجرى المدفوعات والاستردادات بالريال العُماني (OMR) عبر ثواني (Thawani Pay) حصرياً.</p>
-      </div>
+      </article>
 
-      <div class="section">
-        <h2>١. المنتجات الزراعية والحيوانية المادية</h2>
+      <article class="policy-section">
+        <h2 class="section-title">١. المنتجات الزراعية والحيوانية المادية</h2>
         <table>
           <thead>
             <tr>
@@ -88,16 +291,16 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </article>
 
       <div class="warning">
         <strong class="intro"><span aria-hidden="true">⚠️</span> ملاحظة حاسمة</strong>
         <p style="margin-top:10px;color:#444;">تسليم المشتري كود التحقق الرقمي (OTP) للمندوب يُعد إقراراً رسمياً بمعاينة السلعة وسلامتها، ويتم بناءً عليه أمر النظام التقني للمنصة بتحرير المبلغ المعلق لحساب البائع فوراً.</p>
       </div>
 
-      <div class="section">
-        <h2>٢. خطط الاشتراك</h2>
-        <div class="warning">
+      <article class="policy-section">
+        <h2 class="section-title">٢. خطط الاشتراك</h2>
+        <div class="warning" style="margin-bottom: 0;">
           <p><strong>⚠️</strong> غير قابلة للاسترداد بعد التفعيل، إلا في حالات استثنائية:</p>
           <ul style="margin-top:10px">
             <li>الاشتراك غير مُفعَّل: استرداد كامل خلال 24 ساعة من الدفع</li>
@@ -106,20 +309,20 @@
             <li>إلغاء قبل انتهاء المدة: لا يُسترد الرصيد المتبقي</li>
           </ul>
         </div>
-      </div>
+      </article>
 
-      <div class="section">
-        <h2>٣. الإعلانات المميزة</h2>
+      <article class="policy-section">
+        <h2 class="section-title">٣. الإعلانات المميزة</h2>
         <ul>
           <li>إعلان لم يُعرض بسبب خطأ تقني: استرداد كامل</li>
           <li>إعلان مرفوض لمخالفة الشروط: غير قابل للاسترداد</li>
           <li>إعلان قيد المراجعة أكثر من 48 ساعة: استرداد كامل</li>
           <li>إعلان مُعتمد ونشط: غير قابل للاسترداد</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="section">
-        <h2>٤. كيفية تقديم طلب الاسترداد</h2>
+      <article class="policy-section">
+        <h2 class="section-title">٤. كيفية تقديم طلب الاسترداد</h2>
         <ul>
           <li>١. التواصل: support@hamedapps.com أو واتساب +968 9526 8707</li>
           <li>٢. البيانات: رقم الطلب + اسم البائع + سبب الاسترداد</li>
@@ -127,36 +330,40 @@
           <li>٤. مدة المراجعة: 24 ساعة في أيام العمل</li>
           <li>٥. مدة الاسترداد عند الموافقة: 7 أيام عمل</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="section">
-        <h2>٥. آلية الاسترداد المالي</h2>
+      <article class="policy-section">
+        <h2 class="section-title">٥. آلية الاسترداد المالي</h2>
         <ul>
           <li>يُعاد المبلغ لبطاقة المشتري البنكية عبر Thawani Pay مباشرة</li>
           <li>بنفس مسار الدفع الأصلي</li>
           <li>مدة الظهور في الحساب: 7-14 يوم عمل حسب البنك</li>
           <li>لا تتحمل حصادي رسوم الاسترداد التي تفرضها البوابة أو البنوك</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="section">
-        <h2>٦. التواصل معنا</h2>
+      <article class="policy-section">
+        <h2 class="section-title">٦. التواصل معنا</h2>
         <ul>
           <li>البريد: support@hamedapps.com</li>
           <li>واتساب: +968 9526 8707</li>
           <li>ساعات العمل: الأحد - الخميس، 9 صباحاً - 6 مساءً</li>
         </ul>
-      </div>
+      </article>
 
-    </div>
+  </main>
 
-    <div class="footer">
-      <p>© 2026 حصادي — جميع الحقوق محفوظة</p>
-      <p style="margin-top:4px">
-        <a href="/privacy" style="color:#2D6A4F">سياسة الخصوصية</a> |
-        <a href="/terms" style="color:#2D6A4F">شروط الخدمة</a>
-      </p>
+  <footer>
+    <div class="footer-brand">
+      <img src="logo.png" alt="حصادي" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+      <strong>حصادي</strong>
     </div>
-  </div>
+    <p class="footer-links" style="margin:8px 0 12px;font-size:0.9rem;">
+      <a href="/terms.html">شروط الخدمة</a>
+      ·
+      <a href="/refund.html">سياسة الاسترداد</a>
+    </p>
+    <small style="opacity: 0.75;">© 2026 حصادي — Hasaadi</small>
+  </footer>
 </body>
 </html>
