@@ -1,334 +1,511 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title-ar" content="سياسة الاستبدال والنزاعات — حصادي">
-  <meta name="title-en" content="Replacement & Disputes Policy — Hasaadi">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="title-ar" content="سياسة الاستبدال والنزاعات — حصادي" />
+  <meta name="title-en" content="Replacement &amp; Disputes Policy — Hasaadi" />
   <title>سياسة الاستبدال والنزاعات — حصادي</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Cairo', sans-serif; background: #f5f5f5; color: #333; line-height: 1.8; }
-    .container { max-width: 800px; margin: 0 auto; background: white; min-height: 100vh; }
-    .header { background: #2D6A4F; padding: 24px; text-align: center; }
-    .header h1 { color: white; font-size: 22px; }
-    .header p { color: #a8d5b5; font-size: 13px; margin-top: 4px; }
-    .back-bar { max-width: 800px; margin: 0 auto; padding: 16px 24px 0; }
-    .back-bar-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    :root {
+      --green-dark: #012104;
+      --green-600: #4B743D;
+      --green-policy: #2D6A4F;
+      --green-200: #B5D4C4;
+      --green-100: #EEF4F0;
+      --gold: #E9C46A;
+      --cream: #F5F7F2;
+      --text-dark: #1A2418;
+      --text-muted: #3D6B55;
+    }
+    h1, h2, h3, .hero-title, .section-title {
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    html[lang="en"] h1,
+    html[lang="en"] h2,
+    html[lang="en"] h3,
+    html[lang="en"] .hero-title,
+    html[lang="en"] .section-title {
+      font-family: system-ui, 'Segoe UI', 'Tajawal', sans-serif;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.65;
+    }
+    html[lang="en"] body {
+      font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--green-dark), var(--green-600));
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .nav-logo-text { font-weight: 800; font-size: 1.35rem; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .back-bar { max-width: 880px; margin: 0 auto; padding: 16px 24px 0; }
+    .back-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
     .back-btn {
       display: inline-block;
       padding: 8px 16px;
-      background: #2D6A4F;
-      color: white;
+      background: var(--green-policy);
+      color: #fff;
       text-decoration: none;
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 0.92rem;
+      font-weight: 600;
     }
     .lang-toggle-btn {
       cursor: pointer;
       padding: 8px 16px;
       background: transparent;
-      color: #2D6A4F;
-      border: 2px solid #2D6A4F;
+      color: var(--green-policy);
+      border: 2px solid var(--green-policy);
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 0.92rem;
       font-weight: 700;
       font-family: inherit;
     }
     .lang-toggle-btn:hover { background: rgba(45, 106, 79, 0.08); }
-    .content { padding: 32px 24px; }
-    .section { margin-bottom: 32px; }
-    .section h2 { color: #2D6A4F; font-size: 18px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e8f5e9; }
-    .section h3 { color: #1B4332; font-size: 15px; margin: 16px 0 8px; }
-    .section p { color: #555; margin-bottom: 8px; }
-    .section ul { padding-right: 20px; color: #555; }
-    .section ul li { margin-bottom: 8px; }
-    html[dir="ltr"] .section ul { padding-right: 0; padding-left: 20px; }
-    .highlight { background: #e8f5e9; padding: 16px; border-radius: 8px; border-right: 4px solid #2D6A4F; margin-bottom: 20px; }
-    html[dir="ltr"] .highlight { border-right: none; border-left: 4px solid #2D6A4F; }
-    .warning { background: #fff3e0; padding: 16px; border-radius: 8px; border-right: 4px solid #e65100; margin-bottom: 16px; }
-    html[dir="ltr"] .warning { border-right: none; border-left: 4px solid #e65100; }
-    .info { background: #e3f2fd; padding: 16px; border-radius: 8px; border-right: 4px solid #1565c0; margin-bottom: 16px; }
-    html[dir="ltr"] .info { border-right: none; border-left: 4px solid #1565c0; }
-    .otp-box { background: #1B4332; color: white; padding: 20px; border-radius: 12px; text-align: center; margin: 20px 0; }
-    .otp-box h3 { color: #a8d5b5; font-size: 14px; margin-bottom: 8px; }
-    .otp-box p { color: white; font-size: 15px; }
-    .flow { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
-    .flow-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #f9f9f9; border-radius: 8px; }
-    .flow-num { background: #2D6A4F; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; font-size: 13px; }
-    .footer { background: #f9f9f9; padding: 20px; text-align: center; color: #888; font-size: 13px; border-top: 1px solid #eee; }
-    .badge { display: inline-block; background: #e8f5e9; color: #2D6A4F; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-right: 4px; }
-    html[dir="ltr"] .badge { margin-right: 0; margin-left: 4px; }
+    main.ar-content,
+    main.en-content,
+    section.hero-inner.ar-content,
+    section.hero-inner.en-content { display: block; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 88px;
+      background: linear-gradient(180deg, var(--green-100), var(--cream));
+      text-align: center;
+    }
+    .hero .wheat-el { position: absolute; inset: 0; pointer-events: none; }
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      color: var(--green-policy);
+    }
+    .hero p {
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-style: italic;
+    }
+    main { padding: 48px 24px 64px; max-width: 880px; margin: 0 auto; }
+    .intro-box {
+      background: var(--green-100);
+      border: 1px solid var(--green-200);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+    .policy-section { margin-bottom: 2.25rem; }
+    .policy-section h2.section-title {
+      font-size: 1.22rem;
+      color: var(--green-policy);
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--green-200);
+    }
+    .policy-section h3 {
+      font-size: 1.02rem;
+      color: var(--green-policy);
+      margin: 1.35rem 0 0.6rem;
+    }
+    .policy-section ul { margin: 0; padding-right: 1.25rem; color: var(--text-dark); }
+    html[dir="ltr"] .policy-section ul { padding-right: 0; padding-left: 1.25rem; }
+    .policy-section ul li { margin-bottom: 0.5rem; list-style-type: disc; }
+    .policy-section p {
+      margin: 0 0 0.5rem;
+      color: var(--text-dark);
+      font-size: 0.98rem;
+      font-style: normal;
+    }
+    .otp-box {
+      background: var(--green-dark);
+      color: #fff;
+      padding: 1.25rem 1.35rem;
+      border-radius: 14px;
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+    .otp-box h3 {
+      margin: 0 0 10px;
+      font-size: 0.98rem;
+      color: var(--gold);
+      font-style: normal;
+    }
+    .otp-box p { margin: 0; color: rgba(255, 255, 255, 0.93); font-size: 0.98rem; font-style: normal; }
+    .flow { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+    .flow-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--green-100);
+      border: 1px solid var(--green-200);
+      border-radius: 12px;
+    }
+    .flow-num {
+      background: var(--green-policy);
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .warning {
+      background: #fff3e0;
+      padding: 16px;
+      border-radius: 12px;
+      border-right: 4px solid #e65100;
+      margin-bottom: 1rem;
+    }
+    html[dir="ltr"] .warning {
+      border-right: none;
+      border-left: 4px solid #e65100;
+    }
+    .info {
+      background: #e3f2fd;
+      padding: 16px;
+      border-radius: 12px;
+      border-right: 4px solid #1565c0;
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+      color: var(--text-dark);
+    }
+    html[dir="ltr"] .info {
+      border-right: none;
+      border-left: 4px solid #1565c0;
+    }
+    footer {
+      padding: 28px 24px;
+      background: var(--green-dark);
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .footer-links a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="ar-content">
-        <h1>⚖️ سياسة الاستبدال والاسترداد وفض النزاعات</h1>
-        <p>منصة حصادي — سلطنة عُمان — آخر تحديث: مايو 2026</p>
-      </div>
-      <div class="en-content" style="display:none">
-        <h1>⚖️ Replacement & Disputes Policy</h1>
-        <p>Hasaadi Platform — Last updated: May 2026</p>
-      </div>
-    </div>
+  <header class="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Hasaadi" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">
+      <span class="nav-logo-text">حصا<span>دي</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html"><span class="ar-label">الرئيسية</span><span class="en-label">Home</span></a>
+    </nav>
+  </header>
 
-    <div class="back-bar">
-      <div class="back-bar-row">
-        <a href="index.html" class="back-btn">
-          <span class="ar-content">→ العودة للرئيسية</span>
-          <span class="en-content" style="display:none">← Back to home</span>
-        </a>
-        <button id="langToggle" type="button" class="lang-toggle-btn" onclick="LangManager.toggle()" aria-label="Switch language">EN</button>
-      </div>
-    </div>
-
-    <div class="content ar-content">
-
-      <div class="highlight">
-        <strong>🌿 التزام حصادي:</strong> تلتزم منصة حصادي بتوفير بيئة تجارية آمنة وعادلة تضمن حقوق المشتري والبائع على حدٍ سواء، وذلك من خلال تطبيق نظام الوساطة المالية وحجز الأموال (Escrow System) عبر بوابة دفع <strong>ثواني</strong> المرخصة في سلطنة عُمان. جميع المعاملات بالريال العُماني (OMR) داخل السلطنة فقط.
-      </div>
-
-      <!-- نظام OTP -->
-      <div class="section">
-        <div class="otp-box">
-          <h3>🔐 كيف يعمل نظام كود الاستلام (Release OTP)</h3>
-          <p>كود رقمي يُرسَل للمشتري عند وصول الشحنة — لا تُحرَّر الأموال للبائع إلا بعد تسليمه</p>
-        </div>
-
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-num">١</div>
-            <div>المشتري يستلم الشحنة ويفحص المنتج بدقة قبل إعطاء الكود</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">٢</div>
-            <div>إذا كان المنتج سليماً ومطابقاً → يُسلِّم الكود للمندوب ✅ → تُحرَّر الأموال للبائع فوراً</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">٣</div>
-            <div>إذا كان المنتج تالفاً أو مختلفاً → يرفض الاستلام ❌ → تُعاد الأموال كاملة للمشتري</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- أولاً -->
-      <div class="section">
-        <h2>أولاً: سياسة تلف المنتجات أو عدم مطابقتها للمواصفات</h2>
-
-        <h3>🟢 قبل إدخال كود التحقق الرقمي (Release OTP)</h3>
-        <ul>
-          <li>يحق للمشتري فحص ومعاينة المنتجات (الماشية، الأعلاف، السلع الزراعية، المعدات) فور وصولها وقبل استلامها</li>
-          <li>في حال وجود تلف أو عدم مطابقة للمواصفات المعروضة، يحق للمشتري رفض الاستلام وعدم تسليم كود الـ OTP للمندوب</li>
-          <li>يتحمل البائع في هذه الحالة المسؤولية كاملة، وتُلغى المعاملة وتُعاد الأموال كاملة للمشتري عبر بوابة ثواني خلال 7 أيام عمل</li>
-        </ul>
-
-        <h3>🔴 بعد إدخال كود التحقق الرقمي (Release OTP)</h3>
-        <div class="warning">
-          <strong>⚠️ مهم:</strong> يُعد تسليم المشتري كود التحقق الرقمي للمندوب إقراراً رسمياً وقانونياً بمعاينة السلعة وسلامتها من أي عيوب ظاهرة وقبوله لها، وعندها يتم تحرير المبلغ لحساب البائع.
-        </div>
-
-        <h3>🔍 الاستثناء: العيوب الخفية</h3>
-        <div class="info">
-          في حال احتواء السلعة على عيب خفي لا يمكن كشفه بالمعاينة الظاهرية وقت الاستلام (مثل: بذور غير صالحة داخل عبوات مغلقة، مكملات بيطرية تالفة، أو عيب مصنعي في معدة زراعية)، تمنح المنصة المشتري مهلة <strong>24 ساعة</strong> لرفع شكوى مدعومة بالصور أو الأدلة عبر مركز الإدارة. إذا ثبت العيب، يُلزم البائع بالتعويض أو رد الأموال.
-        </div>
-      </div>
-
-      <!-- ثانياً -->
-      <div class="section">
-        <h2>ثانياً: سياسة التأخير في تسليم الشحنات</h2>
-
-        <h3>📦 التوصيل عبر البائع</h3>
-        <ul>
-          <li>يلتزم البائع بتسليم الشحنة خلال المدة المحددة والمعلنة في التطبيق عند إتمام الطلب</li>
-          <li>في حال تجاوز البائع المهلة المحددة بـ <strong>48 ساعة</strong> دون عذر مقبول، يحق للمشتري إلغاء الطلب وتُرجع له الأموال كاملة</li>
-          <li>يتحمل البائع رسوم المعاملة الإدارية في حالة الإلغاء بسبب التأخير</li>
-        </ul>
-
-        <h3>🚚 التوصيل عبر شركات الشحن المتعاقدة</h3>
-        <ul>
-          <li>إذا كان التأخير ناتجاً عن شركة الشحن المزودة للخدمة عبر التطبيق، تتولى إدارة حصادي تتبع الشحنة</li>
-          <li>يُعوَّض المشتري في حال الضرر أو التأخير غير المبرر</li>
-          <li>تتخذ حصادي الإجراءات اللازمة بحق شركة الشحن وفق اتفاقية مستوى الخدمة (SLA)</li>
-        </ul>
-      </div>
-
-      <!-- ثالثاً -->
-      <div class="section">
-        <h2>ثالثاً: أحكام عامة لفض النزاعات</h2>
-        <ul>
-          <li>تعمل إدارة منصة حصادي كوسيط عدل ومستقل لمراجعة كافة الطلبات والشكاوى بناءً على المحادثات المسجلة داخل التطبيق وحالة الطلب الرقمية</li>
-          <li>لا تشمل سياسة الاسترداد أي تلف يقع للسلعة بعد استلامها بسبب سوء التخزين أو النقل الخاطئ من قِبل المشتري</li>
-          <li>تخضع جميع النزاعات لقوانين سلطنة عُمان واختصاص محاكمها</li>
-          <li>قرار إدارة حصادي في النزاعات نهائي وملزم للطرفين ضمن حدود القانون العُماني</li>
-        </ul>
-      </div>
-
-      <!-- التواصل -->
-      <div class="section">
-        <h2>رابعاً: كيفية رفع شكوى</h2>
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-num">١</div>
-            <div>تواصل معنا خلال المدة المحددة (24 ساعة للعيوب الخفية)</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">٢</div>
-            <div>أرسل رقم الطلب + صور أو أدلة على المشكلة</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">٣</div>
-            <div>سيتم الرد خلال 24 ساعة في أيام العمل (الأحد - الخميس)</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">٤</div>
-            <div>عند الموافقة، يُعاد المبلغ خلال 7 أيام عمل عبر ثواني Pay</div>
-          </div>
-        </div>
-
-        <div class="highlight" style="margin-top:16px">
-          <strong>📞 قنوات التواصل:</strong><br>
-          البريد الإلكتروني: support@hamedapps.com<br>
-          واتساب: ‎+968&nbsp;9526&nbsp;8707<br>
-          ساعات العمل: الأحد - الخميس، 9 صباحاً - 6 مساءً
-        </div>
-      </div>
-
-    </div>
-
-    <div class="content en-content" style="display:none">
-
-      <div class="highlight">
-        <strong>🌿 Hasaadi commitment:</strong> Hasaadi is committed to providing a secure, fair marketplace that safeguards buyers and sellers alike through internal financial intermediary and funds-hold (<strong>Escrow System</strong>) settlement via <strong>Thawani Pay</strong>, licensed in the Sultanate of Oman. All transactions are in Omani Rial (<strong>OMR</strong>) and within Oman only.
-      </div>
-
-      <div class="section">
-        <div class="otp-box">
-          <h3>🔐 How the delivery code works (Release OTP)</h3>
-          <p>A digital code sent to the buyer when the shipment arrives — funds are not released to the seller until the buyer delivers it.</p>
-        </div>
-
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-num">1</div>
-            <div>The buyer receives the shipment and inspects the product carefully before giving the code.</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">2</div>
-            <div>If the product is sound and matches the listing → hand the OTP to the courier ✅ → funds are released immediately to the seller.</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">3</div>
-            <div>If the product is damaged or different → reject receipt ❌ → full refund is returned to the buyer.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>First: Defective products or mismatch with the description</h2>
-
-        <h3>🟢 Before entering the verification code (Release OTP)</h3>
-        <ul>
-          <li>The buyer may inspect products (livestock, feed, agricultural goods, equipment) immediately upon arrival and before accepting them.</li>
-          <li>If there is damage or mismatch with what was advertised, the buyer may refuse acceptance and withhold the OTP from the courier.</li>
-          <li>The seller bears full responsibility in such cases; the order is cancelled and the full amount is refunded to the buyer via Thawani Pay within <strong>7 business days</strong>.</li>
-        </ul>
-
-        <h3>🔴 After entering the verification code (Release OTP)</h3>
-        <div class="warning">
-          <strong>⚠️ Important:</strong> Handing over the OTP to the courier is an official, legally binding acknowledgement that the goods were inspected and found free of visible defects and were accepted — the amount is then released to the seller.
-        </div>
-
-        <h3>🔍 Exception: Hidden defects</h3>
-        <div class="info">
-          If goods contain a hidden defect that cannot be detected by visual inspection upon delivery (e.g. spoiled seeds inside sealed packaging, damaged veterinary supplements, or a manufacturing fault in farm machinery), the platform gives the buyer <strong>24 hours</strong> to submit a complaint with photos or evidence via the Admin Center. If the defect is substantiated, the seller must compensate or refund.
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Second: Delayed shipments</h2>
-
-        <h3>📦 Delivery by seller</h3>
-        <ul>
-          <li>The seller must deliver within the timeframe stated in the app when the order was placed.</li>
-          <li>If the deadline is exceeded by <strong>48 hours</strong> without an acceptable excuse, the buyer may cancel the order and receive a full refund.</li>
-          <li>The seller bears any administrative charges when cancellation is caused by delay.</li>
-        </ul>
-
-        <h3>🚚 Courier partners</h3>
-        <ul>
-          <li>If delay is attributable to an integrated courier, Hasaadi management follows up with the shipment.</li>
-          <li>The buyer may be compensated in cases of loss or undue delay.</li>
-          <li>Hasaadi will take actions against couriers pursuant to Service Level Agreements (SLA).</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>Third: General dispute rules</h2>
-        <ul>
-          <li>Hasaadi acts as neutral intermediary to review all tickets and disputes based on in-app chats and digital order records.</li>
-          <li>Refund policy excludes damage occurring after acceptance due to buyer misuse, poor storage or improper transport.</li>
-          <li>All disputes are subject to Oman law and the jurisdiction of Oman courts.</li>
-          <li>Hasaadi’s adjudication is final and binding for both parties within the limits of Oman law.</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>Fourth: How to file a complaint</h2>
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-num">1</div>
-            <div>Contact us within the stated timeframe (24 hours for hidden defects).</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">2</div>
-            <div>Send your order number plus photos or other evidence.</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">3</div>
-            <div>You will receive a reply within 24 hours on working days (Sunday–Thursday).</div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-num">4</div>
-            <div>If approved, the amount is refunded within 7 business days via Thawani Pay.</div>
-          </div>
-        </div>
-
-        <div class="highlight" style="margin-top:16px">
-          <strong>📞 Contact:</strong><br>
-          Email: support@hamedapps.com<br>
-          WhatsApp: ‎+968&nbsp;9526&nbsp;8707<br>
-          Hours: Sunday–Thursday, 9 AM – 6 PM
-        </div>
-      </div>
-
-    </div>
-
-    <div class="footer">
-      <p>
-        <span class="ar-content">© 2026 حصادي — جميع الحقوق محفوظة — سلطنة عُمان</span>
-        <span class="en-content" style="display:none">© 2026 Hasaadi — All rights reserved — Oman</span>
-      </p>
-      <p style="margin-top:4px">
-        <a href="privacy.html" style="color:#2D6A4F">
-          <span class="ar-content">سياسة الخصوصية</span>
-          <span class="en-content" style="display:none">Privacy Policy</span>
-        </a>
-        ·
-        <a href="terms.html" style="color:#2D6A4F">
-          <span class="ar-content">شروط الخدمة</span>
-          <span class="en-content" style="display:none">Terms of Service</span>
-        </a>
-        ·
-        <a href="refund.html" style="color:#2D6A4F">
-          <span class="ar-content">سياسة الاسترداد</span>
-          <span class="en-content" style="display:none">Refund Policy</span>
-        </a>
-      </p>
+  <div class="back-bar">
+    <div class="back-bar-row">
+      <a href="index.html" class="back-btn"><span class="ar-label">→ العودة للرئيسية</span><span class="en-label">← Back to home</span></a>
+      <button id="langToggle" type="button" class="lang-toggle-btn" onclick="LangManager.toggle()" aria-label="Switch language">EN</button>
     </div>
   </div>
+
+  <section class="hero">
+    <div class="wheat-el">
+      <img src="logo.png" alt="" style="position:absolute;top:10%;right:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
+    </div>
+    <div class="wheat-el">
+      <img src="logo.png" alt="" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
+    </div>
+    <div class="hero-inner ar-content">
+      <h1 class="hero-title">⚖️ سياسة الاستبدال والاسترداد وفض النزاعات</h1>
+      <p>منصة حصادي — سلطنة عُمان — آخر تحديث: مايو 2026</p>
+    </div>
+    <div class="hero-inner en-content" style="display:none">
+      <h1 class="hero-title">⚖️ Replacement &amp; Disputes Policy</h1>
+      <p>Hasaadi Platform — Last updated: May 2026</p>
+    </div>
+  </section>
+
+  <main class="ar-content">
+    <div class="intro-box">
+      <strong>🌿 التزام حصادي:</strong> تلتزم منصة حصادي بتوفير بيئة تجارية آمنة وعادلة تضمن حقوق المشتري والبائع على حدٍ سواء، وذلك من خلال تطبيق نظام الوساطة المالية وحجز الأموال (Escrow System) عبر بوابة دفع <strong>ثواني</strong> المرخصة في سلطنة عُمان. جميع المعاملات بالريال العُماني (OMR) داخل السلطنة فقط.
+    </div>
+
+    <article class="policy-section">
+      <div class="otp-box">
+        <h3>🔐 كيف يعمل نظام كود الاستلام (Release OTP)</h3>
+        <p>كود رقمي يُرسَل للمشتري عند وصول الشحنة — لا تُحرَّر الأموال للبائع إلا بعد تسليمه</p>
+      </div>
+
+      <div class="flow">
+        <div class="flow-item">
+          <div class="flow-num">١</div>
+          <div>المشتري يستلم الشحنة ويفحص المنتج بدقة قبل إعطاء الكود</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">٢</div>
+          <div>إذا كان المنتج سليماً ومطابقاً → يُسلِّم الكود للمندوب ✅ → تُحرَّر الأموال للبائع فوراً</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">٣</div>
+          <div>إذا كان المنتج تالفاً أو مختلفاً → يرفض الاستلام ❌ → تُعاد الأموال كاملة للمشتري</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">أولاً: سياسة تلف المنتجات أو عدم مطابقتها للمواصفات</h2>
+
+      <h3>🟢 قبل إدخال كود التحقق الرقمي (Release OTP)</h3>
+      <ul>
+        <li>يحق للمشتري فحص ومعاينة المنتجات (الماشية، الأعلاف، السلع الزراعية، المعدات) فور وصولها وقبل استلامها</li>
+        <li>في حال وجود تلف أو عدم مطابقة للمواصفات المعروضة، يحق للمشتري رفض الاستلام وعدم تسليم كود الـ OTP للمندوب</li>
+        <li>يتحمل البائع في هذه الحالة المسؤولية كاملة، وتُلغى المعاملة وتُعاد الأموال كاملة للمشتري عبر بوابة ثواني خلال 7 أيام عمل</li>
+      </ul>
+
+      <h3>🔴 بعد إدخال كود التحقق الرقمي (Release OTP)</h3>
+      <div class="warning">
+        <strong>⚠️ مهم:</strong> يُعد تسليم المشتري كود التحقق الرقمي للمندوب إقراراً رسمياً وقانونياً بمعاينة السلعة وسلامتها من أي عيوب ظاهرة وقبوله لها، وعندها يتم تحرير المبلغ لحساب البائع.
+      </div>
+
+      <h3>🔍 الاستثناء: العيوب الخفية</h3>
+      <div class="info">
+        في حال احتواء السلعة على عيب خفي لا يمكن كشفه بالمعاينة الظاهرية وقت الاستلام (مثل: بذور غير صالحة داخل عبوات مغلقة، مكملات بيطرية تالفة، أو عيب مصنعي في معدة زراعية)، تمنح المنصة المشتري مهلة <strong>24 ساعة</strong> لرفع شكوى مدعومة بالصور أو الأدلة عبر مركز الإدارة. إذا ثبت العيب، يُلزم البائع بالتعويض أو رد الأموال.
+      </div>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">ثانياً: سياسة التأخير في تسليم الشحنات</h2>
+
+      <h3>📦 التوصيل عبر البائع</h3>
+      <ul>
+        <li>يلتزم البائع بتسليم الشحنة خلال المدة المحددة والمعلنة في التطبيق عند إتمام الطلب</li>
+        <li>في حال تجاوز البائع المهلة المحددة بـ <strong>48 ساعة</strong> دون عذر مقبول، يحق للمشتري إلغاء الطلب وتُرجع له الأموال كاملة</li>
+        <li>يتحمل البائع رسوم المعاملة الإدارية في حالة الإلغاء بسبب التأخير</li>
+      </ul>
+
+      <h3>🚚 التوصيل عبر شركات الشحن المتعاقدة</h3>
+      <ul>
+        <li>إذا كان التأخير ناتجاً عن شركة الشحن المزودة للخدمة عبر التطبيق، تتولى إدارة حصادي تتبع الشحنة</li>
+        <li>يُعوَّض المشتري في حال الضرر أو التأخير غير المبرر</li>
+        <li>تتخذ حصادي الإجراءات اللازمة بحق شركة الشحن وفق اتفاقية مستوى الخدمة (SLA)</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">ثالثاً: أحكام عامة لفض النزاعات</h2>
+      <ul>
+        <li>تعمل إدارة منصة حصادي كوسيط عدل ومستقل لمراجعة كافة الطلبات والشكاوى بناءً على المحادثات المسجلة داخل التطبيق وحالة الطلب الرقمية</li>
+        <li>لا تشمل سياسة الاسترداد أي تلف يقع للسلعة بعد استلامها بسبب سوء التخزين أو النقل الخاطئ من قِبل المشتري</li>
+        <li>تخضع جميع النزاعات لقوانين سلطنة عُمان واختصاص محاكمها</li>
+        <li>قرار إدارة حصادي في النزاعات نهائي وملزم للطرفين ضمن حدود القانون العُماني</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">رابعاً: كيفية رفع شكوى</h2>
+      <div class="flow">
+        <div class="flow-item">
+          <div class="flow-num">١</div>
+          <div>تواصل معنا خلال المدة المحددة (24 ساعة للعيوب الخفية)</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">٢</div>
+          <div>أرسل رقم الطلب + صور أو أدلة على المشكلة</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">٣</div>
+          <div>سيتم الرد خلال 24 ساعة في أيام العمل (الأحد - الخميس)</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">٤</div>
+          <div>عند الموافقة، يُعاد المبلغ خلال 7 أيام عمل عبر ثواني Pay</div>
+        </div>
+      </div>
+
+      <div class="intro-box" style="margin-bottom: 0;">
+        <strong>📞 قنوات التواصل:</strong><br>
+        البريد الإلكتروني: support@hamedapps.com<br>
+        واتساب: ‎+968&nbsp;9526&nbsp;8707<br>
+        ساعات العمل: الأحد - الخميس، 9 صباحاً - 6 مساءً
+      </div>
+    </article>
+  </main>
+
+  <main class="en-content" style="display:none">
+    <div class="intro-box">
+      <strong>🌿 Hasaadi commitment:</strong> Hasaadi is committed to providing a secure, fair marketplace that protects buyers and sellers equally through internal escrow (Escrow System) settlement via <strong>Thawani Pay</strong>, licensed in the Sultanate of Oman. All transactions are in Omani Rial (<strong>OMR</strong>) within Oman only.
+    </div>
+
+    <article class="policy-section">
+      <div class="otp-box">
+        <h3>🔐 How the delivery-code system works (Release OTP)</h3>
+        <p>A digital OTP is sent to the buyer when the shipment arrives — seller funds stay held until they hand over the OTP.</p>
+      </div>
+
+      <div class="flow">
+        <div class="flow-item">
+          <div class="flow-num">1</div>
+          <div>The buyer receives the shipment and inspects the product carefully before providing the OTP.</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">2</div>
+          <div>If the product is sound and as described → they give the OTP to the courier ✅ → funds are released to the seller immediately.</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">3</div>
+          <div>If the product is damaged or does not match → they refuse acceptance ❌ → the full payment is refunded to the buyer.</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">First: Defective or non-conforming products</h2>
+
+      <h3>🟢 Before entering the OTP (Release OTP)</h3>
+      <ul>
+        <li>The buyer may inspect goods (livestock, feed, agricultural products, equipment) as soon as they arrive and before acceptance.</li>
+        <li>If there is visible damage or a mismatch with the listing, they may refuse delivery and must not share the OTP with the courier.</li>
+        <li>The seller bears full responsibility; the order is cancelled and the full amount is refunded via Thawani Pay within seven (7) business days.</li>
+      </ul>
+
+      <h3>🔴 After entering the OTP (Release OTP)</h3>
+      <div class="warning">
+        <strong>⚠️ Important:</strong> Handing over the OTP to the delivery agent is an official and legally binding acknowledgment that the goods have been inspected and accepted. Funds are released immediately.
+      </div>
+
+      <h3>🔍 Exception — hidden defects (dispute resolution)</h3>
+      <div class="info">
+        If goods contain a hidden defect that reasonable visual inspection cannot detect at delivery (e.g., unusable seeds in sealed packs, spoiled veterinary supplements, or a manufacturing fault in farm machinery), the buyer has <strong>24 hours</strong> to open a dispute with supporting photos/evidence via the Admin Centre. Where the defect is proven, the seller must compensate or refund.
+      </div>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">Second: Delivery-delay policy</h2>
+
+      <h3>📦 Seller-delivered shipments</h3>
+      <ul>
+        <li>The seller delivers within the published timeframe confirmed in the app when the order is placed.</li>
+        <li>If the seller exceeds this window by <strong>48 hours</strong> without a justified excuse, the buyer may cancel and receive a full refund.</li>
+        <li>Administrative cancellation fees attributable to delays are borne by the seller.</li>
+      </ul>
+
+      <h3>🚚 Contracted courier companies</h3>
+      <ul>
+        <li>If delay originates from an integrated courier, Hasaadi management tracks and coordinates the shipment.</li>
+        <li>Buyers harmed by undue delay may receive remedy or compensation.</li>
+        <li>Hasaadi enforces SLA commitments against the courier as applicable.</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">Third: General dispute-resolution rules</h2>
+      <ul>
+        <li>Hasaadi admins act as a neutral arbitrator, reviewing disputes using in-app messages and electronic order statuses.</li>
+        <li>Policies do not cover damage after acceptance resulting from improper buyer storage or transport.</li>
+        <li>All disputes fall under Oman law and the competence of Oman courts.</li>
+        <li>An admin decision concerning in-app disputes is final and binding subject to Oman law.</li>
+      </ul>
+    </article>
+
+    <article class="policy-section">
+      <h2 class="section-title">Fourth: How to open a dispute</h2>
+      <div class="flow">
+        <div class="flow-item">
+          <div class="flow-num">1</div>
+          <div>Contact us within the stated timeframe (24 hours for hidden defects).</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">2</div>
+          <div>Send your order ID plus photos or other evidence describing the issue.</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">3</div>
+          <div>We reply within 24 hours on working days (Sunday–Thursday).</div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">4</div>
+          <div>Once approved, refunds are credited within seven (7) working days via Thawani Pay.</div>
+        </div>
+      </div>
+
+      <div class="intro-box" style="margin-bottom: 0;">
+        <strong>📞 Contact:</strong><br>
+        Email: support@hamedapps.com<br>
+        WhatsApp: ‎+968&nbsp;9526&nbsp;8707<br>
+        Hours: Sunday–Thursday, 9 AM – 6 PM
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="logo.png" alt="Hasaadi" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+      <strong>حصادي</strong>
+    </div>
+    <p class="footer-links" style="margin:8px 0 12px;font-size:0.9rem;">
+      <a href="/terms.html"><span class="ar-label">شروط الخدمة</span><span class="en-label">Terms of Service</span></a>
+      ·
+      <a href="/refund.html"><span class="ar-label">سياسة الاسترداد</span><span class="en-label">Refund Policy</span></a>
+    </p>
+    <small style="opacity: 0.75;">© 2026 حصادي — Hasaadi</small>
+  </footer>
 
   <script src="js/lang.js"></script>
 </body>
