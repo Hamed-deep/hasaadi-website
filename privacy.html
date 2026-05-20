@@ -77,6 +77,21 @@
     .nav-links a:hover {
       color: var(--gold);
     }
+    .back-bar {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 16px 24px 0;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--green-policy);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
     .hero {
       position: relative;
       overflow: hidden;
@@ -114,7 +129,6 @@
       margin-bottom: 2rem;
       color: var(--text-dark);
       font-size: 0.98rem;
-      font-style: italic;
       line-height: 1.75;
     }
     .policy-section {
@@ -139,10 +153,12 @@
     }
     .policy-section ul li {
       margin-bottom: 0.5rem;
+      list-style-type: disc;
     }
-    .commitment-warning {
-      background: #FFF3E0;
-      border: 1px solid #FFB74D;
+    /* Commitment: green panel + ✅ — per official spec */
+    .commitment-positive {
+      background: #e8f5e9;
+      border: 1px solid var(--green-policy);
       border-radius: 12px;
       padding: 1rem 1.25rem;
       margin-top: 1rem;
@@ -150,17 +166,11 @@
       align-items: flex-start;
       gap: 12px;
     }
-    .commitment-warning p {
+    .commitment-positive p {
       margin: 0;
       flex: 1;
-      color: #BF360C;
-      font-weight: 500;
-    }
-    .commitment-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      color: var(--green-policy);
+      color: #1b4332;
+      font-weight: 600;
     }
     footer {
       padding: 28px 24px;
@@ -193,6 +203,10 @@
     </nav>
   </header>
 
+  <div class="back-bar">
+    <a href="index.html" class="back-btn">→ العودة للرئيسية</a>
+  </div>
+
   <section class="hero">
     <div class="wheat-el">
       <img src="logo.png" alt="" style="position:absolute;top:10%;right:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
@@ -200,79 +214,74 @@
     <div class="wheat-el">
       <img src="logo.png" alt="" style="position:absolute;bottom:12%;left:5%;width:80px;opacity:0.15;animation:float 8s ease-in-out infinite;">
     </div>
-    <h1 class="hero-title">سياسة الخصوصية</h1>
+    <h1 class="hero-title">🔒 سياسة الخصوصية</h1>
     <p>Privacy Policy — تطبيق حصادي — آخر تحديث: مايو 2026</p>
   </section>
 
   <main>
     <div class="intro-box">
-      تلتزم منصة "حصادي" بحماية خصوصية بياناتك الشخصية ومعالجتها بمسؤولية وأمان. تم إعداد هذه السياسة لتتوافق مع قانون حماية البيانات الشخصية الصادر بالمرسوم السلطاني رقم 6/2022 في سلطنة عُمان.
+      تلتزم منصة &quot;حصادي&quot; بحماية خصوصية بياناتك الشخصية ومعالجتها بمسؤولية وأمان، وفق قانون حماية البيانات الشخصية الصادر بالمرسوم السلطاني رقم 6/2022 في سلطنة عُمان.
     </div>
 
     <article class="policy-section">
       <h2 class="section-title">١. المعلومات التي نجمعها</h2>
-      <p class="lead"><strong>نجمع المعلومات الضرورية فقط لتقديم خدمات المنصة، وتشمل:</strong></p>
       <ul>
-        <li>بيانات الحساب والاتصال: الاسم، رقم الهاتف، البريد الإلكتروني، ومعرّف الحساب الرقمي</li>
+        <li>بيانات الحساب والاتصال: الاسم، رقم الهاتف، البريد الإلكتروني، معرّف الحساب الرقمي</li>
         <li>البيانات التجارية واللوجستية: تفاصيل المنتجات والإعلانات وعمليات الشراء والبيع والمحادثات الداخلية</li>
-        <li>بيانات الموقع الجغرافي: عبر GPS بعد منحك الإذن الصريح، لتسهيل التوصيل وحساب مسافات الشحن داخل السلطنة</li>
-        <li>الوسائط والملفات: الصور أو مقاطع الفيديو المرفوعة في الإعلانات أو طلبات الاسترداد</li>
-        <li>بيانات الجهاز والاستخدام: نوع الجهاز، نظام التشغيل، عنوان IP، وسجلات الأخطاء لضمان أمان التطبيق</li>
-        <li>بيانات الطرف الثالث: من مزودي الخدمات المتصلين كالخرائط الرقمية والتحقق من الهوية</li>
+        <li>بيانات الموقع الجغرافي: عبر GPS بعد إذنك الصريح لأغراض التوصيل</li>
+        <li>الوسائط والملفات: الصور والفيديو في الإعلانات وطلبات الاسترداد</li>
+        <li>بيانات الجهاز والاستخدام: نوع الجهاز، نظام التشغيل، IP، سجلات الأخطاء</li>
+        <li>بيانات الطرف الثالث: من مزودي الخرائط والتحقق من الهوية</li>
       </ul>
     </article>
 
     <article class="policy-section">
       <h2 class="section-title">٢. كيف نستخدم معلوماتك</h2>
-      <p class="lead"><strong>نستخدم المعلومات للأغراض التالية:</strong></p>
       <ul>
-        <li>تشغيل المنصة وإدارة الطلبات والربط بين البائع والمشتري والمندوب</li>
-        <li>معالجة خطط الاشتراك وتفعيل الإعلانات وإدارة نظام Escrow</li>
+        <li>تشغيل المنصة وإدارة الطلبات والربط بين الأطراف</li>
+        <li>معالجة خطط الاشتراك وتفعيل الإعلانات وإدارة المحافظ الداخلية</li>
         <li>تقديم الدعم الفني وفض النزاعات عبر Admin Control Center</li>
-        <li>تحسين أداء التطبيق وتقديم استشارات AI Consultant</li>
+        <li>تحسين التطبيق وتقديم استشارات AI Consultant</li>
         <li>الامتثال للالتزامات القانونية في سلطنة عُمان</li>
       </ul>
-      <div class="commitment-warning">
-        <!-- simple shield emoji as icon surrogate -->
-        <span class="commitment-icon" aria-hidden="true" style="font-size:22px;line-height:1;">🛡️</span>
-        <p>⚠️ التزام: نحن لا نبيع، ولا نؤجر، ولا نشارك معلوماتك الشخصية مع أي جهات خارجية لأغراض تسويقية دون موافقتك الصريحة.</p>
+      <div class="commitment-positive">
+        <span aria-hidden="true" style="font-size:22px;line-height:1;flex-shrink:0;">✅</span>
+        <p><strong>التزام:</strong> نحن لا نبيع، ولا نؤجر، ولا نشارك معلوماتك الشخصية مع أي جهات خارجية لأغراض تسويقية دون موافقتك الصريحة.</p>
       </div>
     </article>
 
     <article class="policy-section">
       <h2 class="section-title">٣. مشاركة البيانات والإفصاح القانوني</h2>
-      <p class="lead"><strong>يتم مشاركة بياناتك في حدود ضيقة جداً:</strong></p>
       <ul>
         <li>بين أطراف المعاملة: بيانات الاتصال والموقع لإتمام التوصيل فقط</li>
-        <li>بوابة Thawani Pay: معالجة مشفرة ومحمية — حصادي لا تخزن بيانات بطاقتك الائتمانية على خوادمها إطلاقاً</li>
-        <li>الجهات الحكومية: عند الإلزام قانونياً بموجب حكم قضائي رسمي</li>
+        <li>Thawani Pay: تعالج الدفع المباشر وتشفير البطاقات — حصادي تدير المحافظ الداخلية ولا تخزن بيانات بطاقتك إطلاقاً</li>
+        <li>الجهات الحكومية: عند الإلزام قانونياً فقط</li>
       </ul>
     </article>
 
     <article class="policy-section">
       <h2 class="section-title">٤. حماية البيانات ومكان التخزين</h2>
       <ul>
-        <li>نطبق أعلى معايير التشفير وبروتوكولات الأمان</li>
-        <li>سرية بيانات الدخول وكود OTP مسؤولية المستخدم الكاملة</li>
-        <li>البيانات مستضافة على خوادم سحابية آمنة بمعايير دولية</li>
+        <li>تشفير كامل وحماية Firebase السحابية بمعايير دولية</li>
+        <li>سرية بيانات الدخول وكود OTP الداخلي مسؤولية المستخدم الكاملة</li>
+        <li>خوادم سحابية آمنة وفق الأنظمة العُمانية</li>
       </ul>
     </article>
 
     <article class="policy-section">
       <h2 class="section-title">٥. حقوق المستخدم (بموجب القانون العُماني)</h2>
-      <p class="lead"><strong>يحق لك في أي وقت:</strong></p>
       <ul>
-        <li>الوصول إلى بياناتك ومراجعتها وتعديلها عبر إعدادات الحساب</li>
+        <li>الوصول لبياناتك ومراجعتها وتعديلها عبر إعدادات الحساب</li>
         <li>طلب تصحيح أي بيانات غير دقيقة</li>
-        <li>طلب حذف حسابك نهائياً وتدمير بياناتك، ما لم تكن هناك طلبات معلقة أو نزاعات مالية أو التزامات قانونية</li>
+        <li>طلب حذف الحساب نهائياً (ما لم تكن هناك نزاعات أو التزامات قانونية)</li>
       </ul>
     </article>
 
     <article class="policy-section">
       <h2 class="section-title">٦. التواصل معنا</h2>
       <ul>
-        <li>البريد الإلكتروني: <a href="mailto:support@hamedapps.com">support@hamedapps.com</a></li>
-        <li>واتساب الدعم الفني: ‎<a href="https://wa.me/96895268707">+968&nbsp;9526&nbsp;8707</a></li>
+        <li>البريد: <a href="mailto:support@hamedapps.com">support@hamedapps.com</a></li>
+        <li>واتساب: ‎<a href="https://wa.me/96895268707">+968&nbsp;9526&nbsp;8707</a></li>
       </ul>
     </article>
   </main>

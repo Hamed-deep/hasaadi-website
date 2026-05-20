@@ -17,21 +17,21 @@
     .section h2 { color: #2D6A4F; font-size: 18px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e8f5e9; font-weight: 700; }
     .section p { color: #555; margin-bottom: 8px; }
     .section ul { padding-right: 20px; color: #555; }
-    .section ul li { margin-bottom: 6px; }
-    .highlight { background: #e8f5e9; padding: 16px; border-radius: 8px; border-right: 4px solid #2D6A4F; margin-bottom: 16px; }
+    .section ul li { margin-bottom: 6px; list-style-type: disc; }
     .warning { background: #fff3e0; padding: 16px; border-radius: 8px; border-right: 4px solid #e65100; margin-bottom: 16px; }
+    .warning strong.intro { display: inline-flex; align-items: center; gap: 8px; color: #bf360c; }
     .footer { background: #f9f9f9; padding: 20px; text-align: center; color: #888; font-size: 13px; border-top: 1px solid #eee; }
     .back-btn { display: inline-block; margin: 16px 24px; padding: 8px 16px; background: #2D6A4F; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-    th { background: #2D6A4F; color: white; padding: 10px; text-align: right; font-size: 14px; }
-    td { padding: 10px; border-bottom: 1px solid #eee; color: #555; font-size: 14px; vertical-align: top; }
-    tr:nth-child(even) { background: #f9f9f9; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; border: 1px solid #cce3d8; }
+    thead th { background: #2D6A4F; color: white; padding: 10px; text-align: right; font-size: 14px; border: 1px solid #245a43; }
+    tbody td { padding: 10px; border-bottom: 1px solid #e0eae4; border-left: 1px solid #e8f5e9; color: #555; font-size: 14px; vertical-align: top; }
+    tbody tr:nth-child(even) { background: #f4faf6; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>سياسة الاسترداد وفض النزاعات</h1>
+      <h1>💰 سياسة الاسترداد وفض النزاعات</h1>
       <p>Refund Policy — آخر تحديث: مايو 2026</p>
     </div>
 
@@ -40,67 +40,72 @@
     <div class="content">
 
       <div class="section">
-        <h2>التزامنا</h2>
-        <p>نسعى دائماً لضمان رضا عملائنا وتعزيز الأمن الغذائي. إذا لم تكن راضياً عن تجربتك، فريقنا هنا لمساعدتك عبر نظام الوساطة المالي الآمن.</p>
-        <p><strong>النطاق:</strong> تنطبق هذه السياسة على المعاملات والمستخدمين داخل سلطنة عُمان فقط. تُجرى المدفوعات والاستردادات بالريال العُماني (OMR) عبر بوابة ثواني (Thawani Pay) حصرياً، وتخضع للقوانين واللوائح التجارية المعمول بها في السلطنة.</p>
+        <h2>🌿 التزامنا</h2>
+        <p>نسعى دائماً لضمان رضا عملائنا وتعزيز الأمن الغذائي. إذا لم تكن راضياً عن تجربتك، فريقنا هنا لمساعدتك عبر نظام الوساطة المالي الداخلي والآمن للمنصة.</p>
+        <p><strong>النطاق:</strong> تنطبق هذه السياسة على المعاملات داخل سلطنة عُمان فقط. تُجرى المدفوعات والاستردادات بالريال العُماني (OMR) عبر ثواني (Thawani Pay) حصرياً.</p>
       </div>
 
       <div class="section">
         <h2>١. المنتجات الزراعية والحيوانية المادية</h2>
         <table>
-          <tr>
-            <th>الحالة</th>
-            <th>الإجراء</th>
-            <th>المدة / الشروط</th>
-          </tr>
-          <tr>
-            <td>منتج تالف أو فاسد (ظاهرياً)</td>
-            <td>استرداد كامل وإلغاء الطلب</td>
-            <td>لحظة المعاينة وقبل تسليم كود الـ OTP</td>
-          </tr>
-          <tr>
-            <td>منتج مختلف عن الوصف</td>
-            <td>استرداد كامل</td>
-            <td>لحظة المعاينة وقبل تسليم كود الـ OTP</td>
-          </tr>
-          <tr>
-            <td>وجود عيب خفي (بذور مغلقة، مكملات، إلخ)</td>
-            <td>استرداد كامل أو استبدال</td>
-            <td>خلال 24 ساعة من الاستلام</td>
-          </tr>
-          <tr>
-            <td>عدم التسليم النهائي</td>
-            <td>استرداد كامل</td>
-            <td>بعد تأكيد تجاوز مهلة التوصيل القصوى</td>
-          </tr>
-          <tr>
-            <td>تأخر التسليم عن الموعد</td>
-            <td>إلغاء واسترداد كامل أو تعويض</td>
-            <td>إذا تجاوز التأخر 48 ساعة</td>
-          </tr>
-          <tr>
-            <td>تغيير رأي المشتري بعد الاستلام</td>
-            <td>غير مؤهل للاسترداد</td>
-            <td>—</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>الحالة</th>
+              <th>الإجراء</th>
+              <th>المدة / الشروط</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>منتج تالف أو فاسد (ظاهرياً)</td>
+              <td>استرداد كامل وإلغاء الطلب</td>
+              <td>لحظة المعاينة وقبل تسليم كود الـ OTP</td>
+            </tr>
+            <tr>
+              <td>منتج مختلف عن الوصف</td>
+              <td>استرداد كامل</td>
+              <td>لحظة المعاينة وقبل تسليم كود الـ OTP</td>
+            </tr>
+            <tr>
+              <td>وجود عيب خفي</td>
+              <td>استرداد كامل أو استبدال</td>
+              <td>خلال 24 ساعة (يخضع لمراجعة الإدارة)</td>
+            </tr>
+            <tr>
+              <td>عدم التسليم النهائي</td>
+              <td>استرداد كامل</td>
+              <td>بعد تأكيد تجاوز مهلة التوصيل</td>
+            </tr>
+            <tr>
+              <td>تأخر التسليم أكثر من 48 ساعة</td>
+              <td>إلغاء واسترداد كامل أو تعويض</td>
+              <td>بعد تجاوز 48 ساعة من الوقت المحدد</td>
+            </tr>
+            <tr>
+              <td>تغيير رأي المشتري بعد الاستلام</td>
+              <td>غير مؤهل للاسترداد</td>
+              <td>—</td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
       <div class="warning">
-        <strong>⚠️</strong> تسليم المشتري كود التحقق الرقمي (OTP) للمندوب يُعد إقراراً رسمياً بمعاينة السلعة وسلامتها، ويتم بناءً عليه تحرير المبلغ للبائع.
+        <strong class="intro"><span aria-hidden="true">⚠️</span> ملاحظة حاسمة</strong>
+        <p style="margin-top:10px;color:#444;">تسليم المشتري كود التحقق الرقمي (OTP) للمندوب يُعد إقراراً رسمياً بمعاينة السلعة وسلامتها، ويتم بناءً عليه أمر النظام التقني للمنصة بتحرير المبلغ المعلق لحساب البائع فوراً.</p>
       </div>
 
       <div class="section">
         <h2>٢. خطط الاشتراك</h2>
-        <div class="warning" style="margin-bottom:12px">
-          <strong>⚠️</strong> خطط الاشتراك غير قابلة للاسترداد بعد التفعيل، إلا في حالات استثنائية:
+        <div class="warning">
+          <p><strong>⚠️</strong> غير قابلة للاسترداد بعد التفعيل، إلا في حالات استثنائية:</p>
+          <ul style="margin-top:10px">
+            <li>الاشتراك غير مُفعَّل: استرداد كامل خلال 24 ساعة من الدفع</li>
+            <li>خطأ تقني من حصادي: استرداد كامل بعد التحقق</li>
+            <li>اشتراك مُفعَّل واستُخدم: غير قابل للاسترداد</li>
+            <li>إلغاء قبل انتهاء المدة: لا يُسترد الرصيد المتبقي</li>
+          </ul>
         </div>
-        <ul>
-          <li>الاشتراك غير مُفعَّل بعد: استرداد كامل خلال 24 ساعة</li>
-          <li>خطأ تقني من منصة حصادي: استرداد كامل بعد التحقق</li>
-          <li>اشتراك مُفعَّل واستُخدم: غير قابل للاسترداد</li>
-          <li>إلغاء قبل انتهاء المدة: لا يُسترد الرصيد المتبقي</li>
-        </ul>
       </div>
 
       <div class="section">
@@ -116,21 +121,20 @@
       <div class="section">
         <h2>٤. كيفية تقديم طلب الاسترداد</h2>
         <ul>
-          <li>البريد الإلكتروني: support@hamedapps.com</li>
-          <li>واتساب: +968 9526 8707</li>
-          <li>اذكر: رقم الطلب، اسم البائع، سبب الاسترداد</li>
-          <li>أرفق صور/فيديو للمنتج (قبل تسليم الـ OTP)</li>
-          <li>مدة المراجعة: 24 ساعة في أيام العمل</li>
-          <li>مدة الاسترداد عند الموافقة: 7 أيام عمل</li>
+          <li>١. التواصل: support@hamedapps.com أو واتساب +968 9526 8707</li>
+          <li>٢. البيانات: رقم الطلب + اسم البائع + سبب الاسترداد</li>
+          <li>٣. المرئيات: صور أو فيديو للمنتج (قبل تسليم OTP)</li>
+          <li>٤. مدة المراجعة: 24 ساعة في أيام العمل</li>
+          <li>٥. مدة الاسترداد عند الموافقة: 7 أيام عمل</li>
         </ul>
       </div>
 
       <div class="section">
         <h2>٥. آلية الاسترداد المالي</h2>
         <ul>
-          <li>يُعاد المبلغ بالريال العُماني عبر Thawani Pay فقط</li>
-          <li>بنفس مسار الدفع الأصلي (البطاقة البنكية المستخدمة)</li>
-          <li>مدة الظهور في الحساب: 7-14 يوم عمل</li>
+          <li>يُعاد المبلغ لبطاقة المشتري البنكية عبر Thawani Pay مباشرة</li>
+          <li>بنفس مسار الدفع الأصلي</li>
+          <li>مدة الظهور في الحساب: 7-14 يوم عمل حسب البنك</li>
           <li>لا تتحمل حصادي رسوم الاسترداد التي تفرضها البوابة أو البنوك</li>
         </ul>
       </div>
