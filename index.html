@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="title-ar" content="حصادي — سوقك الزراعي الذكي | Hasaadi">
+<meta name="title-en" content="Hasaadi — Your Smart Agricultural Market">
 <title>حصادي — سوقك الزراعي الذكي | Hasaadi</title>
 <meta name="description" content="حصادي منصة زراعية رقمية تربط المزارعين والتجار في ٢٢ دولة عربية">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,22 +37,8 @@ nav{
 .nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.lang-wrap{position:relative}
-.lang-btn-main{
-  display:flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
-  border-radius:6px;padding:6px 12px;color:#fff;font-size:12px;font-weight:600;
-  cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;
-}
-.lang-dropdown{
-  position:absolute;top:calc(100% + 6px);left:0;
-  background:#fff;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);
-  overflow:hidden;min-width:120px;display:none;
-}
-.lang-dropdown.open{display:block}
-.lang-option{padding:10px 16px;font-size:13px;cursor:pointer;color:var(--txt);transition:background .2s}
-.lang-option:hover{background:var(--g100)}
-.lang-option.active{color:var(--g500);font-weight:700}
+.lang-toggle-btn{font-size:12px;font-weight:700;font-family:'IBM Plex Sans Arabic',sans-serif;padding:8px 16px;border-radius:8px;border:2px solid rgba(255,255,255,0.9);background:transparent;color:#fff;cursor:pointer;white-space:nowrap;transition:background .2s}
+.lang-toggle-btn:hover{background:rgba(255,255,255,0.12)}
 .nav-cta{background:var(--gold);color:var(--g900);padding:8px 18px;border-radius:6px;font-size:13px;font-weight:800;text-decoration:none;font-family:'IBM Plex Sans Arabic',sans-serif;white-space:nowrap;transition:all .2s}
 .nav-cta:hover{background:var(--gold-dark)}
 
@@ -238,7 +226,7 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 <nav>
   <a href="#" class="nav-logo">
     <img src="logo.png" alt="حصادي" onerror="this.style.display='none'">
-    <span class="nav-logo-txt">حصا<em>دي</em></span>
+    <span class="nav-logo-txt" data-ar="حصا<em>دي</em>" data-en="Hasaa<em>di</em>">حصا<em>دي</em></span>
   </a>
   <ul class="nav-links">
     <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
@@ -247,15 +235,7 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
     <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
   </ul>
   <div class="nav-right">
-    <div class="lang-wrap">
-      <div class="lang-btn-main" onclick="toggleLangMenu()">
-        🌐 <span id="lang-label">عربي</span> ▾
-      </div>
-      <div class="lang-dropdown" id="langMenu">
-        <div class="lang-option active" onclick="setLang('ar')">عربي (Arabic)</div>
-        <div class="lang-option" onclick="setLang('en')">English</div>
-      </div>
-    </div>
+    <button type="button" class="lang-toggle-btn" onclick="LangManager.toggle()" aria-label="Switch language">EN</button>
     <a href="#download" class="nav-cta" data-ar="حمّل التطبيق" data-en="Download">حمّل التطبيق</a>
   </div>
 </nav>
@@ -370,11 +350,11 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
   <!-- BUYER -->
   <div class="gc on" id="content-buyer">
     <div class="gg">
-      <div class="gcard"><div class="gc-ar" data-ar="التسجيل" data-en="Sign Up">التسجيل</div><div class="gc-en" data-ar="Sign Up" data-en="التسجيل">Sign Up</div><p class="gc-desc-ar" data-ar="أدخل بريدك الإلكتروني وكلمة المرور ← اسمك ومحافظتك ← ابدأ التسوق فوراً." data-en="Enter email and password → name and governorate → Start shopping.">أدخل بريدك الإلكتروني وكلمة المرور ← اسمك ومحافظتك ← ابدأ التسوق فوراً.</p><p class="gc-desc-en">Email + password login, enter name and governorate.</p></div>
-      <div class="gcard"><div class="gc-ar" data-ar="تصفح السوق" data-en="Browse Market">تصفح السوق</div><div class="gc-en" data-ar="Browse Market" data-en="تصفح السوق">Browse Market</div><p class="gc-desc-ar" data-ar="من تبويب السوق تصفح حسب الفئة: جملة، محاصيل، ماشية، خضروات. فلتر البلد 🇴🇲" data-en="From Market tab browse by category: Wholesale, Crops, Livestock, Vegetables. Country filter OM">من تبويب السوق تصفح حسب الفئة: جملة، محاصيل، ماشية، خضروات. فلتر البلد 🇴🇲</p><p class="gc-desc-en">Categories: wholesale, crops, livestock, vegetables. Country filter OM.</p></div>
-      <div class="gcard"><div class="gc-ar" data-ar="الخريطة الزراعية" data-en="Agricultural Map">الخريطة الزراعية</div><div class="gc-en" data-ar="Agricultural Map" data-en="الخريطة الزراعية">Agricultural Map</div><p class="gc-desc-ar" data-ar="تبويب الخريطة لرؤية البائعين المتجولين القريبين منك على Google Maps." data-en="Map tab to see nearby mobile sellers on Google Maps.">تبويب الخريطة لرؤية البائعين المتجولين القريبين منك على Google Maps.</p><p class="gc-desc-en">Google Maps, find nearby mobile sellers.</p></div>
-      <div class="gcard"><div class="gc-ar" data-ar="أسعار السوق" data-en="Market Prices">أسعار السوق</div><div class="gc-en" data-ar="Market Prices" data-en="أسعار السوق">Market Prices</div><p class="gc-desc-ar" data-ar="تابع أسعار ٢٧ سلعة زراعية مدعومة بالذكاء الاصطناعي وتُحدَّث كل ساعتين." data-en="27 commodities, AI-powered, updated every 2 hours.">تابع أسعار ٢٧ سلعة زراعية مدعومة بالذكاء الاصطناعي وتُحدَّث كل ساعتين.</p><p class="gc-desc-en">27 commodities, AI-powered, updated every 2 hours.</p></div>
-      <div class="gcard"><div class="gc-ar" data-ar="ريلز المزارعين" data-en="Farmers Reels">ريلز المزارعين</div><div class="gc-en" data-ar="Farmers Reels" data-en="ريلز المزارعين">Farmers Reels</div><p class="gc-desc-ar" data-ar="اضغط على زر ▶️ الأوسط لمشاهدة مقاطع فيديو قصيرة من المزارعين." data-en="Short videos from farmers, center ▶️ button.">اضغط على زر ▶️ الأوسط لمشاهدة مقاطع فيديو قصيرة من المزارعين.</p><p class="gc-desc-en">Short videos from farmers, center ▶️ button.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="التسجيل" data-en="Sign Up">التسجيل</div><div class="gc-en" data-ar="Sign Up" data-en="التسجيل">Sign Up</div><p class="gc-desc-ar" data-ar="أدخل بريدك الإلكتروني وكلمة المرور ← اسمك ومحافظتك ← ابدأ التسوق فوراً." data-en="Enter email and password → name and governorate → Start shopping.">أدخل بريدك الإلكتروني وكلمة المرور ← اسمك ومحافظتك ← ابدأ التسوق فوراً.</p><p class="gc-desc-en" data-ar="تسجيل بالبريد وكلمة المرور ثم الاسم والمحافظة." data-en="Email + password login, enter name and governorate.">تسجيل بالبريد وكلمة المرور ثم الاسم والمحافظة.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="تصفح السوق" data-en="Browse Market">تصفح السوق</div><div class="gc-en" data-ar="Browse Market" data-en="تصفح السوق">Browse Market</div><p class="gc-desc-ar" data-ar="من تبويب السوق تصفح حسب الفئة: جملة، محاصيل، ماشية، خضروات. فلتر البلد 🇴🇲" data-en="From Market tab browse by category: Wholesale, Crops, Livestock, Vegetables. Country filter OM">من تبويب السوق تصفح حسب الفئة: جملة، محاصيل، ماشية، خضروات. فلتر البلد 🇴🇲</p><p class="gc-desc-en" data-ar="فئات: جملة، محاصيل، ماشية، خضروات. فلتر عُمان." data-en="Categories: wholesale, crops, livestock, vegetables. Country filter OM.">فئات: جملة، محاصيل، ماشية، خضروات. فلتر عُمان.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="الخريطة الزراعية" data-en="Agricultural Map">الخريطة الزراعية</div><div class="gc-en" data-ar="Agricultural Map" data-en="الخريطة الزراعية">Agricultural Map</div><p class="gc-desc-ar" data-ar="تبويب الخريطة لرؤية البائعين المتجولين القريبين منك على Google Maps." data-en="Map tab to see nearby mobile sellers on Google Maps.">تبويب الخريطة لرؤية البائعين المتجولين القريبين منك على Google Maps.</p><p class="gc-desc-en" data-ar="خرائط Google والبائعون المتجولون القريبون." data-en="Google Maps, find nearby mobile sellers.">خرائط Google والبائعون المتجولون القريبون.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="أسعار السوق" data-en="Market Prices">أسعار السوق</div><div class="gc-en" data-ar="Market Prices" data-en="أسعار السوق">Market Prices</div><p class="gc-desc-ar" data-ar="تابع أسعار ٢٧ سلعة زراعية مدعومة بالذكاء الاصطناعي وتُحدَّث كل ساعتين." data-en="27 commodities, AI-powered, updated every 2 hours.">تابع أسعار ٢٧ سلعة زراعية مدعومة بالذكاء الاصطناعي وتُحدَّث كل ساعتين.</p><p class="gc-desc-en" data-ar="٢٧ سلعة بالذكاء الاصطناعي؛ تحديث كل ساعتين." data-en="27 commodities, AI-powered, updated every 2 hours.">٢٧ سلعة بالذكاء الاصطناعي؛ تحديث كل ساعتين.</p></div>
+      <div class="gcard"><div class="gc-ar" data-ar="ريلز المزارعين" data-en="Farmers Reels">ريلز المزارعين</div><div class="gc-en" data-ar="Farmers Reels" data-en="ريلز المزارعين">Farmers Reels</div><p class="gc-desc-ar" data-ar="اضغط على زر ▶️ الأوسط لمشاهدة مقاطع فيديو قصيرة من المزارعين." data-en="Short videos from farmers, center ▶️ button.">اضغط على زر ▶️ الأوسط لمشاهدة مقاطع فيديو قصيرة من المزارعين.</p><p class="gc-desc-en" data-ar="فيديوهات قصيرة من المزارعين؛ زر ▶️ في الوسط." data-en="Short videos from farmers, center ▶️ button.">فيديوهات قصيرة من المزارعين؛ زر ▶️ في الوسط.</p></div>
     </div>
   </div>
 
@@ -394,14 +374,14 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
     <div class="ai-hdr">
       <div style="font-size:34px;margin-bottom:8px">🤖</div>
       <h3 style="font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:5px" data-ar="مركز الذكاء الاصطناعي" data-en="AI Center">مركز الذكاء الاصطناعي</h3>
-      <span class="pbadge">Premium Features</span>
+      <span class="pbadge" data-ar="ميزات مميزة" data-en="Premium Features">ميزات مميزة</span>
     </div>
     <div class="gg">
-      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="المستشار الزراعي" data-en="Agricultural Advisor">المستشار الزراعي</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="توصيات للزراعة وجداول الري ومقترحات الأسمدة بناءً على المحصول والتربة." data-en="Farming recommendations, irrigation and fertilizer suggestions.">توصيات للزراعة وجداول الري ومقترحات الأسمدة بناءً على المحصول والتربة.</p></div>
-      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="كاشف الآفات" data-en="Pest Detector">كاشف الآفات</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="التقط صورة ← يحلل الذكاء الاصطناعي ← توصيات العلاج الفورية." data-en="Photo → AI analyzes → instant treatment recommendations.">التقط صورة ← يحلل الذكاء الاصطناعي ← توصيات العلاج الفورية.</p></div>
-      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="متوقع الأسعار" data-en="Price Predictor">متوقع الأسعار</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="تحليل اتجاهات السوق لمعرفة أفضل وقت لبيع محاصيلك." data-en="Market trend analysis to know the best time to sell.">تحليل اتجاهات السوق لمعرفة أفضل وقت لبيع محاصيلك.</p></div>
-      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="توقعات الطقس" data-en="Weather Forecast">توقعات الطقس</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="توقعات طقس زراعية لـ ٧ أيام تشمل الهطول والرطوبة." data-en="7-day agricultural weather forecasts including rainfall and humidity.">توقعات طقس زراعية لـ ٧ أيام تشمل الهطول والرطوبة.</p></div>
-      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="اقترح محصولك" data-en="Crop Suggester">اقترح محصولك</div><span class="pbadge" style="font-size:9px">Premium</span></div><p class="gc-desc-ar" data-ar="ارفع صورة التربة ← يقدّر الحموضة والنواقص ← يقترح أنسب المحاصيل." data-en="Upload soil photo → estimates pH → suggests suitable crops.">ارفع صورة التربة ← يقدّر الحموضة والنواقص ← يقترح أنسب المحاصيل.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="المستشار الزراعي" data-en="Agricultural Advisor">المستشار الزراعي</div><span class="pbadge" style="font-size:9px" data-ar="مميز" data-en="Premium">مميز</span></div><p class="gc-desc-ar" data-ar="توصيات للزراعة وجداول الري ومقترحات الأسمدة بناءً على المحصول والتربة." data-en="Farming recommendations, irrigation and fertilizer suggestions.">توصيات للزراعة وجداول الري ومقترحات الأسمدة بناءً على المحصول والتربة.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="كاشف الآفات" data-en="Pest Detector">كاشف الآفات</div><span class="pbadge" style="font-size:9px" data-ar="مميز" data-en="Premium">مميز</span></div><p class="gc-desc-ar" data-ar="التقط صورة ← يحلل الذكاء الاصطناعي ← توصيات العلاج الفورية." data-en="Photo → AI analyzes → instant treatment recommendations.">التقط صورة ← يحلل الذكاء الاصطناعي ← توصيات العلاج الفورية.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="متوقع الأسعار" data-en="Price Predictor">متوقع الأسعار</div><span class="pbadge" style="font-size:9px" data-ar="مميز" data-en="Premium">مميز</span></div><p class="gc-desc-ar" data-ar="تحليل اتجاهات السوق لمعرفة أفضل وقت لبيع محاصيلك." data-en="Market trend analysis to know the best time to sell.">تحليل اتجاهات السوق لمعرفة أفضل وقت لبيع محاصيلك.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="توقعات الطقس" data-en="Weather Forecast">توقعات الطقس</div><span class="pbadge" style="font-size:9px" data-ar="مميز" data-en="Premium">مميز</span></div><p class="gc-desc-ar" data-ar="توقعات طقس زراعية لـ ٧ أيام تشمل الهطول والرطوبة." data-en="7-day agricultural weather forecasts including rainfall and humidity.">توقعات طقس زراعية لـ ٧ أيام تشمل الهطول والرطوبة.</p></div>
+      <div class="gcard"><div style="display:flex;align-items:center;gap:6px;margin-bottom:2px"><div class="gc-ar" data-ar="اقترح محصولك" data-en="Crop Suggester">اقترح محصولك</div><span class="pbadge" style="font-size:9px" data-ar="مميز" data-en="Premium">مميز</span></div><p class="gc-desc-ar" data-ar="ارفع صورة التربة ← يقدّر الحموضة والنواقص ← يقترح أنسب المحاصيل." data-en="Upload soil photo → estimates pH → suggests suitable crops.">ارفع صورة التربة ← يقدّر الحموضة والنواقص ← يقترح أنسب المحاصيل.</p></div>
     </div>
   </div>
 
@@ -465,7 +445,7 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 <footer>
   <a href="#" class="flogo">
     <img src="logo.png" alt="حصادي" onerror="this.style.display='none'">
-    <span class="flt">حصا<em>دي</em></span>
+    <span class="flt" data-ar="حصا<em>دي</em>" data-en="Hasaa<em>di</em>">حصا<em>دي</em></span>
   </a>
   <div class="flinks">
     <a href="/privacy" class="fpriv" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a>
@@ -479,30 +459,8 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
   <div class="fcp" data-ar="© ٢٠٢٥ حصادي. جميع الحقوق محفوظة." data-en="© 2025 Hasaadi. All rights reserved.">© ٢٠٢٥ حصادي. جميع الحقوق محفوظة.</div>
 </footer>
 
+<script src="js/lang.js"></script>
 <script>
-// Language
-function setLang(l){
-  document.documentElement.lang=l;
-  document.documentElement.dir=l==='ar'?'rtl':'ltr';
-  document.getElementById('lang-label').textContent=l==='ar'?'عربي':'EN';
-  document.getElementById('langMenu').classList.remove('open');
-  document.querySelectorAll('.lang-option').forEach(o=>{
-    o.classList.toggle('active', o.textContent.includes(l==='ar'?'Arabic':'English'));
-  });
-  document.querySelectorAll('[data-ar]').forEach(el=>{
-    const v=el.getAttribute('data-'+l);
-    if(!v)return;
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
-    else el.innerHTML=v;
-  });
-}
-function toggleLangMenu(){
-  document.getElementById('langMenu').classList.toggle('open');
-}
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.lang-wrap'))document.getElementById('langMenu').classList.remove('open');
-});
-
 // Guide tabs
 function showTab(t){
   ['buyer','seller','ai','agent'].forEach(x=>{
