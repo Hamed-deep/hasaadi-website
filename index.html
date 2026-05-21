@@ -44,15 +44,17 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  min-height:unset;padding:calc(var(--nav-h)+28px) 5% 36px;
+  min-height:min(78vh,720px);padding:calc(var(--nav-h)+32px) 5% 40px;
   background:var(--hero-bg);
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-  text-align:center;position:relative;overflow:hidden;
+  text-align:center;position:relative;overflow:visible;
 }
-/* Single subtle centered watermark */
+/* Two decorative watermark circles — backdrop only */
 .wm{position:absolute;pointer-events:none}
 .wm img{width:100%;height:100%;object-fit:contain}
-.wm1{width:168px;height:168px;top:40%;left:50%;transform:translate(-50%,-50%);opacity:0.12}
+.wm-side{width:132px;height:132px;top:50%;opacity:0.3}
+.wm-left{left:5%;transform:translateY(-50%)}
+.wm-right{right:5%;transform:translateY(-50%)}
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(75,116,61,0.1);border:1px solid rgba(75,116,61,0.2);
@@ -62,10 +64,11 @@ nav{
 }
 .hero-title{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   font-family:'Scheherazade New','Noto Naskh Arabic',serif;
-  font-size:clamp(42px,10vw,80px);
-  font-weight:900;color:var(--txt);line-height:1.05;
-  margin-bottom:10px;letter-spacing:-2px;
+  font-size:72px;
+  font-weight:900;color:var(--txt);line-height:1.4;
+  padding:20px 0;margin-bottom:10px;letter-spacing:-1px;
   position:relative;z-index:2;
+  overflow:visible;display:inline-block;max-width:100%;
 }
 .hero-title em{color:var(--gold);font-style:normal}
 .hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--muted);margin-bottom:2px;position:relative;z-index:2}
@@ -207,7 +210,10 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
   .nav-links{display:none}
   .hero-stats{gap:24px;margin-top:18px}
   .stat-n{font-size:28px}
-  .wm1{width:120px;height:120px;top:38%}
+  .wm-side{width:100px;height:100px;top:48%}
+  .wm-left{left:2%}
+  .wm-right{right:2%}
+  .hero-title{font-size:clamp(44px,14vw,72px)}
 }
 </style>
 </head>
@@ -233,8 +239,9 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 
 <!-- HERO -->
 <section class="hero">
-  <!-- 3 logo watermarks like Banani -->
-  <div class="wm wm1"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
+  <!-- Decorative side watermarks -->
+  <div class="wm wm-side wm-left"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
+  <div class="wm wm-side wm-right"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
 
   <h1 class="hero-title" data-ar="حصا<em>دي</em>" data-en="Hasaa<em>di</em>">حصا<em>دي</em></h1>
   <p class="hero-sub" data-ar="سوقك الزراعي الذكي — من المزارع إلى يدك" data-en="Your Smart Agricultural Market — From Farm to Hand">سوقك الزراعي الذكي — من المزارع إلى يدك</p>
