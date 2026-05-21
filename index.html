@@ -6,10 +6,10 @@
 <meta name="title-ar" content="حصادي — سوقك الزراعي الذكي | Hasaadi">
 <meta name="title-en" content="Hasaadi — Your Smart Agricultural Market">
 <title>حصادي — سوقك الزراعي الذكي | Hasaadi</title>
-<meta name="description" content="حصادي منصة زراعية رقمية تربط المزارعين والتجار في ٢٢ دولة عربية">
+<meta name="description" content="حصادي منصة زراعية رقمية تربط المزارعين والتجار وتعرض أسعاراً ذكية لمحاصيل متعددة">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=Playfair+Display:wght@700;900family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Tajawal:wght@400;500;700;800;900&amp;family=Playfair+Display:wght@700;900&amp;family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -27,7 +27,7 @@ body{font-family:'Noto Naskh Arabic','Scheherazade New',serif;background:var(--w
 nav{
   position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav-h);
   background:linear-gradient(to left,#012104,#1a3d1a);
-  display:flex;align-items:center;justify-content:space-between;padding:0 4%;
+  display:flex;align-items:center;justify-content:space-between;padding:0 4%;gap:12px;
 }
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
 .nav-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover}
@@ -44,34 +44,32 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  min-height:100vh;padding:calc(var(--nav-h)+60px) 5% 60px;
+  min-height:unset;padding:calc(var(--nav-h)+28px) 5% 36px;
   background:var(--hero-bg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   text-align:center;position:relative;overflow:hidden;
 }
-/* 3 large logo watermarks like banani */
-.wm{position:absolute;pointer-events:none;opacity:0.18}
+/* Single subtle centered watermark */
+.wm{position:absolute;pointer-events:none}
 .wm img{width:100%;height:100%;object-fit:contain}
-.wm1{width:280px;height:280px;top:50%;left:50%;transform:translate(-50%,-50%)}
-.wm2{width:220px;height:220px;top:50%;left:8%;transform:translateY(-50%)}
-.wm3{width:220px;height:220px;top:50%;right:8%;transform:translateY(-50%)}
+.wm1{width:168px;height:168px;top:40%;left:50%;transform:translate(-50%,-50%);opacity:0.12}
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(75,116,61,0.1);border:1px solid rgba(75,116,61,0.2);
-  color:var(--g500);padding:7px 18px;border-radius:20px;
-  font-size:12px;font-weight:600;margin-bottom:20px;
+  color:var(--g500);padding:6px 14px;border-radius:20px;
+  font-size:12px;font-weight:600;margin-bottom:12px;
   position:relative;z-index:2;
 }
 .hero-title{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   font-family:'Scheherazade New','Noto Naskh Arabic',serif;
-  font-size:clamp(80px,13vw,160px);
-  font-weight:900;color:var(--txt);line-height:1;
-  margin-bottom:14px;letter-spacing:-3px;
+  font-size:clamp(42px,10vw,80px);
+  font-weight:900;color:var(--txt);line-height:1.05;
+  margin-bottom:10px;letter-spacing:-2px;
   position:relative;z-index:2;
 }
 .hero-title em{color:var(--gold);font-style:normal}
-.hero-sub{font-size:clamp(16px,1.8vw,20px);color:var(--muted);margin-bottom:4px;position:relative;z-index:2}
-.hero-sub-en{font-size:14px;color:var(--muted2);font-style:italic;margin-bottom:36px;position:relative;z-index:2}
+.hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--muted);margin-bottom:2px;position:relative;z-index:2}
+.hero-sub-en{font-size:13px;color:var(--muted2);font-style:italic;margin-bottom:14px;position:relative;z-index:2}
 .hero-btn{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--gold);color:var(--g900);padding:13px 28px;
@@ -82,15 +80,15 @@ nav{
 }
 .hero-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
 .hero-stats{
-  display:flex;gap:60px;justify-content:center;margin-top:56px;
+  display:flex;gap:40px;justify-content:center;margin-top:22px;
   position:relative;z-index:2;flex-wrap:wrap;
 }
-.stat-n{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:42px;font-weight:900;color:var(--gold)}
+.stat-n{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:36px;font-weight:900;color:var(--gold)}
 .stat-l{font-size:12px;color:var(--muted);margin-top:2px;display:block}
 
 /* ── FEATURES ── */
-#features{padding:80px 5%;background:var(--white)}
-.sec-hdr{text-align:center;margin-bottom:44px}
+#features{padding:56px 5%;background:var(--white)}
+.sec-hdr{text-align:center;margin-bottom:31px}
 .sec-title{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--txt);margin-bottom:8px}
 .sec-title em{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:normal}
 .sec-sub{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.7}
@@ -100,7 +98,7 @@ nav{
 @media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
 .fc{
   background:var(--white);border:1px solid var(--border);border-radius:12px;
-  padding:28px 24px;transition:all .3s;
+  padding:20px 18px;transition:all .3s;
 }
 .fc:hover{box-shadow:0 8px 28px rgba(0,0,0,0.07);transform:translateY(-3px)}
 .fc-title{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:800;color:var(--txt);margin-bottom:6px}
@@ -108,10 +106,10 @@ nav{
 .fc-desc{font-size:13px;color:var(--muted);line-height:1.65}
 
 /* ── HOW IT WORKS ── */
-#how{padding:80px 5%;background:var(--g900);text-align:center}
+#how{padding:56px 5%;background:var(--g900);text-align:center}
 #how .sec-title{color:#fff}
 #how .sec-sub{color:rgba(255,255,255,0.5)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
 @media(max-width:700px){.steps{grid-template-columns:1fr}}
 .step{text-align:center}
 /* Gold circle number like banani */
@@ -127,16 +125,10 @@ nav{
 .step-t-en{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:7px}
 .step-d{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6}
 
-/* ── COUNTRIES ── */
-#countries{padding:80px 5%;background:var(--g50);text-align:center}
-.cw{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:38px}
-.cc{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--txt);transition:all .2s;display:flex;align-items:center;gap:6px}
-.cc:hover{background:var(--g100);border-color:var(--g400);color:var(--g500);transform:translateY(-2px)}
-
 /* ── USER GUIDE ── */
-#guide{padding:80px 5%;background:var(--white)}
+#guide{padding:56px 5%;background:var(--white)}
 /* Banani-style tabs */
-.gtabs{display:flex;gap:8px;justify-content:center;margin:36px 0 28px;flex-wrap:wrap}
+.gtabs{display:flex;gap:8px;justify-content:center;margin:25px 0 20px;flex-wrap:wrap}
 .gtab{
   padding:10px 22px;border-radius:24px;
   border:1.5px solid var(--border);
@@ -165,8 +157,8 @@ nav{
 .pbadge{background:var(--gold);color:var(--g900);padding:2px 10px;border-radius:8px;font-size:10px;font-weight:800;display:inline-block}
 
 /* ── DOWNLOAD ── */
-#download{padding:80px 5%;background:var(--g50);text-align:center}
-.sbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+#download{padding:56px 5%;background:var(--g50);text-align:center}
+.sbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
 .sbtn{display:inline-flex;align-items:center;gap:10px;background:var(--g900);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;transition:all .3s}
 .sbtn:hover{background:var(--g500);transform:translateY(-2px)}
 .sbtn-ico{font-size:24px}
@@ -174,18 +166,18 @@ nav{
 .sbtn-name{font-size:16px;font-weight:800;display:block}
 
 /* ── PRIVACY ── */
-#privacy{padding:80px 5%;background:var(--white)}
-.pcard{background:var(--g50);border:1px solid var(--border);border-radius:14px;padding:36px;max-width:720px;margin:36px auto 0}
-.psec{margin-bottom:22px}
+#privacy{padding:56px 5%;background:var(--white)}
+.pcard{background:var(--g50);border:1px solid var(--border);border-radius:14px;padding:26px;max-width:720px;margin:25px auto 0}
+.psec{margin-bottom:15px}
 .psec:last-child{margin-bottom:0}
 .ptit{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:15px;font-weight:800;color:var(--g500);margin-bottom:6px}
 .ptxt{font-size:13px;color:var(--muted);line-height:1.8}
 
 /* ── CONTACT ── */
-#contact{padding:80px 5%;background:var(--g900);text-align:center}
+#contact{padding:56px 5%;background:var(--g900);text-align:center}
 #contact .sec-title{color:#fff}
 #contact .sec-sub{color:rgba(255,255,255,0.5);margin:0 auto}
-.ccards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.ccards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
 .ccard{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:24px 30px;text-align:center;text-decoration:none;color:#fff;transition:all .3s;min-width:155px}
 .ccard:hover{background:rgba(255,255,255,0.12);transform:translateY(-3px);border-color:rgba(233,196,106,0.2)}
 .c-ico{font-size:26px;display:block;margin-bottom:8px}
@@ -193,7 +185,7 @@ nav{
 .c-val{font-size:12px;font-weight:700}
 
 /* ── FOOTER ── */
-footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);padding:28px 5%;text-align:center}
+footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);padding:20px 5%;text-align:center}
 .flogo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:10px}
 .flogo img{width:26px;height:26px;border-radius:50%;object-fit:cover}
 .flt{font-family:'Scheherazade New','Noto Naskh Arabic',serif;font-size:17px;font-weight:900;color:#fff}
@@ -213,10 +205,9 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 /* MOBILE */
 @media(max-width:768px){
   .nav-links{display:none}
-  .hero-stats{gap:28px}
-  .stat-n{font-size:30px}
-  .wm1{width:180px;height:180px}
-  .wm2,.wm3{display:none}
+  .hero-stats{gap:24px;margin-top:18px}
+  .stat-n{font-size:28px}
+  .wm1{width:120px;height:120px;top:38%}
 }
 </style>
 </head>
@@ -231,7 +222,7 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
   <ul class="nav-links">
     <li><a href="#features" data-ar="المميزات" data-en="Features">المميزات</a></li>
     <li><a href="#how" data-ar="كيف يعمل" data-en="How it works">كيف يعمل</a></li>
-    <li><a href="#countries" data-ar="الدول" data-en="Countries">الدول</a></li>
+    <li><a href="#guide" data-ar="دليل الاستخدام" data-en="User Guide">دليل الاستخدام</a></li>
     <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
   </ul>
   <div class="nav-right">
@@ -244,8 +235,6 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 <section class="hero">
   <!-- 3 logo watermarks like Banani -->
   <div class="wm wm1"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
-  <div class="wm wm2"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
-  <div class="wm wm3"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
 
   <h1 class="hero-title" data-ar="حصا<em>دي</em>" data-en="Hasaa<em>di</em>">حصا<em>دي</em></h1>
   <p class="hero-sub" data-ar="سوقك الزراعي الذكي — من المزارع إلى يدك" data-en="Your Smart Agricultural Market — From Farm to Hand">سوقك الزراعي الذكي — من المزارع إلى يدك</p>
@@ -254,9 +243,8 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
     <span data-ar="حمّل مجاناً" data-en="Download Free">حمّل مجاناً</span>
   </a>
   <div class="hero-stats">
-    <div><span class="stat-n">٢٢</span><span class="stat-l" data-ar="دولة عربية" data-en="Arab Countries">دولة عربية</span></div>
-    <div><span class="stat-n">٥٠٠٠+</span><span class="stat-l" data-ar="مزارع ومنتج" data-en="Farmers & Producers">مزارع ومنتج</span></div>
     <div><span class="stat-n">٢٧</span><span class="stat-l" data-ar="سلعة زراعية" data-en="Commodities">سلعة زراعية</span></div>
+    <div><span class="stat-n">٥٠٠٠+</span><span class="stat-l" data-ar="مزارع ومنتج" data-en="Farmers & Producers">مزارع ومنتج</span></div>
   </div>
 </section>
 
@@ -270,7 +258,7 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
     <div class="fc rv">
       <div class="fc-title" data-ar="سوق زراعي متكامل" data-en="Integrated Market">سوق زراعي متكامل</div>
       <div class="fc-sub" data-ar="بيع وشراء المحاصيل بسهولة" data-en="Buy and sell crops easily">بيع وشراء المحاصيل بسهولة</div>
-      <p class="fc-desc" data-ar="بيع وشراء المحاصيل والمواشي والخضروات مباشرة في ٢٢ دولة بأسعار تنافسية" data-en="Buy and sell crops, livestock and vegetables directly across 22 countries">بيع وشراء المحاصيل والمواشي والخضروات مباشرة في ٢٢ دولة بأسعار تنافسية</p>
+      <p class="fc-desc" data-ar="بيع وشراء المحاصيل والمواشي والخضروات مباشرة بين المزارعين والتجار بأسعار تنافسية" data-en="Buy and sell crops, livestock and vegetables directly between farmers and traders at competitive prices">بيع وشراء المحاصيل والمواشي والخضروات مباشرة بين المزارعين والتجار بأسعار تنافسية</p>
     </div>
     <div class="fc rv">
       <div class="fc-title" data-ar="ذكاء اصطناعي للأسعار" data-en="AI Pricing">ذكاء اصطناعي للأسعار</div>
@@ -330,8 +318,6 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
     </div>
   </div>
 </section>
-
-<!-- COUNTRIES - hidden until app approval -->
 
 <!-- USER GUIDE -->
 <section id="guide">
