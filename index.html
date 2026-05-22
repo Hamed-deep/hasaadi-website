@@ -54,12 +54,7 @@ nav{
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   text-align:center;position:relative;overflow:visible;
 }
-/* Two decorative watermark circles — backdrop only */
-.wm{position:absolute;pointer-events:none}
-.wm img{width:100%;height:100%;object-fit:contain}
-.wm-side{width:132px;height:132px;top:50%;opacity:0.3}
-.wm-left{left:5%;transform:translateY(-50%)}
-.wm-right{right:5%;transform:translateY(-50%)}
+/* Two decorative watermark circles — removed (logo now centered in hero) */
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(75,116,61,0.1);border:1px solid rgba(75,116,61,0.2);
@@ -91,6 +86,12 @@ nav{
 .hero-title em{color:var(--gold-dark);font-style:normal}
 .hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--muted);margin-bottom:2px;position:relative;z-index:2}
 .hero-sub-en{font-size:13px;color:var(--muted2);font-style:italic;margin-bottom:14px;position:relative;z-index:2}
+.hero-logo-wrap{text-align:center;margin-bottom:10px;position:relative;z-index:2}
+.hero-logo-img{
+  width:120px;height:120px;object-fit:contain;border-radius:50%;background:transparent;
+  border:none;box-shadow:none;outline:none;display:block;margin-left:auto;margin-right:auto;
+}
+
 .hero-btn{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--gold);color:var(--g900);padding:13px 28px;
@@ -234,9 +235,6 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
   .nav-links{display:none}
   .hero-stats{gap:24px;margin-top:18px}
   .stat-n{font-size:28px}
-  .wm-side{width:100px;height:100px;top:48%}
-  .wm-left{left:2%}
-  .wm-right{right:2%}
 }
 </style>
 </head>
@@ -262,11 +260,11 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 
 <!-- HERO -->
 <section class="hero" style="overflow:visible;">
-  <!-- Decorative side watermarks -->
-  <div class="wm wm-side wm-left"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
-  <div class="wm wm-side wm-right"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
+  <div class="hero-logo-wrap">
+    <img src="logo_transparent.png" alt="حصادي" class="hero-logo-img" width="120" height="120" onerror="this.style.display='none'">
+  </div>
 
-  <h1 style="font-size:3.5rem; overflow:visible; padding-top:15px; margin-top:10px; line-height:1.4; display:block;">حصادي</h1>
+  <h1 style="font-size:3.5rem; overflow:visible; padding-top:15px; margin-top:0; line-height:1.4; display:block;">حصادي</h1>
   <p class="hero-sub" data-ar="منظومتك الزراعية الذكية — سوق، معرفة، وفرص" data-en="Your Smart Agricultural Ecosystem — Market, Knowledge &amp; Opportunities">منظومتك الزراعية الذكية — سوق، معرفة، وفرص</p>
   <p class="hero-sub-en" data-ar="Your Smart Agricultural Ecosystem — Market, Knowledge &amp; Opportunities" data-en="منظومتك الزراعية الذكية — سوق، معرفة، وفرص">Your Smart Agricultural Ecosystem — Market, Knowledge &amp; Opportunities</p>
   <a href="#download" class="hero-btn">
