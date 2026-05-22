@@ -44,7 +44,11 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  min-height:min(78vh,720px);padding:calc(var(--nav-h)+32px) 5% 40px;
+  min-height:min(78vh,720px);
+  padding-top:calc(var(--nav-h) + 120px); /* ≥120px gap below fixed navbar */
+  padding-right:5%;
+  padding-bottom:40px;
+  padding-left:5%;
   background:var(--hero-bg);
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   text-align:center;position:relative;overflow:visible;
@@ -62,15 +66,28 @@ nav{
   font-size:12px;font-weight:600;margin-bottom:12px;
   position:relative;z-index:2;
 }
-.hero-title{background:linear-gradient(135deg,#012104,#4B743D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+/* عنوان الرئيسية: بدون background-clip:text لتجنّب قصّ الحروف العربية في المتصفحات */
+.hero-title{
   font-family:'Scheherazade New','Noto Naskh Arabic',serif;
-  font-size:72px;
-  font-weight:900;color:var(--txt);line-height:1.4;
-  padding:20px 0;margin-bottom:10px;letter-spacing:-1px;
-  position:relative;z-index:2;
-  overflow:visible;display:inline-block;max-width:100%;
+  font-size:clamp(2.5rem,9vw,5rem);
+  font-weight:900;
+  color:#0d2810;
+  line-height:1.3;
+  padding-top:30px;
+  padding-right:16px;
+  padding-bottom:18px;
+  padding-left:16px;
+  margin-top:20px;
+  margin-bottom:10px;
+  letter-spacing:-1px;
+  position:relative;
+  z-index:2;
+  overflow:visible;
+  display:inline-block;
+  max-width:100%;
+  -webkit-font-smoothing:antialiased;
 }
-.hero-title em{color:var(--gold);font-style:normal}
+.hero-title em{color:var(--gold-dark);font-style:normal}
 .hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--muted);margin-bottom:2px;position:relative;z-index:2}
 .hero-sub-en{font-size:13px;color:var(--muted2);font-style:italic;margin-bottom:14px;position:relative;z-index:2}
 .hero-btn{
@@ -213,7 +230,6 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
   .wm-side{width:100px;height:100px;top:48%}
   .wm-left{left:2%}
   .wm-right{right:2%}
-  .hero-title{font-size:clamp(44px,14vw,72px)}
 }
 </style>
 </head>
@@ -238,12 +254,12 @@ footer{background:var(--g900);border-top:1px solid rgba(255,255,255,0.05);paddin
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" style="overflow:visible;">
   <!-- Decorative side watermarks -->
   <div class="wm wm-side wm-left"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
   <div class="wm wm-side wm-right"><img src="logo.png" alt="" onerror="this.parentElement.style.display='none'"></div>
 
-  <h1 class="hero-title" data-ar="حصا<em>دي</em>" data-en="Hasaa<em>di</em>">حصا<em>دي</em></h1>
+  <h1 style="font-size:3.5rem; overflow:visible; padding-top:15px; margin-top:10px; line-height:1.4; display:block;">حصادي</h1>
   <p class="hero-sub" data-ar="سوقك الزراعي الذكي — من المزارع إلى يدك" data-en="Your Smart Agricultural Market — From Farm to Hand">سوقك الزراعي الذكي — من المزارع إلى يدك</p>
   <p class="hero-sub-en" data-ar="Your Smart Agricultural Market" data-en="سوقك الزراعي الذكي">Your Smart Agricultural Market — From Farm to Hand</p>
   <a href="#download" class="hero-btn">
