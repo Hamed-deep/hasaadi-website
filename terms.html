@@ -227,6 +227,21 @@
       text-decoration: none;
       font-weight: 600;
     }
+    .bul-item {
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      font-size: 0.98rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    .bul-dot-green {
+      color: var(--green-policy);
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -326,6 +341,28 @@
           <li>جميع المدفوعات عبر ثواني (Thawani Pay) فقط — لا معاملات خارجية</li>
           <li>جميع الأسعار بالريال العُماني (OMR) فقط</li>
           <li>تطبق حصادي نظام وساطة مالي برمجي داخلي (Internal Escrow System): أموال المشتري تبقى معلقة في محفظة البائع الرقمية داخل التطبيق، ولا يُتاح سحبها إلا بعد إدخال كود OTP الخاص بالطلب بنجاح</li>
+        </ul>
+        <div class="bul-item">
+          <span class="bul-dot-green">•</span>
+          <span>تستقطع المنصة عمولة على كل صفقة تتم عبر نظام الدفع الإلكتروني كرسوم خدمة، وتتفاوت النسبة حسب نوع السلعة كما يلي:</span>
+        </div>
+        <div class="bul-item">
+          <span class="bul-dot-green">•</span>
+          <span>المواشي والحيوانات الحية: 2% أو 5 ريال عُماني كحد أقصى لكل رأس</span>
+        </div>
+        <div class="bul-item">
+          <span class="bul-dot-green">•</span>
+          <span>المحاصيل والأعلاف والمنتجات الزراعية: 4%</span>
+        </div>
+        <div class="bul-item">
+          <span class="bul-dot-green">•</span>
+          <span>المعدات والأدوات والأدوية البيطرية: 6%</span>
+        </div>
+        <div class="bul-item">
+          <span class="bul-dot-green">•</span>
+          <span>تُطبَّق العمولة بعد انتهاء فترة الإطلاق المجانية البالغة 3 أشهر من تاريخ الإطلاق الرسمي للمنصة</span>
+        </div>
+        <ul style="margin-top: 0.75rem;">
           <li>تحتسب حصادي عمولة وفق خطة اشتراك التاجر</li>
         </ul>
       </article>
@@ -438,6 +475,14 @@
           <li>All payments exclusively through Thawani Pay — no external transactions</li>
           <li>All prices in Omani Rial (OMR) only</li>
           <li>Hasaadi applies an Internal Escrow System: buyer funds remain held in the seller's digital wallet within the app and cannot be withdrawn until the order's OTP code is successfully entered</li>
+          <li>The platform deducts a service commission on every transaction processed through the electronic payment system, varying by product type:
+            <ul>
+              <li>Livestock &amp; live animals: 2% or max OMR 5 per head</li>
+              <li>Crops, feed &amp; fresh produce: 4%</li>
+              <li>Equipment, tools &amp; veterinary medicine: 6%</li>
+            </ul>
+          </li>
+          <li>Commission applies after the 3-month free launch period from the platform's official launch date.</li>
           <li>Hasaadi charges a commission according to the merchant's subscription plan</li>
         </ul>
       </article>
